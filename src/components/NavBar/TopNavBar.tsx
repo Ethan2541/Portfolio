@@ -6,6 +6,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import LightModeIcon from '@mui/icons-material/LightMode';
 import { Button } from "@mui/material";
 import LanguageSelector from './LanguageSelector';
+import { useMode } from "@/contexts/ModeProvider";
 
 interface TopNavBar {
   githubusername: string;
@@ -14,7 +15,7 @@ interface TopNavBar {
 }
 
 export default function TopNavBar({ githubusername, linkedinusername, progress }: Readonly<TopNavBar>) {
-
+  const { mode, setMode } = useMode();
   return (
     <div>
       <div className="top-navbar">
@@ -51,7 +52,7 @@ export default function TopNavBar({ githubusername, linkedinusername, progress }
             </IconButton>
           </li>
           <li>
-            <IconButton aria-label="LightMode" component="a" target="_blank">
+            <IconButton aria-label="LightMode" component="a" target="_blank" onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}>
               <LightModeIcon />
             </IconButton>
           </li>

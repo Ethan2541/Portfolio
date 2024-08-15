@@ -5,6 +5,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import { Button } from "@mui/material";
 import LanguageSelector from "./LanguageSelector";
+import { useMode } from "@/contexts/ModeProvider";
 
 interface SideNavBarProps {
   githubusername: string;
@@ -15,6 +16,7 @@ export default function SideNavBar({
   githubusername,
   linkedinusername,
 }: Readonly<SideNavBarProps>) {
+  const { mode, setMode } = useMode();
   return (
     <div className="side-navbar">
       <ul className="side-navbar-home">
@@ -75,6 +77,7 @@ export default function SideNavBar({
             className="iconButton-side-navbar"
             aria-label="LightMode"
             component="a"
+            onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}
           >
             <LightModeIcon />
           </IconButton>

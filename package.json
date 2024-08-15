@@ -9,20 +9,25 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/cache": "^11.13.1",
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
     "@mui/icons-material": "^5.16.7",
     "@mui/material": "^5.16.7",
+    "@mui/material-nextjs": "^5.16.6",
     "@smakss/react-scroll-direction": "^4.2.0",
     "next": "14.2.5",
+    "next-intl": "^3.17.3",
     "react": "^18",
     "react-dom": "^18",
-    "react-flag-kit": "^1.1.1"
+    "react-flag-kit": "^1.1.1",
+    "three": "^0.167.1"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/three": "^0.167.1",
     "typescript": "^5"
   }
 }
