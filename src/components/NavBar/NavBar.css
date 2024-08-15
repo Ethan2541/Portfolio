@@ -1,0 +1,106 @@
+.top-navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(51, 51, 51, 0.9); /* Utilisation de rgba pour la transparence */
+  padding: 5px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Garde la navbar au-dessus des autres contenus */
+}
+
+.top-navbar ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.top-navbar li {
+  margin: 0 15px;
+}
+
+.top-navbar button,
+.top-navbar a {
+  color: white;
+  text-transform: none;
+}
+
+.top-navbar button:hover,
+.top-navbar a:hover {
+  color: #f0f0f0;
+}
+
+.top-navbar a {
+  display: inline-flex;
+  align-items: center;
+}
+
+.side-navbar-network {
+  right: 30px; 
+  transform: translateY(20%);
+}
+
+.side-navbar-theme {
+  right: 30px; 
+  transform: translateY(500%);
+}
+
+.side-navbar-home {
+  left: 30px; 
+  transform: translateY(20%);
+}
+
+.side-navbar ul {
+  position: absolute; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  z-index: 1000; 
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.side-navbar li {
+  margin: 10px 0;
+}
+
+.iconButton-side-navbar {
+  background-color: white; /* Background color for the buttons */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for the buttons */
+  border-radius: 50%; /* Circular buttons */
+}
+
+.iconButton-iconButton-side-navbar:hover {
+  background-color: #f0f0f0; /* Slightly darker background on hover */
+
+}
+
+.progress-bar {
+  height: 2px; /* Adjust the height as needed */
+  background-color: #ffffff; /* White color */
+  position: fixed;
+  top: 50px; /* Adjust depending on the height of your navbar */
+  left: 0;
+  z-index: 999; /* Positioned below the navbar */
+}
+
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+  .top-navbar {
+    flex-direction: column;
+  }
+
+  .top-navbar ul {
+    flex-direction: column;
+  }
+
+  .top-navbar li {
+    margin: 10px 0;
+  }
+}
