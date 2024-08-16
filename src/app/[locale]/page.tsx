@@ -4,9 +4,9 @@ import { Box, Container, Grid, Typography, useTheme } from "@mui/material";
 import { useTranslations } from "next-intl";
 import ProjectCard from "./projects/ProjectCard";
 import Experiences from "@/components/Experiences";
-import AboutMe from "@/components/NavBar/AboutMe";
-import PinnedRepositories from "@/components/NavBar/PinnedRepositories";
-import UserRepositories from "@/components/NavBar/UserRepositories";
+import AboutMe from "@/components/AboutMe";
+import PinnedRepositories from "@/components/PinnedRepositories";
+import UserRepositories from "@/components/UserRepositories";
 
 export default function Home() {
   const t = useTranslations("HomePage");
