@@ -41,7 +41,6 @@ export default function SideNavBar({
         <li>
           <IconButton
             aria-label="GitHub"
-            className="iconButton-side-navbar"
             component="a"
             href={`https://github.com/${githubusername}`}
             target="_blank"
@@ -52,7 +51,6 @@ export default function SideNavBar({
         <li>
           <IconButton
             aria-label="LinkedIn"
-            className="iconButton-side-navbar"
             component="a"
             href={`https://linkedin.com/in/${linkedinusername}`}
             target="_blank"
@@ -63,7 +61,6 @@ export default function SideNavBar({
         <li>
           <IconButton
             aria-label="Books"
-            className="iconButton-side-navbar"
             component="a"
             href="#books"
           >
@@ -74,7 +71,6 @@ export default function SideNavBar({
       <ul className="side-navbar-theme">
         <li>
           <IconButton
-            className="iconButton-side-navbar"
             aria-label="LightMode"
             component="a"
             onClick={() => toggleMode(mode)}

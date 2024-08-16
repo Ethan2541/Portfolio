@@ -1,7 +1,9 @@
 {
     "HomePage": {
         "title": "Bienvenue sur la page d'accueil",
-        "projects": "Mes Projets"
+        "projects": "Mes Projets",
+        "experience": "Mes Expériences",
+        "about": "A propos"
     },
     
     "ProjectsPage": {

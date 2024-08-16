@@ -1,7 +1,9 @@
 {
     "HomePage": {
         "title": "Welcome aboard!",
-        "projects": "My Projects"
+        "projects": "My Projects",
+        "experience": "My Experiences",
+        "about": "About Me"
     },
     
     "ProjectsPage": {

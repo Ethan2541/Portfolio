@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: rgba(51, 51, 51, 0.9); /* Utilisation de rgba pour la transparence */
+  background-color: rgba(51, 51, 51, 0.95); /* Utilisation de rgba pour la transparence */
   padding: 5px;
   position: fixed;
   top: 0;
@@ -40,17 +40,22 @@
 
 .side-navbar-network {
   right: 30px; 
-  transform: translateY(20%);
+  top: 25px;
 }
 
 .side-navbar-theme {
   right: 30px; 
-  transform: translateY(500%);
+  bottom: 25px;
 }
 
 .side-navbar-home {
   left: 30px; 
-  transform: translateY(20%);
+  top: 25px;
+}
+
+.side-navbar{
+  width: 100%;
+  height: 100vh;
 }
 
 .side-navbar ul {
@@ -67,17 +72,6 @@
 
 .side-navbar li {
   margin: 10px 0;
-}
-
-.iconButton-side-navbar {
-  background-color: white; /* Background color for the buttons */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for the buttons */
-  border-radius: 50%; /* Circular buttons */
-}
-
-.iconButton-iconButton-side-navbar:hover {
-  background-color: #f0f0f0; /* Slightly darker background on hover */
-
 }
 
 .progress-bar {
