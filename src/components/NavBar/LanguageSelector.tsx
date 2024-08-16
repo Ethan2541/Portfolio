@@ -35,7 +35,7 @@ export default function LanguageSelector() {
         {
           pathname,
         },
-        {locale: language}
+        {locale: language as "en" | "fr" | undefined}
       );
     });
   };
