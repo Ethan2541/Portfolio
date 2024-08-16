@@ -38,6 +38,7 @@ export default function LanguageSelector() {
         {locale: language as "en" | "fr" | undefined}
       );
     });
+    handleMenuClose();
   };
 
   // Determine flag code based on selected language

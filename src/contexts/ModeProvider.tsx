@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
+import React, { createContext, useContext, useState, ReactNode, useEffect, useTransition } from 'react';
 import Loader from '@/components/Loader';
 
 interface ModeContextType {
@@ -13,6 +13,7 @@ const ModeContext = createContext<ModeContextType | undefined>(undefined);
 // ModeProvider component that will provide the mode context to its children
 export function ModeProvider({ children }: { readonly children: ReactNode }) {
   const [mode, setMode] = useState<'light' | 'dark' | null>(null);
+  const [isPending, startTransition] = useTransition();
 
   useEffect(() => {
     if (!mode) {
@@ -26,7 +27,9 @@ export function ModeProvider({ children }: { readonly children: ReactNode }) {
 
   const toggleMode = (mode: string) => {
     const newMode = mode === 'light' ? 'dark' : 'light';
-    setMode(newMode);
+    startTransition(() => {
+      setMode(newMode);
+    });
     localStorage.setItem('theme', newMode);
   }
 
