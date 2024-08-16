@@ -10,12 +10,15 @@ const ModeContext = createContext<ModeContextType | undefined>(undefined);
 
 // ModeProvider component that will provide the mode context to its children
 export function ModeProvider({ children }: { readonly children: ReactNode }) {
-  const [mode, setMode] = useState<'light' | 'dark'>('light');
+  const [mode, setMode] = useState<'light' | 'dark'>(null);
 
   useEffect(() => {
-    const localMode = localStorage.getItem('theme');
-    if (localMode === "dark") {
+    if (!mode) {
+      const localMode = localStorage.getItem('theme');
       setMode(localMode);
+    }
+    else {
+      setMode('light');
     }
   }, []);
 
@@ -25,6 +28,10 @@ export function ModeProvider({ children }: { readonly children: ReactNode }) {
     localStorage.setItem('theme', newMode);
   }
 
+  if (!mode) {
+    return null;
+  }
+  
   return (
       <ModeContext.Provider value={{ mode, setMode, toggleMode }}>
         {children}

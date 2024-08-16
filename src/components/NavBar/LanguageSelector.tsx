@@ -7,17 +7,18 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 import { useTransition } from 'react';
 import {useRouter, usePathname} from '@/navigation';
-import {useParams} from 'next/navigation';
+import { useLocale } from 'next-intl';
 
 
 export default function LanguageSelector() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const [selectedLanguage, setSelectedLanguage] = useState<string>('fr');
+  const locale = useLocale();
+  const [selectedLanguage, setSelectedLanguage] = useState<string>(locale);
+  
 
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
   const pathname = usePathname();
-  const params = useParams();
 
   const handleMenuOpen = (event: MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -33,7 +34,6 @@ export default function LanguageSelector() {
       router.replace(
         {
           pathname,
-          params
         },
         {locale: language}
       );

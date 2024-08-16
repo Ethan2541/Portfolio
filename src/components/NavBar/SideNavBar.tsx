@@ -16,7 +16,7 @@ export default function SideNavBar({
   githubusername,
   linkedinusername,
 }: Readonly<SideNavBarProps>) {
-  const { mode, setMode } = useMode();
+  const { mode, setMode, toggleMode } = useMode();
   return (
     <div className="side-navbar">
       <ul className="side-navbar-home">
@@ -77,7 +77,7 @@ export default function SideNavBar({
             className="iconButton-side-navbar"
             aria-label="LightMode"
             component="a"
-            onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}
+            onClick={() => toggleMode(mode)}
           >
             <LightModeIcon />
           </IconButton>
