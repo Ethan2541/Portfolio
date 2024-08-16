@@ -50,7 +50,7 @@ const PinnedRepositories: React.FC<{ username: string }> = ({ username }) => {
         const response = await fetch("https://api.github.com/graphql", {
           method: "POST",
           headers: {
-            Authorization: `Bearer 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`, // Remplacez par votre token
+            Authorization: `Bearer TOKEN`, // Remplacez par votre token
             "Content-Type": "application/json",
           },
           body: JSON.stringify({ query }),
