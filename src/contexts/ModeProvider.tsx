@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode, useMemo } from 'react';
+import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 
 interface ModeContextType {
   mode: 'light' | 'dark';
@@ -12,11 +12,24 @@ const ModeContext = createContext<ModeContextType | undefined>(undefined);
 export function ModeProvider({ children }: { readonly children: ReactNode }) {
   const [mode, setMode] = useState<'light' | 'dark'>('light');
 
-  return useMemo(() => (
-      <ModeContext.Provider value={{ mode, setMode }}>
+  useEffect(() => {
+    const localMode = localStorage.getItem('theme');
+    if (localMode === "dark") {
+      setMode(localMode);
+    }
+  }, []);
+
+  const toggleMode = (mode: ModeContextType) => {
+    const newMode = mode === 'light' ? 'dark' : 'light';
+    setMode(newMode);
+    localStorage.setItem('theme', newMode);
+  }
+
+  return (
+      <ModeContext.Provider value={{ mode, setMode, toggleMode }}>
         {children}
       </ModeContext.Provider>
-    ), [mode, setMode]);
+  )
 }
 
 // Custom hook to use the mode context

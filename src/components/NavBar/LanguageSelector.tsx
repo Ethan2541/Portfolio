@@ -5,10 +5,19 @@ import MenuItem from '@mui/material/MenuItem';
 import { FlagIcon } from 'react-flag-kit';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
+import { useTransition } from 'react';
+import {useRouter, usePathname} from '@/navigation';
+import {useParams} from 'next/navigation';
+
 
 export default function LanguageSelector() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const [selectedLanguage, setSelectedLanguage] = useState<string>('en');
+  const [selectedLanguage, setSelectedLanguage] = useState<string>('fr');
+
+  const router = useRouter();
+  const [isPending, startTransition] = useTransition();
+  const pathname = usePathname();
+  const params = useParams();
 
   const handleMenuOpen = (event: MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -20,8 +29,15 @@ export default function LanguageSelector() {
 
   const handleLanguageChange = (language: string) => {
     setSelectedLanguage(language);
-    handleMenuClose();
-    // Add logic to change the language here
+    startTransition(() => {
+      router.replace(
+        {
+          pathname,
+          params
+        },
+        {locale: language}
+      );
+    });
   };
 
   // Determine flag code based on selected language
@@ -29,10 +45,10 @@ export default function LanguageSelector() {
     switch (language) {
       case 'fr': return 'FR';
       case 'es': return 'ES';
-      case 'en': 
+      case 'en': return 'US';
       default: return 'US';
     }
-  };
+  }
 
   return (
     <div >

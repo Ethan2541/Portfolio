@@ -22,7 +22,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
-      <body>
+      <body style={{margin: "0"}}>
         <Providers locale={locale} messages={messages}>
           {children}
         </Providers>

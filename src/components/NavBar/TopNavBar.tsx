@@ -15,7 +15,7 @@ interface TopNavBar {
 }
 
 export default function TopNavBar({ githubusername, linkedinusername, progress }: Readonly<TopNavBar>) {
-  const { mode, setMode } = useMode();
+  const { mode, setMode, toggleMode } = useMode();
   return (
     <div>
       <div className="top-navbar">
@@ -52,7 +52,7 @@ export default function TopNavBar({ githubusername, linkedinusername, progress }
             </IconButton>
           </li>
           <li>
-            <IconButton aria-label="LightMode" component="a" target="_blank" onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}>
+            <IconButton aria-label="LightMode" component="a" target="_blank" onClick={() => toggleMode(mode)}>
               <LightModeIcon />
             </IconButton>
           </li>

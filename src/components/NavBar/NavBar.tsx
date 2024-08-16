@@ -27,7 +27,6 @@ export default function NavBar() {
      const maxScrollPosition = documentHeight - windowHeight;
      const progress = Math.min(scrollTop / maxScrollPosition, 1) * 100;
      setScrollProgress(progress);
-     console.log(progress);
   }, [scrollPosition.top]);
 
   const [githubusername, setGithubusername] = useState("Tinshea");

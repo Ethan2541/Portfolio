@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 import { useTheme } from "@mui/material/styles";
 
 import ProjectCard from "./ProjectCard";
+import NavBar from "@/components/NavBar/NavBar";
 
 
 export default function Projects() {
@@ -15,6 +16,7 @@ export default function Projects() {
   const theme = useTheme();
   return (
     <Container>
+      <NavBar />
       <Typography variant="h3" color={theme.palette.primary.main}>
         {t("title")}
       </Typography>
