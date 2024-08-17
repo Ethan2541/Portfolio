@@ -1,12 +1,10 @@
 "use client";
 import NavBar from "@/components/NavBar/NavBar";
-import { Box, Container, Grid, Typography, useTheme } from "@mui/material";
+import { Box, Container, Typography, useTheme } from "@mui/material";
 import { useTranslations } from "next-intl";
-import ProjectCard from "./projects/ProjectCard";
 import Experiences from "@/components/Experiences";
 import AboutMe from "@/components/AboutMe";
 import PinnedRepositories from "@/components/PinnedRepositories";
-import UserRepositories from "@/components/UserRepositories";
 
 export default function Home() {
   const t = useTranslations("HomePage");
@@ -32,14 +30,16 @@ export default function Home() {
   return (
     <>
       <NavBar />
-
       <Box
         sx={{
           backgroundColor: theme.palette.background.default,
           minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center"
         }}
       >
-        <Typography variant="h1" color={theme.palette.primary.main}>
+        <Typography variant="h1" color={theme.palette.primary.main} textAlign={"center"}>
           {t("title")}
         </Typography>
       </Box>
@@ -52,7 +52,7 @@ export default function Home() {
         <AboutMe description="I'm a passionate full-stack developer with experience in building web applications using modern technologies. I love to learn and contribute to exciting projects." />
         <Experiences experiences={experiencesData} />
 
-        <PinnedRepositories username="Tinshea" />
+        <PinnedRepositories username="Ethan2541" />
       </Box>
     
     </>

@@ -44,6 +44,7 @@ export default function SideNavBar({
             component="a"
             href={`https://github.com/${githubusername}`}
             target="_blank"
+            sx={{ boxShadow: 2 }}
           >
             <GitHubIcon />
           </IconButton>
@@ -54,6 +55,7 @@ export default function SideNavBar({
             component="a"
             href={`https://linkedin.com/in/${linkedinusername}`}
             target="_blank"
+            sx={{ boxShadow: 2 }}
           >
             <LinkedInIcon />
           </IconButton>
@@ -63,6 +65,7 @@ export default function SideNavBar({
             aria-label="Books"
             component="a"
             href="#books"
+            sx={{ boxShadow: 2 }}
           >
             <BookIcon />
           </IconButton>
@@ -74,6 +77,7 @@ export default function SideNavBar({
             aria-label="LightMode"
             component="a"
             onClick={() => toggleMode(mode)}
+            sx={{ boxShadow: 2 }}
           >
             <LightModeIcon />
           </IconButton>
