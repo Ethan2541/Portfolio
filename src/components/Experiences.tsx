@@ -9,6 +9,7 @@ interface ExperienceType {
   company: string;
   description: string;
   date: string;
+  tags: string[];
 }
 
 // Définir les props pour le composant Experiences
@@ -39,6 +40,7 @@ const Experiences: React.FC<ExperiencesProps> = ({ experiences }) => {
           company={experience.company}
           description={experience.description}
           date={experience.date}
+          tags={experience.tags}
         />
       ))}
     </Box>

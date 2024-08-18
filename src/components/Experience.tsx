@@ -1,35 +1,64 @@
 import React from 'react';
-import { Card, CardContent, Typography, Box } from '@mui/material';
+import { Card, CardContent, Typography, Box, Chip } from '@mui/material';
 
-// Définir le type pour les props
-interface ExperienceProps {
+interface ExperienceCardProps {
+  date: string;
   title: string;
   company: string;
   description: string;
-  date: string;
+  tags: string[];
+  imageUrl?: string; // Ajout d'une prop optionnelle pour l'image
 }
 
-const Experience: React.FC<ExperienceProps> = ({ title, company, description, date }) => {
+const ExperienceCard: React.FC<ExperienceCardProps> = ({
+  date,
+  title,
+  company,
+  description,
+  tags,
+  imageUrl = "https://www.excalibra.com/wp-content/uploads/2019/05/logo_EX_CALIBRA_544_180.png" // Valeur par défaut pour l'image
+}) => {
   return (
-    <Card sx={{ margin: 2, padding: 2 }}>
+    <Card sx={{ margin: 2, padding: 2, color: '#ffffff', backgroundColor: '#1c1f24' }}>
       <CardContent>
-        <Box display="flex" justifyContent="space-between" alignItems="center">
-          <Typography variant="h6" color="primary">
-            {title}
-          </Typography>
-          <Typography variant="body2" color="textSecondary">
-            {date}
-          </Typography>
+        <Box display="flex" justifyContent="space-between" alignItems="flex-start">
+          {/* Section pour la date et l'image, alignée à gauche */}
+          <Box sx={{ minWidth: '150px', textAlign: 'left' }}>
+            <Typography variant="body2" color="textSecondary">
+              {date}
+            </Typography>
+            <Box mt={1}> {/* Marges pour séparer la date de l'image */}
+              <img
+                src={imageUrl}
+                alt="Company Logo"
+                style={{ maxWidth: "124px", height: 'auto', borderRadius: '8px' }}
+              />
+            </Box>
+          </Box>
+
+          {/* Section pour le contenu principal, alignée à droite */}
+          <Box sx={{ flexGrow: 1, ml: 3 }}>
+            <Typography variant="h6" color="primary">
+              {title}
+            </Typography>
+            <Typography variant="subtitle1" color="textSecondary">
+              {company}
+            </Typography>
+            <Typography variant="body2" mt={1}>
+              {description}
+            </Typography>
+
+            {/* Tags */}
+            <Box mt={2} display="flex" flexWrap="wrap" gap={1}>
+              {tags.map((tag, index) => (
+                <Chip key={index} label={tag} variant="outlined" sx={{ color: '#ffffff', borderColor: '#ffffff' }} />
+              ))}
+            </Box>
+          </Box>
         </Box>
-        <Typography variant="subtitle1" color="textSecondary">
-          {company}
-        </Typography>
-        <Typography variant="body2" mt={1}>
-          {description}
-        </Typography>
       </CardContent>
     </Card>
   );
-}
+};
 
-export default Experience;
+export default ExperienceCard;

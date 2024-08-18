@@ -16,6 +16,8 @@ export default function Home() {
       description:
         "Developed a full-stack application using React and Node.js.",
       date: "Jan 2020 - Present",
+      tags: ['JavaScript', 'TypeScript', 'React', 'Storybook']
+
     },
     {
       title: "Frontend Developer",
@@ -23,6 +25,7 @@ export default function Home() {
       description:
         "Worked on enhancing UI/UX of the main product using Material-UI and React.",
       date: "Jun 2018 - Dec 2019",
+      tags: ['JavaScript', 'TypeScript', 'React', 'Storybook']
     },
     // Ajoute plus d'expériences ici
   ];
