@@ -21,10 +21,10 @@ export default function SideNavBar({
     <div className="side-navbar">
       <ul className="side-navbar-home">
         <li>
-          <Button variant="text">Projects</Button>
+          <Button variant="text" component="a" href="#project" >Projects</Button>
         </li>
         <li>
-          <Button variant="text">Experiences</Button>
+          <Button variant="text" component="a" href="#experiences">Experiences</Button>
         </li>
         <li>
           <Button
@@ -60,11 +60,11 @@ export default function SideNavBar({
             <LinkedInIcon />
           </IconButton>
         </li>
-        <li>
+        <li>  
           <IconButton
-            aria-label="Books"
+            aria-label="Blog"
             component="a"
-            href="#books"
+            href="/blog"
             sx={{ boxShadow: 2 }}
           >
             <BookIcon />
@@ -78,7 +78,7 @@ export default function SideNavBar({
             component="a"
             onClick={() => toggleMode(mode)}
             sx={{ boxShadow: 2 }}
-          >
+          > 
             <LightModeIcon />
           </IconButton>
         </li>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Typography, Grid, Container } from "@mui/material";
+import { Typography, Grid, Container, Button } from "@mui/material";
 import { useTheme } from '@mui/material/styles';
 import { useTranslations } from 'next-intl';
 import ProjectCard from "./ProjectCard";
@@ -77,7 +77,7 @@ const PinnedRepositories: React.FC<{ username: string }> = ({ username }) => {
   }
 
   return (
-    <Container>
+    <Container id="project">
       <Typography
         variant="h3"
         color={theme.palette.primary.main}
@@ -86,6 +86,7 @@ const PinnedRepositories: React.FC<{ username: string }> = ({ username }) => {
       >
         {t("projects")}
       </Typography>
+      <Button href="/projects">voir plus</Button>
       <Grid container spacing={3}>
         {pinnedRepos.map((repo) => (
           <Grid item xs={12} sm={6} md={4} key={repo.name}>

@@ -1,6 +1,6 @@
 import React from 'react';
 import Experience from './Experience';
-import { Box, Typography, useTheme } from '@mui/material';
+import { Box, Button, Typography, useTheme } from '@mui/material';
 import { useTranslations } from 'next-intl';
 
 // Définir le type pour une expérience individuelle
@@ -28,11 +28,12 @@ const Experiences: React.FC<ExperiencesProps> = ({ experiences }) => {
         minHeight: "100vh",
         padding: theme.spacing(4),
       }}
+      id="experiences"
     >
       <Typography variant="h1" color={theme.palette.primary.main}>
         {t("experience")}
       </Typography>
-
+      <Button href="/experiences">voir plus</Button>
       {experiences.map((experience, index) => (
         <Experience
           key={index} // Idéalement, utiliser un ID unique

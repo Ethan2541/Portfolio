@@ -37,7 +37,6 @@ export default function NavBar() {
           width: "100%",
           top: 0,
           left: 0,
-          zIndex: 2500,
         }}
       >
         <SideNavBar githubusername={githubusername} linkedinusername={linkedinusername} />
@@ -53,7 +52,7 @@ export default function NavBar() {
           width: "100%",
           top: 0,
           left: 0,
-          zIndex: 3000, 
+          zIndex: 100,
         }}
       >
         <TopNavBar githubusername={githubusername} linkedinusername={linkedinusername} progress={scrollProgress} />

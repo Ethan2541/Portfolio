@@ -26,10 +26,10 @@ export default function TopNavBar({ githubusername, linkedinusername, progress }
             </IconButton>
           </li>
           <li>
-            <Button variant="text">Projects</Button>
+            <Button variant="text" component="a" href="#project">Projects</Button>
           </li>
           <li>
-            <Button variant="text">Experiences</Button>
+            <Button variant="text" component="a" href="#experiences">Experiences</Button>
           </li>
           <li>
             <Button variant="text" component="a" href="/assets/resume.pdf" target="_blank">
@@ -37,7 +37,7 @@ export default function TopNavBar({ githubusername, linkedinusername, progress }
             </Button>
           </li>
           <li>
-            <IconButton aria-label="Books" component="a" href="#books">
+            <IconButton aria-label="Blog" component="a" href="/blog">
               <BookIcon />
             </IconButton>
           </li>

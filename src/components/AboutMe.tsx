@@ -22,6 +22,7 @@ const AboutMe: React.FC<AboutMeProps> = ({ description }) => {
         margin: 'auto',
         textAlign: 'center',
       }}
+       id="aboutme"
     >
       <Typography variant="h1" color={theme.palette.primary.main}>
         {t("about")}
