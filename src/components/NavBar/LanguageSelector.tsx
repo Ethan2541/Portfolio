@@ -44,8 +44,6 @@ export default function LanguageSelector() {
     switch (language) {
       case "fr":
         return "FR";
-      case "es":
-        return "ES";
       case "en":
         return "US";
       default:
@@ -58,7 +56,7 @@ export default function LanguageSelector() {
       <IconButton
         sx={{
           "&:hover": {
-            backgroundColor: "transparent", // Enlève le fond lors du hover
+            backgroundColor: "transparent",
           },
         }}
         aria-label="Language"
@@ -89,13 +87,6 @@ export default function LanguageSelector() {
             style={{ width: "24px", height: "16px", marginRight: "8px" }}
           />{" "}
           Français
-        </MenuItem>
-        <MenuItem onClick={() => handleLanguageChange("es")}>
-          <FlagIcon
-            code="ES"
-            style={{ width: "24px", height: "16px", marginRight: "8px" }}
-          />{" "}
-          Español
         </MenuItem>
       </Menu>
     </div>

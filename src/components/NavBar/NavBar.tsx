@@ -3,6 +3,7 @@ import useDetectScroll from "@smakss/react-scroll-direction";
 import "./NavBar.css";
 import SideNavBar from "./SideNavBar";
 import TopNavBar from "./TopNavBar";
+import user from "@/data/user.json";
 
 export default function NavBar() {
   const { scrollPosition } = useDetectScroll();
@@ -22,8 +23,6 @@ export default function NavBar() {
     setScrollProgress(progress);
   }, [scrollPosition.top]);
 
-  const [githubusername, setGithubusername] = useState("Tinshea");
-  const [linkedinusername, setLinkedinusername] = useState("malek-bouzarkouna");
 
   return (
     <div className="navbar">
@@ -39,7 +38,7 @@ export default function NavBar() {
           left: 0,
         }}
       >
-        <SideNavBar githubusername={githubusername} linkedinusername={linkedinusername} />
+        <SideNavBar githubusername={user.githubusername} linkedinusername={user.linkedinusername} />
       </div>
 
       {/* TopNavBar */}
@@ -55,7 +54,7 @@ export default function NavBar() {
           zIndex: 100,
         }}
       >
-        <TopNavBar githubusername={githubusername} linkedinusername={linkedinusername} progress={scrollProgress} />
+        <TopNavBar githubusername={user.githubusername} linkedinusername={user.linkedinusername} progress={scrollProgress} />
       </div>
     </div>
   );

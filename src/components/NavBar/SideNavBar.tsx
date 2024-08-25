@@ -6,6 +6,7 @@ import LightModeIcon from "@mui/icons-material/LightMode";
 import { Button } from "@mui/material";
 import LanguageSelector from "./LanguageSelector";
 import { useMode } from "@/contexts/ModeProvider";
+import { useTranslations } from "next-intl";
 
 interface SideNavBarProps {
   githubusername: string;
@@ -17,14 +18,15 @@ export default function SideNavBar({
   linkedinusername,
 }: Readonly<SideNavBarProps>) {
   const { mode, setMode, toggleMode } = useMode();
+  const t = useTranslations("Navbar");
   return (
     <div className="side-navbar">
       <ul className="side-navbar-home">
         <li>
-          <Button variant="text" component="a" href="#project" >Projects</Button>
+          <Button variant="text" component="a" href="#project" >{ t("projects")}</Button>
         </li>
         <li>
-          <Button variant="text" component="a" href="#experiences">Experiences</Button>
+          <Button variant="text" component="a" href="#experiences">{t("experience")}</Button>
         </li>
         <li>
           <Button
@@ -33,7 +35,7 @@ export default function SideNavBar({
             href="/assets/resume.pdf"
             target="_blank"
           >
-            Resume
+            {t("resume")}
           </Button>
         </li>
       </ul>

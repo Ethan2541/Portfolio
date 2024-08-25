@@ -1,34 +1,16 @@
 "use client";
 import NavBar from "@/components/NavBar/NavBar";
-import { Box, Container, Typography, useTheme } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import { useTranslations } from "next-intl";
 import Experiences from "@/components/Experiences";
 import AboutMe from "@/components/AboutMe";
 import PinnedRepositories from "@/components/PinnedRepositories";
+import DecodeAnimation from "react-decode-animation";
+import user from "@/data/user.json";
 
 export default function Home() {
   const t = useTranslations("HomePage");
   const theme = useTheme();
-  const experiencesData = [
-    {
-      title: "Software Engineer",
-      company: "Tech Corp",
-      description:
-        "Developed a full-stack application using React and Node.js.",
-      date: "Jan 2020 - Present",
-      tags: ['JavaScript', 'TypeScript', 'React', 'Storybook']
-
-    },
-    {
-      title: "Frontend Developer",
-      company: "Web Solutions",
-      description:
-        "Worked on enhancing UI/UX of the main product using Material-UI and React.",
-      date: "Jun 2018 - Dec 2019",
-      tags: ['JavaScript', 'TypeScript', 'React', 'Storybook']
-    },
-    // Ajoute plus d'expériences ici
-  ];
 
   return (
     <>
@@ -39,11 +21,20 @@ export default function Home() {
           minHeight: "100vh",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "center"
+          justifyContent: "center",
         }}
       >
-        <Typography variant="h1" color={theme.palette.primary.main} textAlign={"center"}>
-          {t("title")}
+        <Typography
+          variant="h1"
+          color={theme.palette.primary.main}
+          textAlign={"center"}
+        >
+          <DecodeAnimation
+            autoplay
+            text={t("title")}
+            customCharacters="ΑΒΓΔΕΖΗΘΙΛΜΝΞΟΠΡΣΤΥΦΧΨΩαβγδεζηθικλμνξοπρστυφχψω"
+            interval={100}
+          />
         </Typography>
       </Box>
       <Box
@@ -52,12 +43,11 @@ export default function Home() {
           paddingY: 10,
         }}
       >
-        <AboutMe description="I'm a passionate full-stack developer with experience in building web applications using modern technologies. I love to learn and contribute to exciting projects." />
-        <Experiences experiences={experiencesData} />
+        <AboutMe description={t("description")} />
+        <Experiences />
 
-        <PinnedRepositories username="Ethan2541" />
+        <PinnedRepositories username={user.githubusername} />
       </Box>
-    
     </>
   );
 }

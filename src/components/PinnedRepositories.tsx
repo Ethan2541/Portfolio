@@ -86,7 +86,7 @@ const PinnedRepositories: React.FC<{ username: string }> = ({ username }) => {
       >
         {t("projects")}
       </Typography>
-      <Button href="/projects">voir plus</Button>
+      <Button href="/projects">{t("seemore")}</Button>
       <Grid container spacing={3}>
         {pinnedRepos.map((repo) => (
           <Grid item xs={12} sm={6} md={4} key={repo.name}>

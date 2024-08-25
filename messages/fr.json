@@ -1,12 +1,37 @@
 {
-    "HomePage": {
-        "title": "Bienvenue sur la page d'accueil",
-        "projects": "Mes Projets",
-        "experience": "Mes Expériences",
-        "about": "A propos"
-    },
-    
-    "ProjectsPage": {
-        "title": "Mes projets"
-    }
+  "HomePage": {
+    "title": "Bienvenue sur la page d'accueil",
+    "projects": "Mes Projets",
+    "experience": "Mes Expériences",
+    "about": "A propos",
+    "seemore": "Voir plus",
+    "description": "Je suis un étudiant en informatique passionné par le développement web et mobile. J'ai réalisé plusieurs projets en utilisant des technologies modernes comme React, Angular, Node.js, Express.js, MongoDB, MySQL, Ionic, Flutter, etc. Je suis actuellement à la recherche d'un stage de fin d'études pour une durée de 6 mois à partir de février 2022.",
+    "experiencesData": [
+      {
+        "title": "sdfjlsd",
+        "company": "Tech Corp",
+        "description": "Developed a full-stack application using React and Node.js.",
+        "date": "Jan 2020 - Present",
+        "tags": ["JavaScript", "TypeScript", "React", "Storybook"]
+      },
+      {
+        "title": "Frontend Developer",
+        "company": "Web Solutions",
+        "description": "Worked on enhancing UI/UX of the main product using Material-UI and React.",
+        "date": "Jun 2018 - Dec 2019",
+        "tags": ["JavaScript", "TypeScript", "React", "Storybook"]
+      }
+    ]
+  },
+
+  "ProjectsPage": {
+    "title": "Mes projets"
+  },
+
+  "Navbar": {
+    "projects": "Projets",
+    "experience": "Expérience",
+    "resume": "CV",
+    "about": "À propos"
+  }
 }
