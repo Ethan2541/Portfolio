@@ -2,9 +2,7 @@
 'use client';
 
 import { PaletteMode, createTheme } from '@mui/material';
-import { blue, indigo, red, green } from '@mui/material/colors';
 
-// Fonction pour obtenir les tokens de design en fonction du mode
 function getDesignTokens(mode: PaletteMode) {
   return createTheme({
     palette: {
@@ -38,5 +36,4 @@ function getDesignTokens(mode: PaletteMode) {
   });
 }
 
-// Exportation de la fonction pour créer le thème
 export default getDesignTokens;

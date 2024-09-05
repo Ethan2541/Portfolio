@@ -3,8 +3,8 @@ import BookIcon from "@mui/icons-material/Book";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import LightModeIcon from "@mui/icons-material/LightMode";
-import { Button } from "@mui/material";
-import LanguageSelector from "./LanguageSelector";
+import { Button, Box } from "@mui/material";
+import LanguageSelector from "../LanguageSelector";
 import { useMode } from "@/contexts/ModeProvider";
 import { useTranslations } from "next-intl";
 
@@ -17,18 +17,47 @@ export default function SideNavBar({
   githubusername,
   linkedinusername,
 }: Readonly<SideNavBarProps>) {
-  const { mode, setMode, toggleMode } = useMode();
+  const { mode, toggleMode } = useMode();
   const t = useTranslations("Navbar");
+
   return (
-    <div className="side-navbar">
-      <ul className="side-navbar-home">
-        <li>
-          <Button variant="text" component="a" href="#project" >{ t("projects")}</Button>
-        </li>
-        <li>
-          <Button variant="text" component="a" href="#experiences">{t("experience")}</Button>
-        </li>
-        <li>
+    <Box
+      sx={{
+        width: '100%',
+        height: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        position: 'relative',
+      }}
+    >
+      {/* Navigation for projects, experiences, resume */}
+      <Box
+        component="ul"
+        sx={{
+          position: 'absolute',
+          left: '30px',
+          top: '25px',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '15px',
+          listStyle: 'none',
+          margin: 0,
+          padding: 0,
+        }}
+      >
+        <Box component="li" sx={{ margin: '10px 0' }}>
+          <Button variant="text" component="a" href="#project">
+            {t("projects")}
+          </Button>
+        </Box>
+        <Box component="li" sx={{ margin: '10px 0' }}>
+          <Button variant="text" component="a" href="#experiences">
+            {t("experience")}
+          </Button>
+        </Box>
+        <Box component="li" sx={{ margin: '10px 0' }}>
           <Button
             variant="text"
             component="a"
@@ -37,10 +66,26 @@ export default function SideNavBar({
           >
             {t("resume")}
           </Button>
-        </li>
-      </ul>
-      <ul className="side-navbar-network">
-        <li>
+        </Box>
+      </Box>
+
+      {/* Social Media Buttons */}
+      <Box
+        component="ul"
+        sx={{
+          position: 'absolute',
+          right: '30px',
+          top: '25px',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '15px',
+          listStyle: 'none',
+          margin: 0,
+          padding: 0,
+        }}
+      >
+        <Box component="li">
           <IconButton
             aria-label="GitHub"
             component="a"
@@ -50,8 +95,8 @@ export default function SideNavBar({
           >
             <GitHubIcon />
           </IconButton>
-        </li>
-        <li>
+        </Box>
+        <Box component="li">
           <IconButton
             aria-label="LinkedIn"
             component="a"
@@ -61,8 +106,8 @@ export default function SideNavBar({
           >
             <LinkedInIcon />
           </IconButton>
-        </li>
-        <li>  
+        </Box>
+        <Box component="li">
           <IconButton
             aria-label="Blog"
             component="a"
@@ -71,24 +116,38 @@ export default function SideNavBar({
           >
             <BookIcon />
           </IconButton>
-        </li>
-      </ul>
-      <ul className="side-navbar-theme">
-        <li>
+        </Box>
+      </Box>
+
+      {/* Theme Toggle and Language Selector */}
+      <Box
+        component="ul"
+        sx={{
+          position: 'absolute',
+          right: '30px',
+          bottom: '25px',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '15px',
+          listStyle: 'none',
+          margin: 0,
+          padding: 0,
+        }}
+      >
+        <Box component="li">
           <IconButton
             aria-label="LightMode"
-            component="a"
             onClick={() => toggleMode(mode)}
             sx={{ boxShadow: 2 }}
-          > 
+          >
             <LightModeIcon />
           </IconButton>
-        </li>
-
-        <li>
+        </Box>
+        <Box component="li">
           <LanguageSelector />
-        </li>
-      </ul>
-    </div>
+        </Box>
+      </Box>
+    </Box>
   );
 }

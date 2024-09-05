@@ -1,12 +1,12 @@
 {
-    "HomePage": {
-      "title": "Welcome aboard!",
-      "projects": "My Projects",
-      "experience": "My Experiences",
-      "about": "About Me",
-      "seemore": "See More",
-      "description": "I am a computer science student passionate about web and mobile development. I have completed several projects using modern technologies like React, Angular, Node.js, Express.js, MongoDB, MySQL, Ionic, Flutter, etc. I am currently looking for a 6-month internship starting from February 2022.",
-      "experiencesData": [
+  "HomePage": {
+    "title": "MALEK BOUZARKOUNA",
+    "projects": "My Projects",
+    "experience": "My Experiences",
+    "about": "About Me",
+    "seemore": "See More",
+    "description": "I am a computer science student passionate about web and mobile development. I have completed several projects using modern technologies like React, Angular, Node.js, Express.js, MongoDB, MySQL, Ionic, Flutter, etc. I am currently looking for a 6-month internship starting from February 2022.",
+    "experiencesData": [
       {
         "title": "Software Engineer",
         "company": "Tech Corp",
@@ -23,15 +23,21 @@
       }
     ]
   },
-    
-    "ProjectsPage": {
-        "title": "My Projects"
-    },
 
-    "Navbar": {
-        "projects": "Projects",
-        "experience": "Experience",
-        "resume": "Resume",
-        "about": "About"
-    }
+  "ProjectsPage": {
+    "title": "My Projects"
+  },
+
+  "Category": {
+    "experiences": "Experiences",
+    "projects": "Projects",
+    "blog": "Blog"
+  },
+
+  "Navbar": {
+    "projects": "Projects",
+    "experience": "Experience",
+    "resume": "Resume",
+    "about": "About"
+  }
 }

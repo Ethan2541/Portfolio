@@ -1,7 +1,7 @@
-import React from 'react';
-import Experience from './Experience';
-import { Box, Button, Typography, useTheme } from '@mui/material';
-import { useTranslations } from 'next-intl';
+import React from "react";
+import Experience from "./Experience";
+import { Box, Button, Typography, useTheme } from "@mui/material";
+import { useTranslations } from "next-intl";
 
 interface ExperienceType {
   title: string;
@@ -23,7 +23,10 @@ const Experiences: React.FC = () => {
   if (Array.isArray(rawExperiencesData)) {
     experiences = rawExperiencesData as ExperienceType[];
   } else {
-    console.error('Unexpected data format for experiencesData:', rawExperiencesData);
+    console.error(
+      "Unexpected data format for experiencesData:",
+      rawExperiencesData
+    );
   }
 
   return (

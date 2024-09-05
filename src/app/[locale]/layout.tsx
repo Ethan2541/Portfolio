@@ -1,19 +1,22 @@
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import './globals.css';
-import Providers from '@/components/Providers';
-import { getMessages } from 'next-intl/server';
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import { getMessages } from "next-intl/server";
+import Providers from "@/contexts/Providers";
+import user from "@/data/user.json";
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Portfolio',
-  description: 'Pat pat',
+  title: user.name,
+  description: "Pat pat",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default async function RootLayout({
   children,
-  params: { locale }
+  params: { locale },
 }: {
   readonly children: React.ReactNode;
   readonly params: { locale: string };
@@ -22,7 +25,11 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
-      <body style={{margin: "0"}}>
+      <head>
+        <link rel="icon" href="assets/favicon.ico" />
+      </head>
+
+      <body style={{ margin: "0" }}>
         <Providers locale={locale} messages={messages}>
           {children}
         </Providers>

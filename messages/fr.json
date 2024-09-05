@@ -1,6 +1,6 @@
 {
   "HomePage": {
-    "title": "Bienvenue sur la page d'accueil",
+    "title": "MALEK BOUZARKOUNA",
     "projects": "Mes Projets",
     "experience": "Mes Expériences",
     "about": "A propos",
@@ -26,6 +26,16 @@
 
   "ProjectsPage": {
     "title": "Mes projets"
+  },
+
+  "ExperiencePage": {
+    "title": "Mes expériences"
+  },
+
+  "Category":{
+    "experiences": "Expériences",
+    "projects": "Projets",
+    "blog": "Blog"
   },
 
   "Navbar": {

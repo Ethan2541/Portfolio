@@ -1,7 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Card, CardContent, Typography, Box, Grid } from "@mui/material";
+import user from "@/data/user.json";
+import { useTranslations } from "next-intl";
+import NavBar from "@/components/navbar/NavBar";
 
 // Exemple de données d'expériences
 const experiences = [
@@ -19,12 +22,18 @@ const experiences = [
     description:
       "Conception et développement de systèmes distribués. Amélioration des performances des applications et refactorisation du code pour une meilleure maintenabilité.",
   },
-  // Ajoutez plus d'expériences ici
 ];
 
 export default function Experience() {
+  const t = useTranslations("Category");
+  useEffect(() => {
+    document.title = user.name + " | " + t("experiences");
+  }, []);
+
   return (
     <Box sx={{ p: 3 }}>
+      <NavBar alwaysShowTopNav={true} />
+
       <Typography variant="h4" component="h1" gutterBottom>
         Mes Expériences Professionnelles
       </Typography>

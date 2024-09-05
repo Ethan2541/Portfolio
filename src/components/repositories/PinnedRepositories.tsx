@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Typography, Grid, Container, Button } from "@mui/material";
-import { useTheme } from '@mui/material/styles';
-import { useTranslations } from 'next-intl';
-import ProjectCard from "./ProjectCard";
+import { Typography, Grid, Button, Box } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { useTranslations } from "next-intl";
+import ProjectCard from "../ProjectCard";
 
 interface PinnedRepo {
   name: string;
@@ -41,7 +41,7 @@ const PinnedRepositories: React.FC<{ username: string }> = ({ username }) => {
         const response = await fetch("https://api.github.com/graphql", {
           method: "POST",
           headers: {
-            Authorization: `Bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`, // Remplacez par votre token
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`,
             "Content-Type": "application/json",
           },
           body: JSON.stringify({ query }),
@@ -67,17 +67,23 @@ const PinnedRepositories: React.FC<{ username: string }> = ({ username }) => {
     fetchPinnedRepos();
   }, [username]);
 
-
   if (loading) {
-    return <Typography variant="h6" marginTop={5}>Loading...</Typography>;
-  }
-
-  if (error) {
-    return <Typography variant="h6" color="error" marginTop={5}>{error}</Typography>;
+    return (
+      <Typography variant="h6" marginTop={5}>
+        Loading...
+      </Typography>
+    );
   }
 
   return (
-    <Container id="project">
+    <Box
+      sx={{
+        backgroundColor: theme.palette.background.default,
+        minHeight: "100vh",
+        padding: theme.spacing(4),
+      }}
+      id="project"
+    >
       <Typography
         variant="h3"
         color={theme.palette.primary.main}
@@ -87,14 +93,26 @@ const PinnedRepositories: React.FC<{ username: string }> = ({ username }) => {
         {t("projects")}
       </Typography>
       <Button href="/projects">{t("seemore")}</Button>
-      <Grid container spacing={3}>
-        {pinnedRepos.map((repo) => (
-          <Grid item xs={12} sm={6} md={4} key={repo.name}>
-            <ProjectCard user={username} name={repo.name} description={repo.description} stargazerCount={repo.stargazerCount} forkCount={repo.forkCount} />
-          </Grid>
-        ))}
-      </Grid>
-    </Container>
+      {error ? (
+        <Typography variant="h6" color="error" marginTop={5}>
+          {error}
+        </Typography>
+      ) : (
+        <Grid container spacing={3}>
+          {pinnedRepos.map((repo) => (
+            <Grid item xs={12} sm={6} md={4} key={repo.name}>
+              <ProjectCard
+                user={username}
+                name={repo.name}
+                description={repo.description}
+                stargazerCount={repo.stargazerCount}
+                forkCount={repo.forkCount}
+              />
+            </Grid>
+          ))}
+        </Grid>
+      )}
+    </Box>
   );
 };
 

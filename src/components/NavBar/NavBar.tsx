@@ -1,50 +1,62 @@
 import { useEffect, useState } from "react";
 import useDetectScroll from "@smakss/react-scroll-direction";
-import "./NavBar.css";
+import user from "@/data/user.json";
 import SideNavBar from "./SideNavBar";
 import TopNavBar from "./TopNavBar";
-import user from "@/data/user.json";
 
-export default function NavBar() {
+interface NavBarProps {
+  alwaysShowTopNav?: boolean;  // Boolean prop to control TopNavBar visibility
+}
+
+export default function NavBar({ alwaysShowTopNav = false }: Readonly<NavBarProps>) {
   const { scrollPosition } = useDetectScroll();
   const [visibility, setVisibility] = useState(0);
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
-    const maxScroll = 600;
-    const percentage = Math.min(scrollPosition.top / maxScroll, 1);
-    setVisibility(percentage);
+    if (!alwaysShowTopNav) {
+      const maxScroll = 600;
+      const percentage = Math.min(scrollPosition.top / maxScroll, 1);
+      setVisibility(percentage);
 
-    const documentHeight = document.documentElement.scrollHeight;
-    const windowHeight = window.innerHeight;
-    const scrollTop = scrollPosition.top;
-    const maxScrollPosition = documentHeight - windowHeight;
-    const progress = Math.min(scrollTop / maxScrollPosition, 1) * 100;
-    setScrollProgress(progress);
-  }, [scrollPosition.top]);
-
+      const documentHeight = document.documentElement.scrollHeight;
+      const windowHeight = window.innerHeight;
+      const scrollTop = scrollPosition.top;
+      const maxScrollPosition = documentHeight - windowHeight;
+      const progress = Math.min(scrollTop / maxScrollPosition, 1) * 100;
+      setScrollProgress(progress);
+    } else {
+      setVisibility(1); // If alwaysShowTopNav is true, make TopNavBar fully visible
+      setScrollProgress(100); // Optionally, set scrollProgress to 100
+    }
+  }, [scrollPosition.top, alwaysShowTopNav]);
 
   return (
     <div className="navbar">
       {/* SideNavBar */}
-      <div
-        style={{
-          opacity: 1 - visibility,
-          transform: `translateY(${visibility * -50}px)`,
-          transition: "opacity 0.5s ease, transform 0.5s ease",
-          position: "fixed",
-          width: "100%",
-          top: 0,
-          left: 0,
-        }}
-      >
-        <SideNavBar githubusername={user.githubusername} linkedinusername={user.linkedinusername} />
-      </div>
+      {!alwaysShowTopNav && (
+        <div
+          style={{
+            opacity: 1 - visibility,
+            transform: `translateY(${visibility * -50}px)`,
+            transition: "opacity 0.5s ease, transform 0.5s ease",
+            position: "fixed",
+            width: "100%",
+            top: 0,
+            left: 0,
+          }}
+        >
+          <SideNavBar
+            githubusername={user.githubusername}
+            linkedinusername={user.linkedinusername}
+          />
+        </div>
+      )}
 
       {/* TopNavBar */}
       <div
         style={{
-          opacity: visibility,
+          opacity: alwaysShowTopNav ? 1 : visibility,
           transform: `translateY(${(1 - visibility) * -50}px)`,
           transition: "opacity 0.5s ease, transform 0.5s ease",
           position: "fixed",
@@ -54,7 +66,11 @@ export default function NavBar() {
           zIndex: 100,
         }}
       >
-        <TopNavBar githubusername={user.githubusername} linkedinusername={user.linkedinusername} progress={scrollProgress} />
+        <TopNavBar
+          githubusername={user.githubusername}
+          linkedinusername={user.linkedinusername}
+          progress={scrollProgress}
+        />
       </div>
     </div>
   );

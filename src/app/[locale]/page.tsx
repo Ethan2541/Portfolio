@@ -1,10 +1,11 @@
 "use client";
-import NavBar from "@/components/NavBar/NavBar";
+
+import NavBar from "@/components/navbar/NavBar";
 import { Box, Typography, useTheme } from "@mui/material";
 import { useTranslations } from "next-intl";
-import Experiences from "@/components/Experiences";
+import Experiences from "@/components/experiences/Experiences";
 import AboutMe from "@/components/AboutMe";
-import PinnedRepositories from "@/components/PinnedRepositories";
+import PinnedRepositories from "@/components/repositories/PinnedRepositories";
 import DecodeAnimation from "react-decode-animation";
 import user from "@/data/user.json";
 
@@ -40,13 +41,12 @@ export default function Home() {
       <Box
         sx={{
           backgroundColor: theme.palette.background.paper,
-          paddingY: 10,
         }}
       >
         <AboutMe description={t("description")} />
         <Experiences />
-
         <PinnedRepositories username={user.githubusername} />
+
       </Box>
     </>
   );

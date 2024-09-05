@@ -3,11 +3,12 @@ import BookIcon from "@mui/icons-material/Book";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import HomeIcon from "@mui/icons-material/Home";
-import LightModeIcon from '@mui/icons-material/LightMode';
-import { Button } from "@mui/material";
-import LanguageSelector from './LanguageSelector';
+import LightModeIcon from "@mui/icons-material/LightMode";
+import { Button, Box, Stack, LinearProgress } from "@mui/material";
+import LanguageSelector from "../LanguageSelector";
 import { useMode } from "@/contexts/ModeProvider";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 
 interface TopNavBar {
   githubusername: string;
@@ -15,55 +16,107 @@ interface TopNavBar {
   progress: number;
 }
 
-export default function TopNavBar({ githubusername, linkedinusername, progress }: Readonly<TopNavBar>) {
-  const { mode, setMode, toggleMode } = useMode();
+export default function TopNavBar({
+  githubusername,
+  linkedinusername,
+  progress,
+}: Readonly<TopNavBar>) {
+  const { mode, toggleMode } = useMode();
   const t = useTranslations("Navbar");
+
   return (
-    <div>
-      <div className="top-navbar">
-        <ul>
-          <li>
-            <IconButton aria-label="Home" component="a" href="#">
-              <HomeIcon />
+    <Box
+      sx={{ position: "fixed", top: 0, left: 0, width: "100%", zIndex: 999 }}
+    >
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-around",
+          alignItems: "center",
+          backgroundColor: "rgba(51, 51, 51, 0.95)",
+          padding: "5px",
+        }}
+      >
+        <Stack
+          direction="row"
+          spacing={2}
+          component="ul"
+          sx={{ listStyle: "none", margin: 0, padding: 0 }}
+        >
+          <Link href="/" passHref legacyBehavior>
+            <IconButton aria-label="Home" component="a">
+              <HomeIcon sx={{ color: "white" }} />
             </IconButton>
-          </li>
-          <li>
-            <Button variant="text" component="a" href="#project">{t("projects")}</Button>
-          </li>
-          <li>
-            <Button variant="text" component="a" href="#experiences">{t("experience")}</Button>
-          </li>
-          <li>
-            <Button variant="text" component="a" href="/assets/resume.pdf" target="_blank">
-            {t("resume")}
+          </Link>
+          <Link href="/#project" passHref legacyBehavior>
+            <Button
+              variant="text"
+              component="a"
+              sx={{ color: "white", textTransform: "none" }}
+            >
+              {t("projects")}
             </Button>
-          </li>
-          <li>
-            <IconButton aria-label="Blog" component="a" href="/blog">
-              <BookIcon />
+          </Link>
+          <Link href="/#experiences" passHref legacyBehavior>
+            <Button
+              variant="text"
+              component="a"
+              sx={{ color: "white", textTransform: "none" }}
+            >
+              {t("experience")}
+            </Button>
+          </Link>
+          <Link href="/assets/resume.pdf" passHref legacyBehavior>
+            <Button
+              variant="text"
+              component="a"
+              target="_blank"
+              sx={{ color: "white", textTransform: "none" }}
+            >
+              {t("resume")}
+            </Button>
+          </Link>
+          <Link href="/blog" passHref legacyBehavior>
+            <IconButton aria-label="Blog" component="a">
+              <BookIcon sx={{ color: "white" }} />
             </IconButton>
-          </li>
-          <li>
-            <IconButton aria-label="GitHub" component="a" href={`https://github.com/${githubusername}`} target="_blank">
-              <GitHubIcon />
+          </Link>
+        </Stack>
+
+        <Stack
+          direction="row"
+          spacing={2}
+          component="ul"
+          sx={{ listStyle: "none", margin: 0, padding: 0 }}
+        >
+          <Link href={`https://github.com/${githubusername}`} passHref>
+            <IconButton aria-label="GitHub" component="a" target="_blank">
+              <GitHubIcon sx={{ color: "white" }} />
             </IconButton>
-          </li>
-          <li>
-            <IconButton aria-label="LinkedIn" component="a" href={`https://linkedin.com/in/${linkedinusername}`} target="_blank">
-              <LinkedInIcon />
+          </Link>
+          <Link href={`https://linkedin.com/in/${linkedinusername}`} passHref>
+            <IconButton aria-label="LinkedIn" component="a" target="_blank">
+              <LinkedInIcon sx={{ color: "white" }} />
             </IconButton>
-          </li>
-          <li>
-            <IconButton aria-label="LightMode" component="a" target="_blank" onClick={() => toggleMode(mode)}>
-              <LightModeIcon />
-            </IconButton>
-          </li>
-          <li>
-            <LanguageSelector />
-          </li>
-        </ul>
-      </div>
-      <div className="progress-bar" style={{ width: `${progress}%` }} />
-    </div>
+          </Link>
+          <IconButton aria-label="LightMode" onClick={() => toggleMode(mode)}>
+            <LightModeIcon sx={{ color: "white" }} />
+          </IconButton>
+          <LanguageSelector />
+        </Stack>
+      </Box>
+
+      <Box sx={{ width: "100%", position: "fixed", top: "49px", left: 0 }}>
+        <LinearProgress
+          variant="determinate"
+          value={progress}
+          sx={{
+            height: "1px",
+            backgroundColor: "transparent",
+            "& .MuiLinearProgress-bar": { backgroundColor: "#ffffff" },
+          }}
+        />
+      </Box>
+    </Box>
   );
 }

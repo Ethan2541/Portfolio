@@ -1,11 +1,10 @@
-import React, { useState, MouseEvent } from "react";
+import React, { useState, MouseEvent, useTransition } from "react";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { FlagIcon } from "react-flag-kit";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
-import { useTransition } from "react";
 import { useRouter, usePathname } from "@/navigation";
 import { useLocale } from "next-intl";
 
@@ -39,7 +38,6 @@ export default function LanguageSelector() {
     handleMenuClose();
   };
 
-  // Determine flag code based on selected language
   const getFlagCode = (language: string) => {
     switch (language) {
       case "fr":

@@ -1,9 +1,11 @@
 "use client";
 
+import NavBar from "@/components/navbar/NavBar";
 import BlogPosts from "../../../components/BlogPosts";
+import user from "@/data/user.json";
+import { useTranslations } from "next-intl";
+import { useEffect } from "react";
 
-
-// Exemple de données d'articles de blog (vous pouvez les remplacer par des données dynamiques)
 const posts = [
   {
     title: "Introduction à Next.js",
@@ -17,9 +19,18 @@ const posts = [
     description: "Apprenez à utiliser Material-UI pour créer des interfaces utilisateur modernes et réactives.",
     link: "/posts/meilleures-pratiques-material-ui",
   },
-  // Ajoutez plus d'articles ici
 ];
 
 export default function Blog() {
-  return <BlogPosts posts={posts} />;
+  const t = useTranslations("Category");
+  useEffect(() => {
+    document.title = user.name + " | " + t("Blog");
+  }, []);
+  return (
+    <div>
+      <NavBar alwaysShowTopNav={true} />
+      <BlogPosts posts={posts} />
+    </div>
+  );
+
 }

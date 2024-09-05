@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import {
   List,
-  ListItem,
   ListItemText,
   ListItemIcon,
   Typography,
   Divider,
-  IconButton,
   Box,
   useTheme,
   ListItemButton
@@ -14,7 +12,6 @@ import {
 import {
   Star as StarIcon,
   ForkRight as ForkRightIcon,
-  OpenInNew as OpenInNewIcon
 } from '@mui/icons-material';
 
 interface Repo {
@@ -32,7 +29,6 @@ const UserRepositories: React.FC<{ username: string }> = ({ username }) => {
   const theme = useTheme();
 
   useEffect(() => {
-    // Fetch all public repositories of the user
     fetch(`https://api.github.com/users/${username}/repos?per_page=100`)
       .then(response => response.json())
       .then(data => {
