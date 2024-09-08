@@ -28,7 +28,13 @@ export default function Home() {
         <Typography
           variant="h1"
           color={theme.palette.primary.main}
-          textAlign={"center"}
+          sx={{
+            fontWeight: "bold",
+            textAlign: "center",
+            marginBottom: theme.spacing(4),
+            textTransform: "uppercase",
+            letterSpacing: "0.15rem",
+          }}
         >
           <DecodeAnimation
             autoplay
@@ -46,7 +52,6 @@ export default function Home() {
         <AboutMe description={t("description")} />
         <Experiences />
         <PinnedRepositories username={user.githubusername} />
-
       </Box>
     </>
   );

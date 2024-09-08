@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardContent, Typography, Box, Chip } from '@mui/material';
+import { Card, CardContent, Typography, Box, Chip, useTheme } from '@mui/material';
 
 interface ExperienceCardProps {
   date: string;
@@ -16,18 +16,19 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
   company,
   description,
   tags,
-  imageUrl = "https://www.excalibra.com/wp-content/uploads/2019/05/logo_EX_CALIBRA_544_180.png" // Valeur par défaut pour l'image
+  imageUrl = "https://www.excalibra.com/wp-content/uploads/2019/05/logo_EX_CALIBRA_544_180.png" 
 }) => {
+  const theme = useTheme();
+
   return (
-    <Card sx={{ margin: 2, padding: 2, color: '#ffffff', backgroundColor: '#1c1f24' }}>
+    <Card sx={{ margin: 2, padding: 2, color: '#ffffff', backgroundColor: theme.palette.background.default }}>
       <CardContent>
         <Box display="flex" justifyContent="space-between" alignItems="flex-start">
-          {/* Section pour la date et l'image, alignée à gauche */}
           <Box sx={{ minWidth: '150px', textAlign: 'left' }}>
             <Typography variant="body2" color="textSecondary">
               {date}
             </Typography>
-            <Box mt={1}> {/* Marges pour séparer la date de l'image */}
+            <Box mt={1}> 
               <img
                 src={imageUrl}
                 alt="Company Logo"
@@ -36,7 +37,6 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
             </Box>
           </Box>
 
-          {/* Section pour le contenu principal, alignée à droite */}
           <Box sx={{ flexGrow: 1, ml: 3 }}>
             <Typography variant="h6" color="primary">
               {title}

@@ -1,7 +1,8 @@
 import React from "react";
 import Experience from "./Experience";
-import { Box, Button, Typography, useTheme } from "@mui/material";
+import { Box, Typography, useTheme, Divider, Grid } from "@mui/material";
 import { useTranslations } from "next-intl";
+import SeeMoreButton from "../SeeMoreButton";
 
 interface ExperienceType {
   title: string;
@@ -15,7 +16,6 @@ const Experiences: React.FC = () => {
   const t = useTranslations("HomePage");
   const theme = useTheme();
 
-  // Fetch the raw data
   const rawExperiencesData = t.raw("experiencesData");
 
   let experiences: ExperienceType[] = [];
@@ -34,27 +34,57 @@ const Experiences: React.FC = () => {
       sx={{
         backgroundColor: theme.palette.background.default,
         minHeight: "100vh",
-        padding: theme.spacing(4),
+        padding: theme.spacing(6),
       }}
       id="experiences"
     >
-      <Typography variant="h1" color={theme.palette.primary.main}>
+      {/* Header section */}
+      <Typography
+        variant="h2"
+        color={theme.palette.primary.main}
+        sx={{
+          fontWeight: "bold",
+          textAlign: "center",
+          marginBottom: theme.spacing(4),
+          textTransform: "uppercase",
+          letterSpacing: "0.15rem",
+        }}
+      >
         {t("experience")}
       </Typography>
-      <Button href="/experiences">{t("seemore")}</Button>
+
+      {/* See More button */}
+      <Box sx={{ display: "flex", justifyContent: "center", marginBottom: theme.spacing(4) }}>
+        <SeeMoreButton hrefstring="/experiences" />
+      </Box>
+
+      {/* Experiences list */}
       {experiences.length > 0 ? (
-        experiences.map((experience, index) => (
-          <Experience
-            key={index} // Ideally, use a unique ID if available
-            title={experience.title}
-            company={experience.company}
-            description={experience.description}
-            date={experience.date}
-            tags={experience.tags}
-          />
-        ))
+        <Grid container spacing={4}>
+          {experiences.map((experience, index) => (
+            <Grid item xs={12} md={6} key={experience.title + experience.company + experience.date}>
+              <Experience
+                title={experience.title}
+                company={experience.company}
+                description={experience.description}
+                date={experience.date}
+                tags={experience.tags}
+              />
+            </Grid>
+          ))}
+        </Grid>
       ) : (
-        <Typography variant="body1">No experiences available.</Typography>
+        <Typography
+          variant="body1"
+          color={theme.palette.text.secondary}
+          sx={{
+            textAlign: "center",
+            fontStyle: "italic",
+            marginTop: theme.spacing(6),
+          }}
+        >
+          {t("no_experiences")}
+        </Typography>
       )}
     </Box>
   );

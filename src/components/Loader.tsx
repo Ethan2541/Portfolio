@@ -1,5 +1,4 @@
-import { CircularProgress, Typography } from "@mui/material";
-import LinearProgress from "@mui/material/LinearProgress";
+import { CircularProgress } from "@mui/material";
 import Stack from "@mui/material/Stack";
 
 export default function Loader() {

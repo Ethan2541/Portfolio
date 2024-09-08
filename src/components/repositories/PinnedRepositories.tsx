@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Typography, Grid, Button, Box } from "@mui/material";
+import { Typography, Grid, Box, CircularProgress, Alert } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { useTranslations } from "next-intl";
 import ProjectCard from "../ProjectCard";
+import SeeMoreButton from "../SeeMoreButton";
 
 interface PinnedRepo {
   name: string;
@@ -67,38 +68,54 @@ const PinnedRepositories: React.FC<{ username: string }> = ({ username }) => {
     fetchPinnedRepos();
   }, [username]);
 
-  if (loading) {
-    return (
-      <Typography variant="h6" marginTop={5}>
-        Loading...
-      </Typography>
-    );
-  }
-
   return (
     <Box
       sx={{
         backgroundColor: theme.palette.background.default,
         minHeight: "100vh",
-        padding: theme.spacing(4),
+        padding: theme.spacing(6),
       }}
       id="project"
     >
       <Typography
-        variant="h3"
+        variant="h2"
         color={theme.palette.primary.main}
-        marginBottom={5}
-        marginTop={5}
+        sx={{
+          fontWeight: "bold",
+          textAlign: "center",
+          marginBottom: theme.spacing(4),
+          textTransform: "uppercase",
+          letterSpacing: "0.15rem",
+        }}
       >
         {t("projects")}
       </Typography>
-      <Button href="/projects">{t("seemore")}</Button>
-      {error ? (
-        <Typography variant="h6" color="error" marginTop={5}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          marginBottom: theme.spacing(4),
+        }}
+      >
+        <SeeMoreButton hrefstring="/projects" />
+      </Box>
+      {loading ? (
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            minHeight: "60vh",
+          }}
+        >
+          <CircularProgress />
+        </Box>
+      ) : error ? (
+        <Alert severity="error" sx={{ marginTop: 5 }}>
           {error}
-        </Typography>
+        </Alert>
       ) : (
-        <Grid container spacing={3}>
+        <Grid container spacing={4}>
           {pinnedRepos.map((repo) => (
             <Grid item xs={12} sm={6} md={4} key={repo.name}>
               <ProjectCard

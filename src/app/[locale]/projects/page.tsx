@@ -3,6 +3,7 @@
 import NavBar from "@/components/navbar/NavBar";
 import UserRepositories from "@/components/repositories/UserRepositories";
 import user from "@/data/user.json";
+import { Box, Typography, useTheme } from "@mui/material";
 import { useTranslations } from "next-intl";
 import { useEffect } from "react";
 
@@ -11,11 +12,25 @@ export default function Projects() {
   useEffect(() => {
     document.title = user.name + " | " + t("projects");
   }, []);
+  const theme = useTheme();
 
   return (
-    <div>
-      <NavBar alwaysShowTopNav={true}/>
-      <UserRepositories username={user.githubusername} />
-    </div>
+    <>
+      <NavBar alwaysShowTopNav={true} />
+      <Box
+        sx={{
+          backgroundColor: theme.palette.background.default,
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          paddingTop: theme.spacing(8),
+        }}
+      >
+        <Typography variant="h4" component="h1" gutterBottom>
+          Mes Expériences Professionnelles
+        </Typography>
+        <UserRepositories username={user.githubusername} />
+      </Box>
+    </>
   );
 }
