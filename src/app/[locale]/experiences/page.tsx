@@ -1,19 +1,20 @@
 "use client";
 
 import React, { useEffect } from "react";
-import {
-  Card,
-  CardContent,
-  Typography,
-  Box,
-  Grid,
-  useTheme,
-} from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import user from "@/data/user.json";
 import { useTranslations } from "next-intl";
 import NavBar from "@/components/navbar/NavBar";
+import ExperienceList from "../../../components/experiencesPages/ExperienceList";
 
-const experiences = [
+interface Experience {
+  title: string;
+  company: string;
+  duration: string;
+  description: string;
+}
+
+const experiences: Experience[] = [
   {
     title: "Développeur Front-end",
     company: "Tech Solutions",
@@ -30,12 +31,13 @@ const experiences = [
   },
 ];
 
-export default function Experience() {
+const Experience: React.FC = () => {
   const theme = useTheme();
   const t = useTranslations("Category");
+
   useEffect(() => {
     document.title = user.name + " | " + t("experiences");
-  }, []);
+  }, [t]);
 
   return (
     <>
@@ -46,35 +48,15 @@ export default function Experience() {
           minHeight: "100vh",
           display: "flex",
           flexDirection: "column",
+          alignItems: "center",
           paddingTop: theme.spacing(8),
+          position: "relative",
         }}
       >
-        <Typography variant="h4" component="h1" gutterBottom>
-          Mes Expériences Professionnelles
-        </Typography>
-        <Grid container spacing={3}>
-          {experiences.map((experience) => (
-            <Grid item xs={12} md={6} key={experience.title}>
-              <Card sx={{ height: "100%" }}>
-                <CardContent>
-                  <Typography variant="h5" component="div">
-                    {experience.title}
-                  </Typography>
-                  <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                    {experience.company}
-                  </Typography>
-                  <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                    {experience.duration}
-                  </Typography>
-                  <Typography variant="body2">
-                    {experience.description}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
+        <ExperienceList experiences={experiences} />
       </Box>
     </>
   );
-}
+};
+
+export default Experience;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardContent, Typography, Box, Chip, useTheme } from '@mui/material';
+import { Card, CardContent, Typography, Box, Chip, useTheme, useMediaQuery } from '@mui/material';
 
 interface ExperienceCardProps {
   date: string;
@@ -16,42 +16,69 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
   company,
   description,
   tags,
-  imageUrl = "https://www.excalibra.com/wp-content/uploads/2019/05/logo_EX_CALIBRA_544_180.png" 
+  imageUrl = "https://www.excalibra.com/wp-content/uploads/2019/05/logo_EX_CALIBRA_544_180.png"
 }) => {
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // Vérification si l'écran est mobile
 
   return (
-    <Card sx={{ margin: 2, padding: 2, color: '#ffffff', backgroundColor: theme.palette.background.default }}>
+    <Card
+      sx={{
+        margin: isMobile ? 1 : 2,
+        padding: isMobile ? 1 : 2,
+        color: '#ffffff',
+        backgroundColor: theme.palette.background.default,
+        borderRadius: isMobile ? '12px' : '8px', // Arrondi plus marqué sur mobile
+      }}
+    >
       <CardContent>
-        <Box display="flex" justifyContent="space-between" alignItems="flex-start">
-          <Box sx={{ minWidth: '150px', textAlign: 'left' }}>
+        <Box
+          display="flex"
+          flexDirection={isMobile ? 'column' : 'row'} // Sur mobile, on empile les éléments verticalement
+          justifyContent="space-between"
+          alignItems={isMobile ? 'center' : 'flex-start'} // Alignement centré sur mobile
+        >
+          <Box sx={{ minWidth: isMobile ? '100%' : '150px', textAlign: 'left' }}>
             <Typography variant="body2" color="textSecondary">
               {date}
             </Typography>
-            <Box mt={1}> 
+            <Box mt={1} display="flex" justifyContent={isMobile ? 'center' : 'left'}>
               <img
                 src={imageUrl}
                 alt="Company Logo"
-                style={{ maxWidth: "124px", height: 'auto', borderRadius: '8px' }}
+                style={{
+                  maxWidth: isMobile ? "100px" : "124px", // Réduction de la taille de l'image sur mobile
+                  height: 'auto',
+                  borderRadius: '8px',
+                }}
               />
             </Box>
           </Box>
 
-          <Box sx={{ flexGrow: 1, ml: 3 }}>
-            <Typography variant="h6" color="primary">
+          <Box sx={{ flexGrow: 1, ml: isMobile ? 0 : 3, mt: isMobile ? 2 : 0 }}>
+            <Typography variant={isMobile ? "h6" : "h5"} color="primary" textAlign={isMobile ? 'center' : 'left'}>
               {title}
             </Typography>
-            <Typography variant="subtitle1" color="textSecondary">
+            <Typography variant="subtitle1" color="textSecondary" textAlign={isMobile ? 'center' : 'left'}>
               {company}
             </Typography>
-            <Typography variant="body2" mt={1}>
+            <Typography variant="body2" mt={1} textAlign={isMobile ? 'center' : 'left'}>
               {description}
             </Typography>
 
             {/* Tags */}
-            <Box mt={2} display="flex" flexWrap="wrap" gap={1}>
+            <Box mt={2} display="flex" justifyContent={isMobile ? 'center' : 'left'} flexWrap="wrap" gap={1}>
               {tags.map((tag, index) => (
-                <Chip key={index} label={tag} variant="outlined" sx={{ color: '#ffffff', borderColor: '#ffffff' }} />
+                <Chip
+                  key={index}
+                  label={tag}
+                  variant="outlined"
+                  sx={{
+                    color: '#ffffff',
+                    borderColor: '#ffffff',
+                    fontSize: isMobile ? '0.8rem' : '1rem', // Taille de la police réduite sur mobile
+                  }}
+                />
               ))}
             </Box>
           </Box>

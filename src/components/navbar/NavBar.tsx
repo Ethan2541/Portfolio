@@ -3,18 +3,21 @@ import useDetectScroll from "@smakss/react-scroll-direction";
 import user from "@/data/user.json";
 import SideNavBar from "./SideNavBar";
 import TopNavBar from "./TopNavBar";
+import { useMediaQuery, useTheme } from "@mui/material";
 
 interface NavBarProps {
   alwaysShowTopNav?: boolean;  // Boolean prop to control TopNavBar visibility
 }
 
 export default function NavBar({ alwaysShowTopNav = false }: Readonly<NavBarProps>) {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const { scrollPosition } = useDetectScroll();
   const [visibility, setVisibility] = useState(0);
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
-    if (!alwaysShowTopNav) {
+    if (!alwaysShowTopNav && !isMobile) {
       const maxScroll = 600;
       const percentage = Math.min(scrollPosition.top / maxScroll, 1);
       setVisibility(percentage);
@@ -26,20 +29,20 @@ export default function NavBar({ alwaysShowTopNav = false }: Readonly<NavBarProp
       const progress = Math.min(scrollTop / maxScrollPosition, 1) * 100;
       setScrollProgress(progress);
     } else {
-      setVisibility(1); // If alwaysShowTopNav is true, make TopNavBar fully visible
-      setScrollProgress(100); // Optionally, set scrollProgress to 100
+      setVisibility(1); // If alwaysShowTopNav is true or in mobile view, make TopNavBar fully visible
+      setScrollProgress(100); // Optionally, set scrollProgress to 100    
     }
-  }, [scrollPosition.top, alwaysShowTopNav]);
+  }, [scrollPosition.top, alwaysShowTopNav, isMobile]);
 
   return (
     <div className="navbar">
-      {/* SideNavBar */}
-      {!alwaysShowTopNav && (
+      {/* SideNavBar: Only visible on non-mobile screens */}
+      {!isMobile && !alwaysShowTopNav && (
         <div
           style={{
             opacity: 1 - visibility,
             transform: `translateY(${visibility * -50}px)`,
-            transition: "opacity 0.5s ease, transform 0.5s ease",
+            transition: "none", // No transition
             position: "fixed",
             width: "100%",
             top: 0,
@@ -53,12 +56,11 @@ export default function NavBar({ alwaysShowTopNav = false }: Readonly<NavBarProp
         </div>
       )}
 
-      {/* TopNavBar */}
       <div
         style={{
-          opacity: alwaysShowTopNav ? 1 : visibility,
-          transform: `translateY(${(1 - visibility) * -50}px)`,
-          transition: "opacity 0.5s ease, transform 0.5s ease",
+          opacity: alwaysShowTopNav || isMobile ? 1 : visibility,
+          transform: "none", // No transform
+          transition: "none", // No transition
           position: "fixed",
           width: "100%",
           top: 0,

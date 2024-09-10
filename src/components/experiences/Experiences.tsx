@@ -1,6 +1,6 @@
 import React from "react";
 import Experience from "./Experience";
-import { Box, Typography, useTheme, Divider, Grid } from "@mui/material";
+import { Box, Typography, useTheme, Grid } from "@mui/material";
 import { useTranslations } from "next-intl";
 import SeeMoreButton from "../SeeMoreButton";
 
@@ -34,35 +34,38 @@ const Experiences: React.FC = () => {
       sx={{
         backgroundColor: theme.palette.background.default,
         minHeight: "100vh",
-        padding: theme.spacing(6),
+        padding: theme.spacing(3),
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
       }}
       id="experiences"
     >
       {/* Header section */}
       <Typography
-        variant="h2"
+        variant="h4"
         color={theme.palette.primary.main}
         sx={{
           fontWeight: "bold",
           textAlign: "center",
-          marginBottom: theme.spacing(4),
+          marginBottom: theme.spacing(3),
           textTransform: "uppercase",
-          letterSpacing: "0.15rem",
+          letterSpacing: "0.1rem",
         }}
       >
         {t("experience")}
       </Typography>
 
       {/* See More button */}
-      <Box sx={{ display: "flex", justifyContent: "center", marginBottom: theme.spacing(4) }}>
+      <Box sx={{ display: "flex", justifyContent: "center", marginBottom: theme.spacing(3) }}>
         <SeeMoreButton hrefstring="/experiences" />
       </Box>
 
       {/* Experiences list */}
       {experiences.length > 0 ? (
-        <Grid container spacing={4}>
+        <Grid container spacing={2}>
           {experiences.map((experience, index) => (
-            <Grid item xs={12} md={6} key={experience.title + experience.company + experience.date}>
+            <Grid item xs={12} key={experience.title + experience.company + experience.date}>
               <Experience
                 title={experience.title}
                 company={experience.company}
@@ -75,12 +78,12 @@ const Experiences: React.FC = () => {
         </Grid>
       ) : (
         <Typography
-          variant="body1"
+          variant="body2"
           color={theme.palette.text.secondary}
           sx={{
             textAlign: "center",
             fontStyle: "italic",
-            marginTop: theme.spacing(6),
+            marginTop: theme.spacing(3),
           }}
         >
           {t("no_experiences")}

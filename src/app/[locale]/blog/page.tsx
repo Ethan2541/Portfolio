@@ -5,6 +5,7 @@ import BlogPosts from "../../../components/BlogPosts";
 import user from "@/data/user.json";
 import { useTranslations } from "next-intl";
 import { useEffect } from "react";
+import { Box, useTheme } from "@mui/material";
 
 const posts = [
   {
@@ -26,11 +27,24 @@ export default function Blog() {
   useEffect(() => {
     document.title = user.name + " | " + t("Blog");
   }, []);
+  const theme = useTheme();
   return (
-    <div>
-      <NavBar alwaysShowTopNav={true} />
-      <BlogPosts posts={posts} />
-    </div>
+        <>
+        <NavBar alwaysShowTopNav={true} />
+        <Box
+          sx={{
+            backgroundColor: theme.palette.background.default,
+            minHeight: "100vh",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            paddingTop: theme.spacing(8),
+            position: "relative",
+          }}
+        >
+          <BlogPosts posts={posts} />
+        </Box>
+      </>
   );
 
 }

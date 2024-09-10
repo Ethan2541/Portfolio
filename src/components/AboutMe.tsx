@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography, useTheme, useMediaQuery } from "@mui/material";
 import { useTranslations } from "next-intl";
 
 interface AboutMeProps {
@@ -8,6 +8,7 @@ interface AboutMeProps {
 
 const AboutMe: React.FC<AboutMeProps> = ({ description }) => {
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const t = useTranslations("HomePage");
 
   return (
@@ -15,7 +16,7 @@ const AboutMe: React.FC<AboutMeProps> = ({ description }) => {
       sx={{
         backgroundColor: theme.palette.background.default,
         minHeight: "100vh",
-        padding: theme.spacing(6),
+        padding: isMobile ? theme.spacing(3) : theme.spacing(6),
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -26,25 +27,28 @@ const AboutMe: React.FC<AboutMeProps> = ({ description }) => {
       }}
       id="aboutme"
     >
+      {/* Header Section */}
       <Typography
-        variant="h2"
+        variant={isMobile ? "h4" : "h2"} // Adjust title size on mobile
         color={theme.palette.primary.main}
         sx={{
           fontWeight: "bold",
           textAlign: "center",
           marginBottom: theme.spacing(4),
           textTransform: "uppercase",
-          letterSpacing: "0.15rem",
+          letterSpacing: "0.1rem",
         }}
       >
         {t("about")}
       </Typography>
+
+      {/* Description Section */}
       <Typography
         variant="body1"
         sx={{
           color: theme.palette.text.primary,
-          maxWidth: "800px",
-          fontSize: "1.2rem",
+          maxWidth: isMobile ? "100%" : "800px",
+          fontSize: isMobile ? "1rem" : "1.2rem", // Adjust font size for mobile
           lineHeight: "1.6",
           padding: theme.spacing(2),
         }}

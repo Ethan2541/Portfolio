@@ -3,7 +3,7 @@
 import NavBar from "@/components/navbar/NavBar";
 import UserRepositories from "@/components/repositories/UserRepositories";
 import user from "@/data/user.json";
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import { useTranslations } from "next-intl";
 import { useEffect } from "react";
 
@@ -26,9 +26,6 @@ export default function Projects() {
           paddingTop: theme.spacing(8),
         }}
       >
-        <Typography variant="h4" component="h1" gutterBottom>
-          Mes Expériences Professionnelles
-        </Typography>
         <UserRepositories username={user.githubusername} />
       </Box>
     </>

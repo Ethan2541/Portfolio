@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Typography, Grid, Box, CircularProgress, Alert } from "@mui/material";
+import { Typography, Grid, Box, CircularProgress, Alert, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { useTranslations } from "next-intl";
 import ProjectCard from "../ProjectCard";
@@ -18,6 +18,9 @@ const PinnedRepositories: React.FC<{ username: string }> = ({ username }) => {
   const [error, setError] = useState<string | null>(null);
   const theme = useTheme();
   const t = useTranslations("HomePage");
+
+  // Detect mobile screen size
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   useEffect(() => {
     const fetchPinnedRepos = async () => {
@@ -73,7 +76,7 @@ const PinnedRepositories: React.FC<{ username: string }> = ({ username }) => {
       sx={{
         backgroundColor: theme.palette.background.default,
         minHeight: "100vh",
-        padding: theme.spacing(6),
+        padding: theme.spacing(isMobile ? 3 : 6), // Adjust padding for mobile
       }}
       id="project"
     >
@@ -86,6 +89,7 @@ const PinnedRepositories: React.FC<{ username: string }> = ({ username }) => {
           marginBottom: theme.spacing(4),
           textTransform: "uppercase",
           letterSpacing: "0.15rem",
+          fontSize: isMobile ? "1.5rem" : "2rem", // Adjust font size for mobile
         }}
       >
         {t("projects")}
@@ -115,7 +119,7 @@ const PinnedRepositories: React.FC<{ username: string }> = ({ username }) => {
           {error}
         </Alert>
       ) : (
-        <Grid container spacing={4}>
+        <Grid container spacing={isMobile ? 2 : 4}>
           {pinnedRepos.map((repo) => (
             <Grid item xs={12} sm={6} md={4} key={repo.name}>
               <ProjectCard
