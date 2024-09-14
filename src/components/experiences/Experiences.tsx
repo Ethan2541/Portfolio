@@ -1,6 +1,6 @@
 import React from "react";
 import Experience from "./Experience";
-import { Box, Typography, useTheme, Grid } from "@mui/material";
+import { Box, Typography, useTheme, Grid, useMediaQuery } from "@mui/material";
 import { useTranslations } from "next-intl";
 import SeeMoreButton from "../SeeMoreButton";
 
@@ -15,6 +15,7 @@ interface ExperienceType {
 const Experiences: React.FC = () => {
   const t = useTranslations("HomePage");
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const rawExperiencesData = t.raw("experiencesData");
 
@@ -33,11 +34,12 @@ const Experiences: React.FC = () => {
     <Box
       sx={{
         backgroundColor: theme.palette.background.default,
-        minHeight: "100vh",
-        padding: theme.spacing(3),
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        padding: isMobile ? theme.spacing(3) : theme.spacing(12),
+        margin: "auto",
+        minHeight: "50vh",
       }}
       id="experiences"
     >
@@ -51,19 +53,15 @@ const Experiences: React.FC = () => {
           marginBottom: theme.spacing(3),
           textTransform: "uppercase",
           letterSpacing: "0.1rem",
+          fontSize: isMobile ? "1.5rem" : "2rem",
         }}
       >
         {t("experience")}
       </Typography>
 
-      {/* See More button */}
-      <Box sx={{ display: "flex", justifyContent: "center", marginBottom: theme.spacing(3) }}>
-        <SeeMoreButton hrefstring="/experiences" />
-      </Box>
-
       {/* Experiences list */}
       {experiences.length > 0 ? (
-        <Grid container spacing={2}>
+        <Grid container sx={{ maxWidth: isMobile ? "100%" : "1250px" }}>
           {experiences.map((experience, index) => (
             <Grid item xs={12} key={experience.title + experience.company + experience.date}>
               <Experience
@@ -89,6 +87,11 @@ const Experiences: React.FC = () => {
           {t("no_experiences")}
         </Typography>
       )}
+
+      {/* See More button */}
+      <Box sx={{ marginTop: theme.spacing(3), width: "100%", display: "flex", flexDirection: "row-reverse", marginRight: isMobile ? 1 : 2.5, maxWidth: isMobile ? "100%" : "1250px" }}>
+        <SeeMoreButton hrefstring="/experiences" />
+      </Box>
     </Box>
   );
 };

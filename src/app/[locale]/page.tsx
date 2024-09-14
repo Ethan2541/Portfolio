@@ -8,6 +8,7 @@ import AboutMe from "@/components/AboutMe";
 import PinnedRepositories from "@/components/repositories/PinnedRepositories";
 import DecodeAnimation from "react-decode-animation";
 import user from "@/data/user.json";
+import Laptop3D from "@/components/Laptop3D";
 
 export default function Home() {
   const t = useTranslations("HomePage");
@@ -46,9 +47,25 @@ export default function Home() {
             interval={100}
           />
         </Typography>
+        <Typography
+          variant="h1"
+          color={theme.palette.primary.main}
+          sx={{
+            textAlign: "center",
+            marginBottom: theme.spacing(4),
+            letterSpacing: "0.15rem",
+            fontSize: isMobile ? "1rem" : "2rem", // Adjust font size for mobile
+          }}
+        >
+          <DecodeAnimation
+            autoplay
+            text={t("subtitle")}
+            customCharacters="ΑΒΓΔΕΖΗΘΙΛΜΝΞΟΠΡΣΤΥΦΧΨΩαβγδεζηθικλμνξοπρστυφχψω"
+            interval={100}
+          />
+        </Typography>
       </Box>
-      <Box
-      >
+      <Box>
         <AboutMe description={t("description")} />
         <Experiences />
         <PinnedRepositories username={user.githubusername} />

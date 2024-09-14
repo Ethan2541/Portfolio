@@ -6,6 +6,7 @@ import user from "@/data/user.json";
 import { useTranslations } from "next-intl";
 import NavBar from "@/components/navbar/NavBar";
 import ExperienceList from "../../../components/experiencesPages/ExperienceList";
+import { min } from "three/webgpu";
 
 interface Experience {
   title: string;
@@ -45,12 +46,12 @@ const Experience: React.FC = () => {
       <Box
         sx={{
           backgroundColor: theme.palette.background.default,
-          minHeight: "100vh",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           paddingTop: theme.spacing(8),
           position: "relative",
+          minHeight: "100vh",
         }}
       >
         <ExperienceList experiences={experiences} />

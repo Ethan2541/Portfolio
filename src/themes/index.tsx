@@ -10,14 +10,14 @@ function getDesignTokens(mode: PaletteMode) {
       ...(mode === 'light'
         ? {
             primary: {
-              main: "#48cae4",
+              main: "#000000",
             },
             secondary: {
               main: "#fa9c86",
             },
             background: {
               default: "#ffffff",
-              paper: "#fafafa",
+              paper: "#f3f4f6",
             },
           }
         : {

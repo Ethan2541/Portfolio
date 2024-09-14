@@ -20,10 +20,10 @@ export default function Projects() {
       <Box
         sx={{
           backgroundColor: theme.palette.background.default,
-          minHeight: "100vh",
           display: "flex",
           flexDirection: "column",
           paddingTop: theme.spacing(8),
+          minHeight: "100vh",
         }}
       >
         <UserRepositories username={user.githubusername} />

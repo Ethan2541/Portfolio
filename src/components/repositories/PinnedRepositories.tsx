@@ -75,7 +75,6 @@ const PinnedRepositories: React.FC<{ username: string }> = ({ username }) => {
     <Box
       sx={{
         backgroundColor: theme.palette.background.default,
-        minHeight: "100vh",
         padding: theme.spacing(isMobile ? 3 : 6), // Adjust padding for mobile
       }}
       id="project"
@@ -86,7 +85,7 @@ const PinnedRepositories: React.FC<{ username: string }> = ({ username }) => {
         sx={{
           fontWeight: "bold",
           textAlign: "center",
-          marginBottom: theme.spacing(4),
+          marginBottom: isMobile ? theme.spacing(4) : theme.spacing(5), // Adjust margin for mobile
           textTransform: "uppercase",
           letterSpacing: "0.15rem",
           fontSize: isMobile ? "1.5rem" : "2rem", // Adjust font size for mobile
@@ -94,15 +93,6 @@ const PinnedRepositories: React.FC<{ username: string }> = ({ username }) => {
       >
         {t("projects")}
       </Typography>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          marginBottom: theme.spacing(4),
-        }}
-      >
-        <SeeMoreButton hrefstring="/projects" />
-      </Box>
       {loading ? (
         <Box
           sx={{
@@ -115,23 +105,29 @@ const PinnedRepositories: React.FC<{ username: string }> = ({ username }) => {
           <CircularProgress />
         </Box>
       ) : error ? (
-        <Alert severity="error" sx={{ marginTop: 5 }}>
+        <Alert severity="error" sx={{ marginTop: 5, marginLeft: "auto", marginRight: "auto", maxWidth: isMobile ? "100%" : "1250px" }}>
           {error}
         </Alert>
       ) : (
-        <Grid container spacing={isMobile ? 2 : 4}>
-          {pinnedRepos.map((repo) => (
-            <Grid item xs={12} sm={6} md={4} key={repo.name}>
-              <ProjectCard
-                user={username}
-                name={repo.name}
-                description={repo.description}
-                stargazerCount={repo.stargazerCount}
-                forkCount={repo.forkCount}
-              />
-            </Grid>
-          ))}
-        </Grid>
+        <Box sx={{ maxWidth: isMobile ? "100%" : "1250px", margin: "auto" }}>
+          <Grid container spacing={isMobile ? 2 : 4} >
+            {pinnedRepos.map((repo) => (
+              <Grid item xs={12} sm={6} md={4} key={repo.name}>
+                <ProjectCard
+                  user={username}
+                  name={repo.name}
+                  description={repo.description}
+                  stargazerCount={repo.stargazerCount}
+                  forkCount={repo.forkCount}
+                />
+              </Grid>
+            ))}
+          </Grid>
+          {/* See More button */}
+          <Box sx={{ marginTop: theme.spacing(3), width: "100%", display: "flex", flexDirection: "row-reverse", marginRight: isMobile ? 1 : 2.5, maxWidth: isMobile ? "100%" : "1250px" }}>
+            <SeeMoreButton hrefstring="/projects" />
+          </Box>
+        </Box>
       )}
     </Box>
   );

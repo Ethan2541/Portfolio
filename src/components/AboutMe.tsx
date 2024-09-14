@@ -14,8 +14,7 @@ const AboutMe: React.FC<AboutMeProps> = ({ description }) => {
   return (
     <Box
       sx={{
-        backgroundColor: theme.palette.background.default,
-        minHeight: "100vh",
+        backgroundColor: theme.palette.background.paper,
         padding: isMobile ? theme.spacing(3) : theme.spacing(6),
         display: "flex",
         flexDirection: "column",
@@ -24,6 +23,7 @@ const AboutMe: React.FC<AboutMeProps> = ({ description }) => {
         textAlign: "center",
         backgroundSize: "cover",
         backgroundPosition: "center",
+        minHeight: "50vh",
       }}
       id="aboutme"
     >

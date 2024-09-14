@@ -24,11 +24,18 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
   return (
     <Card
       sx={{
-        margin: isMobile ? 1 : 2,
+        marginTop: isMobile ? 1 : 2,
+        marginBottom: isMobile ? 1 : 2,
         padding: isMobile ? 1 : 2,
         color: '#ffffff',
-        backgroundColor: theme.palette.background.default,
-        borderRadius: isMobile ? '12px' : '8px', // Arrondi plus marqué sur mobile
+        borderRadius: 2,
+        transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+        backgroundColor: theme.palette.background.paper,
+        '&:hover': {
+            transform: 'scale(1.01)',
+            boxShadow: `2px 2px 1px ${theme.palette.grey[500]}`,
+        },
+        opacity: 0.9, // Make card slightly transparent
       }}
     >
       <CardContent>
