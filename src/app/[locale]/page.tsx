@@ -1,7 +1,7 @@
 "use client";
 
 import NavBar from "@/components/navbar/NavBar";
-import { Box, Typography, useTheme, useMediaQuery } from "@mui/material";
+import { Box, Typography, useTheme, useMediaQuery, Grid } from "@mui/material";
 import { useTranslations } from "next-intl";
 import Experiences from "@/components/experiences/Experiences";
 import AboutMe from "@/components/AboutMe";
@@ -64,6 +64,9 @@ export default function Home() {
             interval={100}
           />
         </Typography>
+        {
+          !isMobile && <Laptop3D />
+        }
       </Box>
       <Box>
         <AboutMe description={t("description")} />

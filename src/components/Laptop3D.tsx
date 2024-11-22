@@ -1,82 +1,126 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { useGLTF } from '@react-three/drei';
+import React, { useRef, useEffect, useState } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { useGLTF, OrbitControls, useTexture } from '@react-three/drei';
 import * as THREE from 'three';
-import { Vector3 } from 'three';
 
-// Component to handle scroll interaction and laptop rotation
-const Laptop3D: React.FC = () => {
-  const laptopRef = useRef<THREE.Group>(null);
-  const [rotation, setRotation] = useState(new Vector3(0, 0, 0));
-  const [lidAngle, setLidAngle] = useState(0); // Angle to control lid open/close
+const Model: React.FC<{ path: string; lidAngle: number; laptopColor: string }> = ({ path, lidAngle, laptopColor }) => {
+  const { scene } = useGLTF(path);
+  const groupRef = useRef<THREE.Group>(null);
+  const lidRef = useRef<THREE.Object3D | null>(null);
+  const [currentLidAngle, setCurrentLidAngle] = useState(lidAngle);
 
-  // Handle mouse movement to rotate the laptop
-  const handleMouseMove = (event: MouseEvent) => {
-    const { clientX, clientY } = event;
-    const xRotation = ((clientY / window.innerHeight) * 2 - 1) * Math.PI * 0.2;
-    const yRotation = ((clientX / window.innerWidth) * 2 - 1) * Math.PI * 0.2;
-    setRotation(new Vector3(xRotation, yRotation, 0));
-  };
+  // Load a texture for the emissive map
+  const emissiveTexture = useTexture('/model/screen.jpg'); // Replace with your emissive texture path
 
-  // Handle scroll to open/close the laptop lid
+  useEffect(() => {
+    if (groupRef.current) {
+      const box = new THREE.Box3().setFromObject(groupRef.current); // Calculate bounding box
+      const size = new THREE.Vector3();
+      box.getSize(size);
+
+      const maxDimension = Math.max(size.x, size.y, size.z);
+      const scaleFactor = 1.75; // Scale model larger
+      const scale = scaleFactor / maxDimension;
+      groupRef.current.scale.set(scale, scale, scale);
+
+      const center = new THREE.Vector3();
+      box.getCenter(center);
+      groupRef.current.position.set(-center.x, -center.y, -center.z); // Center the model
+      groupRef.current.position.y -= 0.5; // Adjust the Y position
+
+      // Find the lid part by name (adjust the name based on your model structure)
+      lidRef.current = scene.getObjectByName('Bevels_2') as THREE.Object3D | null;
+
+      // Find the screen object and modify its emissive map
+      scene.traverse((child) => {
+        if (child instanceof THREE.Mesh) {
+          // Change the color of the laptop body
+          if (child.material instanceof THREE.MeshStandardMaterial) {
+            child.material.color.set(laptopColor); // Change color here
+          }
+
+          // Find the screen object and modify its emissive map
+          if (child.name === 'Object_7' && child.material instanceof THREE.MeshStandardMaterial) {
+            const material = child.material;
+            material.color.set(0, 0, 0); // Set screen to black
+            material.emissive.set(1, 1, 1); // Emissive color
+            material.roughness = 0.2;
+            material.metalness = 0.8;
+            material.map = null;
+            material.emissiveMap = emissiveTexture; // Emissive map texture
+          }
+        }
+      });
+    }
+  }, [scene]);
+
+  // Smoothly animate the lid
+  useEffect(() => {
+    if (lidRef.current) {
+      const animateLid = () => {
+        const easing = 0.1; // Easing factor to make the motion smoother
+        const newAngle = THREE.MathUtils.lerp(currentLidAngle, lidAngle, easing);
+        setCurrentLidAngle(newAngle);
+
+        if (lidRef.current) {
+          lidRef.current.rotation.x = newAngle;
+        }
+        
+        // Continue animating as long as there's a change
+        if (Math.abs(newAngle - lidAngle) > 0.001) {
+          requestAnimationFrame(animateLid);
+        }
+      };
+
+      animateLid();
+    }
+  }, [lidAngle, currentLidAngle]);
+
+  return <group ref={groupRef}><primitive object={scene} /></group>;
+};
+
+const App: React.FC = () => {
+  const [lidAngle, setLidAngle] = useState(-2 * Math.PI / 3); // Lid angle in radians
+
+  // Scroll event handler
   const handleScroll = (event: WheelEvent) => {
-    const newLidAngle = Math.min(Math.max(lidAngle - event.deltaY * 0.001, 0), Math.PI / 2);
-    setLidAngle(newLidAngle);
+    setLidAngle((prev) => {
+      // Adjust lid angle based on scroll direction
+      const newAngle = prev + (event.deltaY > 0 ? 0.25 : -0.1); // Scroll down to close, up to open
+      // Constrain the angle between 0 (closed) and -Math.PI / 2 (fully open)
+      return Math.max(-2 * Math.PI / 3, Math.min(0, newAngle));
+    });
   };
 
   useEffect(() => {
-    window.addEventListener('mousemove', handleMouseMove);
+    // Add scroll listener on mount
     window.addEventListener('wheel', handleScroll);
 
+    // Clean up listener on unmount
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('wheel', handleScroll);
     };
-  }, [lidAngle]);
+  }, []);
 
   return (
-    <Canvas>
-      <ambientLight />
-      <pointLight position={[10, 10, 10]} />
-      <LaptopModel lidAngle={lidAngle} rotation={rotation} ref={laptopRef} />
-    </Canvas>
+    <div style={{ width: '50%', height: '100vh', position: 'absolute', right: 0, overflow: "visible" }}>
+      {/* Canvas for the 3D scene */}
+      <Canvas
+        style={{ width: '100%', height: '100vh' }}
+        camera={{ position: [2, 2, 3], fov: 45 }} // Camera positioned to the upper-left
+      >
+        {/* Add lighting */}
+        <ambientLight intensity={0.5} />
+        <directionalLight position={[2, 5, 2]} intensity={1} />
+
+        {/* Render the 3D model */}
+        <Model path="/model/laptop_model.glb" lidAngle={lidAngle} laptopColor="#3e485f" />
+
+        {/* Add orbit controls for interaction */}
+        <OrbitControls enableZoom={false} />
+      </Canvas>
+    </div>
   );
 };
 
-// Laptop model component
-const LaptopModel = React.forwardRef<
-  THREE.Group,
-  { lidAngle: number; rotation: Vector3 }
->(({ lidAngle, rotation }, ref) => {
-  const { nodes, materials } = useGLTF('/laptop_model.glb') as any;
-
-  useFrame(() => {
-    if (ref && (ref as any).current) {
-      (ref as any).current.rotation.x = rotation.x;
-      (ref as any).current.rotation.y = rotation.y;
-    }
-  });
-
-  return (
-    <group ref={ref} dispose={null}>
-      {/* Base of the laptop */}
-      <mesh geometry={nodes.Base.geometry} material={materials.Body}>
-        <meshStandardMaterial attach="material" color="gray" />
-      </mesh>
-
-      {/* Lid of the laptop */}
-      <mesh
-        geometry={nodes.Lid.geometry}
-        material={materials.Screen}
-        position={[0, 0.05, -0.15]}
-        rotation={[lidAngle, 0, 0]}
-      >
-        <meshStandardMaterial attach="material" color="black" />
-      </mesh>
-    </group>
-  );
-});
-
-useGLTF.preload('/laptop_model.glb');
-
-export default Laptop3D;
+export default App;
