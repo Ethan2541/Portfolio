@@ -27,13 +27,13 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
         marginTop: isMobile ? 1 : 2,
         marginBottom: isMobile ? 1 : 2,
         padding: isMobile ? 1 : 2,
-        color: '#ffffff',
+        color: theme.palette.primary.main,
         borderRadius: 2,
         transition: 'transform 0.3s ease, box-shadow 0.3s ease',
         backgroundColor: theme.palette.background.paper,
         '&:hover': {
             transform: 'scale(1.01)',
-            boxShadow: `2px 2px 1px ${theme.palette.grey[500]}`,
+            boxShadow: `1px 1px 1px ${theme.palette.grey[500]}`,
         },
         opacity: 0.9, // Make card slightly transparent
       }}
@@ -81,8 +81,8 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
                   label={tag}
                   variant="outlined"
                   sx={{
-                    color: '#ffffff',
-                    borderColor: '#ffffff',
+                    color: theme.palette.primary.main,
+                    borderColor: theme.palette.primary.main,
                     fontSize: isMobile ? '0.8rem' : '1rem', // Taille de la police réduite sur mobile
                   }}
                 />

@@ -17,7 +17,7 @@ function getDesignTokens(mode: PaletteMode) {
             },
             background: {
               default: "#ffffff",
-              paper: "#f3f4f6",
+              paper: "#CBD4D5",
             },
           }
         : {
@@ -29,7 +29,7 @@ function getDesignTokens(mode: PaletteMode) {
             },
             background: {
               default: "#121212",
-              paper: "#424242",
+              paper: "#2b373d",
             },
           }),
     },

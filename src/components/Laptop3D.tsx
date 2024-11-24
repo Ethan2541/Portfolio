@@ -83,22 +83,21 @@ const App: React.FC = () => {
   const [lidAngle, setLidAngle] = useState(-2 * Math.PI / 3); // Lid angle in radians
 
   // Scroll event handler
-  const handleScroll = (event: WheelEvent) => {
-    setLidAngle((prev) => {
-      // Adjust lid angle based on scroll direction
-      const newAngle = prev + (event.deltaY > 0 ? 0.25 : -0.1); // Scroll down to close, up to open
-      // Constrain the angle between 0 (closed) and -Math.PI / 2 (fully open)
-      return Math.max(-2 * Math.PI / 3, Math.min(0, newAngle));
-    });
+  const handleScroll = () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollFraction = 1.25 * scrollTop / docHeight;
+    const newAngle = -2 * Math.PI / 3 + scrollFraction * (2 * Math.PI / 3); // Adjust the angle based on scroll position
+    setLidAngle(Math.max(-2 * Math.PI / 3, Math.min(0, newAngle)));
   };
 
   useEffect(() => {
     // Add scroll listener on mount
-    window.addEventListener('wheel', handleScroll);
+    window.addEventListener('scroll', handleScroll);
 
     // Clean up listener on unmount
     return () => {
-      window.removeEventListener('wheel', handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
