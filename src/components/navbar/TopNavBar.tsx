@@ -13,7 +13,7 @@ interface TopNavBarProps {
 
 export default function TopNavBar({ githubusername, linkedinusername, progress }: Readonly<TopNavBarProps>) {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const toggleDrawer = (open: boolean) => () => {

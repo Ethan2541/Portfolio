@@ -11,7 +11,7 @@ interface NavBarProps {
 
 export default function NavBar({ alwaysShowTopNav = false }: Readonly<NavBarProps>) {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const { scrollPosition } = useDetectScroll();
   const [visibility, setVisibility] = useState(0);
   const [scrollProgress, setScrollProgress] = useState(0);

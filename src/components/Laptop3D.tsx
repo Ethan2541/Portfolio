@@ -102,11 +102,16 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div style={{ width: '50%', height: '100vh', position: 'absolute', right: 0, overflow: "visible" }}>
+    <div
+      style={{
+        width: '100%',               // Largeur du modèle
+        height: '100%',              // Hauteur du modèle
+      }}
+    >
       {/* Canvas for the 3D scene */}
       <Canvas
-        style={{ width: '100%', height: '100vh' }}
-        camera={{ position: [2, 2, 3], fov: 45 }} // Camera positioned to the upper-left
+        style={{ width: '100%', height: '100%' }}
+        camera={{ position: [2, 2, 3], fov: 35 }} // Camera positioned to the upper-left
       >
         {/* Add lighting */}
         <ambientLight intensity={0.5} />
@@ -116,7 +121,7 @@ const App: React.FC = () => {
         <Model path="/model/laptop_model.glb" lidAngle={lidAngle} laptopColor="#3e485f" />
 
         {/* Add orbit controls for interaction */}
-        <OrbitControls enableZoom={false} />
+        <OrbitControls enableZoom={false} enablePan={false}/>
       </Canvas>
     </div>
   );
