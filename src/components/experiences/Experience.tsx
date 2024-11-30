@@ -35,7 +35,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
             transform: 'scale(1.01)',
             boxShadow: `1px 1px 1px ${theme.palette.grey[500]}`,
         },
-        opacity: 0.9, // Make card slightly transparent
+        opacity: 0.99
       }}
     >
       <CardContent>

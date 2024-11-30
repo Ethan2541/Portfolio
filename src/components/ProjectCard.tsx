@@ -27,7 +27,7 @@ export default function ProjectCard({ user, name, description, stargazerCount, f
                     transform: 'scale(1.03)',
                     boxShadow: `0 6px 12px ${theme.palette.grey[600]}`,
                 },
-                opacity: 0.9, // Make card slightly transparent
+                opacity: 0.99,
             }}
         >
             <CardActionArea onClick={() => handleCardClick(name)}>

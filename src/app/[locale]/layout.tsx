@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { getMessages } from "next-intl/server";
 import Providers from "@/contexts/Providers";
 import user from "@/data/user.json";
+import StarsBackground from '@/components/StarsBackground';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,6 +32,7 @@ export default async function RootLayout({
 
       <body style={{ margin: "0" }}>
         <Providers locale={locale} messages={messages}>
+        <StarsBackground />
           {children}
         </Providers>
       </body>

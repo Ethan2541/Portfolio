@@ -18,6 +18,7 @@ export default function Home() {
   return (
     <>
       <NavBar />
+      
       <Box
         sx={{
           backgroundColor: theme.palette.background.default,
@@ -28,6 +29,7 @@ export default function Home() {
           padding: isMobile ? theme.spacing(2) : theme.spacing(4), // Adjust padding for mobile
         }}
       >
+        
         {/* Laptop3D Component - Ensure it does not overlap */}
         <Box
           sx={{
@@ -63,7 +65,11 @@ export default function Home() {
               <DecodeAnimation
                 autoplay
                 text={t("title")}
-                customCharacters="ΑΒΓΔΕΖΗΘΙΛΜΝΞΟΠΡΣΤΥΦΧΨΩαβγδεζηθικλμνξοπρστυφχψω"
+                customCharacters="
+                ابتثجحخدذرزسشصضطظعغفقكلمنهوي
+                あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん
+                가나다라마바사아자차카타파하
+                一二三四五六七八九十百千万"
                 interval={100}
               />
             </Typography>
@@ -80,16 +86,16 @@ export default function Home() {
               <DecodeAnimation
                 autoplay
                 text={t("subtitle")}
-                customCharacters="ΑΒΓΔΕΖΗΘΙΛΜΝΞΟΠΡΣΤΥΦΧΨΩαβγδεζηθικλμνξοπρστυφχψω"
+                customCharacters="
+                ابتثجحخدذرزسشصضطظعغفقكلمنهوي
+                あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん
+                가나다라마바사아자차카타파하
+                一二三四五六七八九十百千万"
                 interval={100}
               />
             </Typography>
           </Box>
-          {!isMobile && (
-            <Box sx={{ flex: 1, width: '50%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <Laptop3D />
-            </Box>
-          )}
+    
         </Box>
       </Box>
       <Box>
@@ -100,3 +106,5 @@ export default function Home() {
     </>
   );
 }
+
+

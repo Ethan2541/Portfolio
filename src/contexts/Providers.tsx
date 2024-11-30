@@ -7,6 +7,7 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 import React from 'react';
 import { ModeProvider, useMode } from '@/contexts/ModeProvider';
 
+
 export default function Providers({ children, locale, messages }: { readonly children: React.ReactNode; readonly locale: string; readonly messages: Record<string, any> }) {
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
