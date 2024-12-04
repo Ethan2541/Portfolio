@@ -31,24 +31,6 @@ export default function SideNavBar({
         position: 'relative',
       }}
     >
-          {/* <Box
-            component="video"
-            autoPlay
-            muted
-            loop
-            sx={{
-              height: '100%',
-              width: '100%',
-              left: 0,
-              zIndex: -1,
-              objectFit: 'cover',
-              transform: 'rotate(180deg)',
-              opacity: 0.6,
-              filter: 'blur(3px)',
-            }}
-          >
-            <source src="assets/blackhole.webm" type="video/webm" />
-          </Box> */}
       {/* Navigation for projects, experiences, resume */}
       <Box
         component="ul"

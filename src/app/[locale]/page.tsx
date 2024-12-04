@@ -8,7 +8,6 @@ import AboutMe from "@/components/AboutMe";
 import PinnedRepositories from "@/components/repositories/PinnedRepositories";
 import DecodeAnimation from "react-decode-animation";
 import user from "@/data/user.json";
-import Laptop3D from "@/components/Laptop3D";
 
 export default function Home() {
   const t = useTranslations("HomePage");
@@ -17,8 +16,28 @@ export default function Home() {
 
   return (
     <>
+          <Box
+            component="video"
+            autoPlay
+            muted
+            loop
+            sx={{
+              position: 'fixed', // Change to fixed to keep it in place during scroll
+              top: 0,
+              left: 0,
+              height: '100%',
+              width: '100%',
+              zIndex: 0,
+              objectFit: 'cover',
+              transform: 'rotate(180deg)',
+              opacity: 0.6,
+              filter: 'blur(3px)',
+            }}
+          >
+            <source src="assets/blackhole.webm" type="video/webm" />
+          </Box>
       <NavBar />
-      
+
       <Box
         sx={{
           backgroundColor: theme.palette.background.default,
@@ -30,7 +49,6 @@ export default function Home() {
         }}
       >
         
-        {/* Laptop3D Component - Ensure it does not overlap */}
         <Box
           sx={{
             position: 'relative',

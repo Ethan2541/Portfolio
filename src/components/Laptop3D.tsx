@@ -84,7 +84,7 @@ const App: React.FC = () => {
 
   // Scroll event handler
   const handleScroll = () => {
-    const scrollTop = window.scrollY;
+    const scrollTop = window.scrollY - 400;
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
     const scrollFraction = 1.25 * scrollTop / docHeight;
     const newAngle = -2 * Math.PI / 3 + scrollFraction * (2 * Math.PI / 3); // Adjust the angle based on scroll position
