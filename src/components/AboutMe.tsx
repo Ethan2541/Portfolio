@@ -22,9 +22,9 @@ const AboutMe: React.FC<AboutMeProps> = ({ description }) => {
         justifyContent: "center",
         alignItems: "center",
         textAlign: isMobile ? "center" : "left",
-        borderRadius: "12px",
         overflow: "hidden",
         height: "50vh",
+        backgroundColor: theme.palette.background.paper,
       }}
       id="aboutme"
     >
@@ -47,8 +47,7 @@ const AboutMe: React.FC<AboutMeProps> = ({ description }) => {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          alignItems: isMobile ? "center" : "flex-start",
-          marginRight: isMobile ? 0 : theme.spacing(4),
+          alignItems: "center",
           height: "100%",
           zIndex: 1,
         }}
@@ -67,6 +66,7 @@ const AboutMe: React.FC<AboutMeProps> = ({ description }) => {
             textTransform: "uppercase",
             letterSpacing: "0.1rem",
             textShadow: "0 2px 5px rgba(0, 0, 0, 0.3)",
+            padding: theme.spacing(2),
           }}
         >
           {t("about")}
@@ -85,8 +85,6 @@ const AboutMe: React.FC<AboutMeProps> = ({ description }) => {
             fontSize: isMobile ? "1rem" : "1.2rem",
             lineHeight: "1.6",
             padding: theme.spacing(2),
-            borderRadius: "8px",
-            boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
           }}
         >
           {description}

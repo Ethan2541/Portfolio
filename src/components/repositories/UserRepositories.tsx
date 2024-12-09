@@ -48,7 +48,7 @@ const UserRepositories: React.FC<{ username: string }> = ({ username }) => {
   }
 
   return (
-    <Box sx={{ width: '100%', p: isMobile ? 0.5 : 2 }}>
+    <Box sx={{ p: isMobile ? 4 : 8, maxWidth: isMobile ? "100%" : "1250px", margin: "auto", }}>
       <List>
         {repos.map((repo) => (
           <React.Fragment key={repo.id}>
@@ -57,6 +57,7 @@ const UserRepositories: React.FC<{ username: string }> = ({ username }) => {
               sx={{
                 borderRadius: 1,
                 mb: isMobile ? 1 : 2, // Reduced margin bottom for mobile
+                mt: isMobile ? 1 : 2, // Reduced margin bottom for mobile
                 p: isMobile ? 1 : 2, // Reduced padding for mobile
                 flexDirection: 'row',
                 alignItems: 'center',

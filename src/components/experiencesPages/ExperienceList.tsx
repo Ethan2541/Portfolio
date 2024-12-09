@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, useMediaQuery, useTheme } from "@mui/material";
+import { Divider, Grid, useMediaQuery, useTheme } from "@mui/material";
 import ExperienceItem from "./ExperienceItem";
 
 interface Experience {
@@ -22,11 +22,12 @@ const ExperienceList: React.FC<ExperienceListProps> = ({ experiences }) => {
       container
       direction="column"
       alignItems={isMobile ? "stretch" : "center"}
-      spacing={isMobile ? 3 : 6}  // Less spacing on mobile
+      sx={{ p: isMobile ? 4 : 8 }}
     >
       {experiences.map((experience) => (
         <Grid item xs={12} key={experience.title}>
           <ExperienceItem experience={experience} />
+          <Divider />
         </Grid>
       ))}
     </Grid>

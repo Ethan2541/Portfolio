@@ -6,7 +6,6 @@ import user from "@/data/user.json";
 import { useTranslations } from "next-intl";
 import NavBar from "@/components/navbar/NavBar";
 import ExperienceList from "../../../components/experiencesPages/ExperienceList";
-import { min } from "three/webgpu";
 
 interface Experience {
   title: string;
@@ -49,9 +48,9 @@ const Experience: React.FC = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          paddingTop: theme.spacing(8),
           position: "relative",
           minHeight: "100vh",
+          zIndex: -1,
         }}
       >
         <ExperienceList experiences={experiences} />

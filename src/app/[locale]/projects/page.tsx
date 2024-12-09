@@ -17,15 +17,10 @@ export default function Projects() {
   return (
     <>
       <NavBar alwaysShowTopNav={true} />
-      <Box
-        sx={{
-          backgroundColor: theme.palette.background.default,
-          display: "flex",
-          flexDirection: "column",
-          paddingTop: theme.spacing(8),
-          minHeight: "100vh",
-        }}
-      >
+      <Box sx={{
+        backgroundColor: theme.palette.background.default,
+        minHeight: "100vh",
+      }}>
         <UserRepositories username={user.githubusername} />
       </Box>
     </>
