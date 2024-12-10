@@ -2,15 +2,16 @@ import React from "react";
 import { Divider, Grid, useMediaQuery, useTheme } from "@mui/material";
 import ExperienceItem from "./ExperienceItem";
 
-interface Experience {
+interface ExperienceType {
   title: string;
   company: string;
-  duration: string;
   description: string;
+  date: string;
+  tags: string[];
 }
 
 interface ExperienceListProps {
-  experiences: Experience[];
+  experiences: ExperienceType[];
 }
 
 const ExperienceList: React.FC<ExperienceListProps> = ({ experiences }) => {

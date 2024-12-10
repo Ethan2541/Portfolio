@@ -6,23 +6,7 @@
     "experience": "My Experiences",
     "about": "About Me",
     "seemore": "See More",
-    "description": "I am a computer science student passionate about web and mobile development. I have completed several projects using modern technologies like React, Angular, Node.js, Express.js, MongoDB, MySQL, Ionic, Flutter, etc. I am currently looking for a 6-month internship starting from February 2022.",
-    "experiencesData": [
-      {
-        "title": "Software Engineer",
-        "company": "Tech Corp",
-        "description": "Developed a full-stack application using React and Node.js.",
-        "date": "Jan 2020 - Present",
-        "tags": ["JavaScript", "TypeScript", "React", "Storybook"]
-      },
-      {
-        "title": "Frontend Developer",
-        "company": "Web Solutions",
-        "description": "Worked on enhancing UI/UX of the main product using Material-UI and React.",
-        "date": "Jun 2018 - Dec 2019",
-        "tags": ["JavaScript", "TypeScript", "React", "Storybook"]
-      }
-    ]
+    "description": "I am a computer science student passionate about web and mobile development. I have completed several projects using modern technologies like React, Angular, Node.js, Express.js, MongoDB, MySQL, Ionic, Flutter, etc. I am currently looking for a 6-month internship starting from February 2022."
   },
 
   "ProjectsPage": {
@@ -40,5 +24,24 @@
     "experience": "Experience",
     "resume": "Resume",
     "about": "About"
+  },
+
+  "Experiences": {
+    "experiencesData": [
+      {
+        "title": "Software Engineer",
+        "company": "Tech Corp",
+        "description": "Developed a full-stack application using React and Node.js.",
+        "date": "Jan 2020 - Present",
+        "tags": ["JavaScript", "TypeScript", "React", "Storybook"]
+      },
+      {
+        "title": "Frontend Developer",
+        "company": "Web Solutions",
+        "description": "Worked on enhancing UI/UX of the main product using Material-UI and React.",
+        "date": "Jun 2018 - Dec 2019",
+        "tags": ["JavaScript", "TypeScript", "React", "Storybook"]
+      }
+    ]
   }
 }

@@ -1,15 +1,16 @@
 import React from "react";
-import { Box, Typography, useTheme, useMediaQuery } from "@mui/material";
+import { Box, Typography, useTheme, useMediaQuery, Chip } from "@mui/material";
 
-interface Experience {
+interface ExperienceType {
   title: string;
   company: string;
-  duration: string;
   description: string;
+  date: string;
+  tags: string[];
 }
 
 interface ExperienceItemProps {
-  experience: Experience;
+  experience: ExperienceType;
 }
 
 const ExperienceItem: React.FC<ExperienceItemProps> = ({ experience }) => {
@@ -23,8 +24,7 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({ experience }) => {
         flexDirection: isMobile ? "column" : "row", // Column layout on mobile
         alignItems: isMobile ? "stretch" : "center",
         gap: isMobile ? 0 : theme.spacing(4),
-        width: "100%",
-        maxWidth: isMobile ? "100%" : "1250px",
+        width: isMobile ? "100%" : "1250px",
         position: "relative",
         mb: isMobile ? 1 : 2, // Reduced margin bottom for mobile
         mt: isMobile ? 1 : 2, // Reduced margin bottom for mobile
@@ -41,7 +41,7 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({ experience }) => {
         }}
       >
         <Typography color="text.secondary" sx={{ fontStyle: "italic" }}>
-          {experience.duration}
+          {experience.date}
         </Typography>
       </Box>
 
@@ -50,21 +50,34 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({ experience }) => {
         sx={{
           flex: isMobile ? "1 1 auto" : "1 1 80%",
           textAlign: "left",
-          padding: theme.spacing(2),
+          padding: theme.spacing(1),
           display: "flex",
           flexDirection: "column",
         }}
       >
-
         <Typography variant="body2" sx={{ fontWeight: 'bold', color: theme.palette.primary.main, fontSize: isMobile ? '0.875rem' : '1rem' }}>
           {experience.title}
         </Typography>
-        <Typography variant="caption" color="text.secondary" sx={{ fontSize: isMobile ? '0.75rem' : '0.875rem', mb: isMobile ? 0 : 2 }}>
+        <Typography variant="caption" color="text.secondary" sx={{ fontSize: isMobile ? '0.75rem' : '0.875rem', mb: isMobile ? 0 : theme.spacing(3) }}>
           {experience.company}
         </Typography>
         <Typography variant="caption" color="text.secondary" sx={{ fontSize: isMobile ? '0.75rem' : '0.875rem', color: theme.palette.primary.main }}>
           {experience.description}
         </Typography>
+        <Box mt={isMobile ? 0 : theme.spacing(4)} display="flex" justifyContent={isMobile ? 'center' : 'left'} flexWrap="wrap" gap={1}>
+          {experience.tags.map((tag, index) => (
+            <Chip
+              key={index}
+              label={tag}
+              variant="outlined"
+              sx={{
+                color: theme.palette.primary.main,
+                borderColor: theme.palette.primary.main,
+                fontSize: isMobile ? '0.8rem' : '1rem', // Taille de la police réduite sur mobile
+              }}
+            />
+          ))}
+        </Box>
       </Box>
     </Box>
   );

@@ -17,12 +17,14 @@ const Experiences: React.FC = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
-  const rawExperiencesData = t.raw("experiencesData");
+  const t_experience = useTranslations("Experiences");
+  const rawExperiencesData = t_experience.raw("experiencesData");
+  const maxExperiences = 3;
 
   let experiences: ExperienceType[] = [];
 
   if (Array.isArray(rawExperiencesData)) {
-    experiences = rawExperiencesData as ExperienceType[];
+    experiences = rawExperiencesData.slice(0, maxExperiences) as ExperienceType[];
   } else {
     console.error(
       "Unexpected data format for experiencesData:",

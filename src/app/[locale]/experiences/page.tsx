@@ -7,33 +7,31 @@ import { useTranslations } from "next-intl";
 import NavBar from "@/components/navbar/NavBar";
 import ExperienceList from "../../../components/experiencesPages/ExperienceList";
 
-interface Experience {
+interface ExperienceType {
   title: string;
   company: string;
-  duration: string;
   description: string;
+  date: string;
+  tags: string[];
 }
 
-const experiences: Experience[] = [
-  {
-    title: "Développeur Front-end",
-    company: "Tech Solutions",
-    duration: "Janvier 2021 - Présent",
-    description:
-      "Développement d'applications web réactives en utilisant React et Material-UI. Collaboration avec des équipes de backend pour intégrer des API RESTful.",
-  },
-  {
-    title: "Ingénieur Logiciel",
-    company: "Innovative Apps",
-    duration: "Mars 2019 - Décembre 2020",
-    description:
-      "Conception et développement de systèmes distribués. Amélioration des performances des applications et refactorisation du code pour une meilleure maintenabilité.",
-  },
-];
 
 const Experience: React.FC = () => {
   const theme = useTheme();
   const t = useTranslations("Category");
+  const t_experience = useTranslations("Experiences");
+  const rawExperiencesData = t_experience.raw("experiencesData");
+
+  let experiences: ExperienceType[] = [];
+
+  if (Array.isArray(rawExperiencesData)) {
+    experiences = rawExperiencesData as ExperienceType[];
+  } else {
+    console.error(
+      "Unexpected data format for experiencesData:",
+      rawExperiencesData
+    );
+  }
 
   useEffect(() => {
     document.title = user.name + " | " + t("experiences");

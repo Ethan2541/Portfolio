@@ -33,8 +33,8 @@ const AboutMe: React.FC<AboutMeProps> = ({ description }) => {
           position: "absolute",
           top: "50%",
           left: "50%",
-          width: "150%",
-          height: "150%",
+          width: "100%",
+          height: "100%",
           transform: "translate(-50%, -50%)",
           zIndex: 0,
         }}
