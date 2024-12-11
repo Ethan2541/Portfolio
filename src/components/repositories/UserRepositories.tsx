@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { useInView } from 'react-intersection-observer';
+import { motion } from 'framer-motion';
 import {
   List,
   ListItemText,
@@ -22,6 +24,86 @@ interface Repo {
   forks_count: number;
 }
 
+const RepositoryItem: React.FC<{ repo: Repo; isMobile: boolean }> = ({ repo, isMobile }) => {
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
+  const theme = useTheme();
+
+  return (
+    <React.Fragment>
+      <motion.div
+        ref={ref}
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: inView ? 1 : 0, x: inView ? 0 : -50 }}
+        transition={{ duration: 0.5 }}
+      >
+        <ListItemButton
+          onClick={() => window.open(repo.html_url, '_blank')}
+          sx={{
+            borderRadius: 1,
+            mb: isMobile ? 1 : 2,
+            mt: isMobile ? 1 : 2,
+            p: isMobile ? 1 : 2,
+            flexDirection: 'row',
+            alignItems: 'center',
+          }}
+        >
+          <ListItemIcon>
+            <Avatar
+              alt="GitHub"
+              src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+              sx={{ width: isMobile ? 24 : 40, height: isMobile ? 24 : 40 }}
+            />
+          </ListItemIcon>
+          <ListItemText
+            primary={
+              <Typography
+                variant="body2"
+                sx={{ fontWeight: 'bold', color: theme.palette.primary.main, fontSize: isMobile ? '0.875rem' : '1rem' }}
+              >
+                {repo.name}
+              </Typography>
+            }
+            secondary={
+              <Box sx={{ mt: 0.5 }}>
+                <Typography
+                  variant="caption"
+                  color="text.secondary"
+                  sx={{ fontSize: isMobile ? '0.75rem' : '0.875rem' }}
+                >
+                  {repo.description || 'No description available.'}
+                </Typography>
+                <Box sx={{ display: 'flex', flexDirection: 'row', mt: 1 }}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', mr: 1 }}>
+                    <StarIcon sx={{ color: theme.palette.warning.main, fontSize: isMobile ? 16 : 20, mr: 0.5 }} />
+                    <Typography
+                      variant="caption"
+                      color="text.secondary"
+                      sx={{ fontSize: isMobile ? '0.75rem' : '0.875rem' }}
+                    >
+                      {repo.stargazers_count}
+                    </Typography>
+                  </Box>
+                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                    <ForkRightIcon sx={{ color: theme.palette.info.main, fontSize: isMobile ? 16 : 20, mr: 0.5 }} />
+                    <Typography
+                      variant="caption"
+                      color="text.secondary"
+                      sx={{ fontSize: isMobile ? '0.75rem' : '0.875rem' }}
+                    >
+                      {repo.forks_count}
+                    </Typography>
+                  </Box>
+                </Box>
+              </Box>
+            }
+          />
+        </ListItemButton>
+      </motion.div>
+      <Divider />
+    </React.Fragment>
+  );
+};
+
 const UserRepositories: React.FC<{ username: string }> = ({ username }) => {
   const [repos, setRepos] = useState<Repo[]>([]);
   const [loading, setLoading] = useState(true);
@@ -40,7 +122,6 @@ const UserRepositories: React.FC<{ username: string }> = ({ username }) => {
       });
   }, [username]);
 
-  // Check if screen size is mobile
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   if (loading) {
@@ -48,59 +129,10 @@ const UserRepositories: React.FC<{ username: string }> = ({ username }) => {
   }
 
   return (
-    <Box sx={{ p: isMobile ? 4 : 8, maxWidth: isMobile ? "100%" : "1250px", margin: "auto", }}>
+    <Box sx={{ p: isMobile ? 4 : 8, maxWidth: isMobile ? '100%' : '1250px', margin: 'auto' }}>
       <List>
         {repos.map((repo) => (
-          <React.Fragment key={repo.id}>
-            <ListItemButton
-              onClick={() => window.open(repo.html_url, '_blank')}
-              sx={{
-                borderRadius: 1,
-                mb: isMobile ? 1 : 2, // Reduced margin bottom for mobile
-                mt: isMobile ? 1 : 2, // Reduced margin bottom for mobile
-                p: isMobile ? 1 : 2, // Reduced padding for mobile
-                flexDirection: 'row',
-                alignItems: 'center',
-              }}
-            >
-              <ListItemIcon>
-                <Avatar
-                  alt="GitHub"
-                  src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-                  sx={{ width: isMobile ? 24 : 40, height: isMobile ? 24 : 40 }} // Smaller avatar for mobile
-                />
-              </ListItemIcon>
-              <ListItemText
-                primary={
-                  <Typography variant="body2" sx={{ fontWeight: 'bold',color: theme.palette.primary.main, fontSize: isMobile ? '0.875rem' : '1rem' }}>
-                    {repo.name}
-                  </Typography>
-                }
-                secondary={
-                  <Box sx={{ mt: 0.5 }}>
-                    <Typography variant="caption" color="text.secondary" sx={{ fontSize: isMobile ? '0.75rem' : '0.875rem' }}>
-                      {repo.description || 'No description available.'}
-                    </Typography>
-                    <Box sx={{ display: 'flex', flexDirection: 'row', mt: 1 }}>
-                      <Box sx={{ display: 'flex', alignItems: 'center', mr: 1 }}>
-                        <StarIcon sx={{ color: theme.palette.warning.main, fontSize: isMobile ? 16 : 20, mr: 0.5 }} />
-                        <Typography variant="caption" color="text.secondary" sx={{ fontSize: isMobile ? '0.75rem' : '0.875rem' }}>
-                          {repo.stargazers_count}
-                        </Typography>
-                      </Box>
-                      <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                        <ForkRightIcon sx={{ color: theme.palette.info.main, fontSize: isMobile ? 16 : 20, mr: 0.5 }} />
-                        <Typography variant="caption" color="text.secondary" sx={{ fontSize: isMobile ? '0.75rem' : '0.875rem' }}>
-                          {repo.forks_count}
-                        </Typography>
-                      </Box>
-                    </Box>
-                  </Box>
-                }
-              />
-            </ListItemButton>
-            <Divider />
-          </React.Fragment>
+          <RepositoryItem key={repo.id} repo={repo} isMobile={isMobile} />
         ))}
       </List>
     </Box>

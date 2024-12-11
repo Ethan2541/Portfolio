@@ -8,34 +8,38 @@ import AboutMe from "@/components/AboutMe";
 import PinnedRepositories from "@/components/repositories/PinnedRepositories";
 import DecodeAnimation from "react-decode-animation";
 import user from "@/data/user.json";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import AnimatedSection from "@/components/AnimatedSection";
 
 export default function Home() {
   const t = useTranslations("HomePage");
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
     <>
-          <Box
-            component="video"
-            autoPlay
-            muted
-            loop
-            sx={{
-              position: 'fixed', // Change to fixed to keep it in place during scroll
-              top: 0,
-              left: 0,
-              height: '100%',
-              width: '100%',
-              zIndex: 0,
-              objectFit: 'cover',
-              transform: 'rotate(180deg)',
-              opacity: 0.6,
-              filter: 'blur(3px)',
-            }}
-          >
-            <source src="assets/blackhole.webm" type="video/webm" />
-          </Box>
+      <Box
+        component="video"
+        autoPlay
+        muted
+        loop
+        sx={{
+          position: "fixed", // Change to fixed to keep it in place during scroll
+          top: 0,
+          left: 0,
+          height: "100%",
+          width: "100%",
+          zIndex: 0,
+          objectFit: "cover",
+          transform: "rotate(180deg)",
+          opacity: 0.6,
+          filter: "blur(3px)",
+        }}
+      >
+        <source src="assets/blackhole.webm" type="video/webm" />
+      </Box>
       <NavBar />
 
       <Box
@@ -48,26 +52,33 @@ export default function Home() {
           padding: isMobile ? theme.spacing(2) : theme.spacing(4), // Adjust padding for mobile
         }}
       >
-        
         <Box
           sx={{
-            position: 'relative',
-            width: '80%',   // Set width to 100% to center the content
-            height: '70vh',  // Set a specific height for the Laptop3D container
-            overflow: 'hidden', // Prevent overflow if the content exceeds the container
-            zIndex: 1,        // Ensure it stays above other elements
-            display: 'flex',
-            flexDirection: 'row',
-            left : '50%',
-            transform: 'translateX(-50%)',
-            alignItems: 'center',
-            justifyContent: 'center', // Center the content horizontally
-            '@media (max-width: 1250px)': {
-              height: '60vh', // Adjust height for tablets
-            }
+            position: "relative",
+            width: "80%", // Set width to 100% to center the content
+            height: "70vh", // Set a specific height for the Laptop3D container
+            overflow: "hidden", // Prevent overflow if the content exceeds the container
+            zIndex: 0, // Ensure it stays above other elements
+            display: "flex",
+            flexDirection: "row",
+            left: "50%",
+            transform: "translateX(-50%)",
+            alignItems: "center",
+            justifyContent: "center", // Center the content horizontally
+            "@media (max-width: 1250px)": {
+              height: "60vh", // Adjust height for tablets
+            },
           }}
         >
-          <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+          <Box
+            sx={{
+              flex: 1,
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
             <Typography
               variant="h1"
               color={theme.palette.primary.main}
@@ -88,7 +99,7 @@ export default function Home() {
                 あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん
                 가나다라마바사아자차카타파하
                 一二三四五六七八九十百千万"
-                interval={100}
+                interval={150}
               />
             </Typography>
             <Typography
@@ -109,20 +120,25 @@ export default function Home() {
                 あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん
                 가나다라마바사아자차카타파하
                 一二三四五六七八九十百千万"
-                interval={100}
+                interval={150}
               />
             </Typography>
           </Box>
-    
         </Box>
       </Box>
-      <Box>
-        <AboutMe description={t("description")} />
-        <Experiences />
-        <PinnedRepositories username={user.githubusername} />
+      <Box sx={{ backgroundColor: theme.palette.background.default }}>
+      <Box sx={{ backgroundColor: theme.palette.background.paper}}>
+        <AnimatedSection>
+          <AboutMe description={t("description")} />
+        </AnimatedSection>
+      </Box>
+        <AnimatedSection>
+          <Experiences />
+        </AnimatedSection>
+        <AnimatedSection>
+          <PinnedRepositories username={user.githubusername} />
+        </AnimatedSection>
       </Box>
     </>
   );
 }
-
-

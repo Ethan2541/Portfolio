@@ -3,6 +3,7 @@ import Experience from "./Experience";
 import { Box, Typography, useTheme, Grid, useMediaQuery } from "@mui/material";
 import { useTranslations } from "next-intl";
 import SeeMoreButton from "../SeeMoreButton";
+import zIndex from "@mui/material/styles/zIndex";
 
 interface ExperienceType {
   title: string;
@@ -35,7 +36,6 @@ const Experiences: React.FC = () => {
   return (
     <Box
       sx={{
-        backgroundColor: theme.palette.background.default,
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -47,7 +47,7 @@ const Experiences: React.FC = () => {
     >
       {/* Header section */}
       <Typography
-        variant="h4"
+        variant="h2"
         color={theme.palette.primary.main}
         sx={{
           fontWeight: "bold",
@@ -56,6 +56,7 @@ const Experiences: React.FC = () => {
           textTransform: "uppercase",
           letterSpacing: "0.1rem",
           fontSize: isMobile ? "1.5rem" : "2rem",
+          zIndex: 1,
         }}
       >
         {t("experience")}

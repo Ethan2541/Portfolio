@@ -74,8 +74,12 @@ const PinnedRepositories: React.FC<{ username: string }> = ({ username }) => {
   return (
     <Box
       sx={{
-        backgroundColor: theme.palette.background.default,
         padding: theme.spacing(isMobile ? 3 : 6), // Adjust padding for mobile
+        margin: "auto",
+        minHeight: "50vh",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
       }}
       id="project"
     >
@@ -85,10 +89,11 @@ const PinnedRepositories: React.FC<{ username: string }> = ({ username }) => {
         sx={{
           fontWeight: "bold",
           textAlign: "center",
-          marginBottom: isMobile ? theme.spacing(4) : theme.spacing(5), // Adjust margin for mobile
+          marginBottom: theme.spacing(3),
           textTransform: "uppercase",
-          letterSpacing: "0.15rem",
-          fontSize: isMobile ? "1.5rem" : "2rem", // Adjust font size for mobile
+          letterSpacing: "0.1rem",
+          fontSize: isMobile ? "1.5rem" : "2rem",
+          zIndex: 1,
         }}
       >
         {t("projects")}

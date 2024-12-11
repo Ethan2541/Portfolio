@@ -47,6 +47,8 @@ export default function NavBar({ alwaysShowTopNav = false }: Readonly<NavBarProp
             width: "100%",
             top: 0,
             left: 0,
+            pointerEvents: visibility === 1 ? "none" : "auto", // Disable interactions when invisible
+            userSelect: visibility === 1 ? "none" : "auto", // Disable text selection when invisible
           }}
         >
           <SideNavBar
@@ -66,6 +68,8 @@ export default function NavBar({ alwaysShowTopNav = false }: Readonly<NavBarProp
           top: 0,
           left: 0,
           zIndex: 100,
+          pointerEvents: alwaysShowTopNav || isMobile || visibility > 0.30 ? "auto" : "none", // Disable interactions when invisible
+          userSelect: alwaysShowTopNav || isMobile || visibility > 0.30 ? "auto" : "none", // Disable text selection when invisible
         }}
       >
         <TopNavBar

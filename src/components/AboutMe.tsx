@@ -24,7 +24,6 @@ const AboutMe: React.FC<AboutMeProps> = ({ description }) => {
         textAlign: isMobile ? "center" : "left",
         overflow: "hidden",
         height: "50vh",
-        backgroundColor: theme.palette.background.paper,
       }}
       id="aboutme"
     >
@@ -36,7 +35,7 @@ const AboutMe: React.FC<AboutMeProps> = ({ description }) => {
           width: "100%",
           height: "100%",
           transform: "translate(-50%, -50%)",
-          zIndex: 0,
+          zIndex: -1,
         }}
       />
 
