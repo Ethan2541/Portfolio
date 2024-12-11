@@ -21,6 +21,7 @@ const PinnedRepositories: React.FC<{ username: string }> = ({ username }) => {
 
   // Detect mobile screen size
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const maxProjects = isMobile ? 3 : 6;
 
   useEffect(() => {
     const fetchPinnedRepos = async () => {
@@ -74,7 +75,9 @@ const PinnedRepositories: React.FC<{ username: string }> = ({ username }) => {
   return (
     <Box
       sx={{
-        padding: theme.spacing(isMobile ? 3 : 6), // Adjust padding for mobile
+        padding: isMobile ? theme.spacing(3) : theme.spacing(12),
+        paddingTop: isMobile ? theme.spacing(1.5) : theme.spacing(6),
+        paddingBottom: isMobile ? theme.spacing(1.5) : theme.spacing(6),
         margin: "auto",
         minHeight: "50vh",
         display: "flex",
@@ -114,9 +117,9 @@ const PinnedRepositories: React.FC<{ username: string }> = ({ username }) => {
           {error}
         </Alert>
       ) : (
-        <Box sx={{ maxWidth: isMobile ? "100%" : "1250px", margin: "auto" }}>
+        <Box sx={{ maxWidth: isMobile ? "100%" : "1250px", margin: "auto", marginTop: isMobile ? 1 : 2 }}>
           <Grid container spacing={isMobile ? 2 : 4} >
-            {pinnedRepos.map((repo) => (
+            {pinnedRepos.slice(0, maxProjects).map((repo) => (
               <Grid item xs={12} sm={6} md={4} key={repo.name}>
                 <ProjectCard
                   user={username}

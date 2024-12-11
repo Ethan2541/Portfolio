@@ -13,7 +13,7 @@ function getDesignTokens(mode: PaletteMode) {
               main: "#000000",
             },
             secondary: {
-              main: "#fa9c86",
+              main: "#348fab",
             },
             background: {
               default: "#ffffff",
@@ -25,7 +25,7 @@ function getDesignTokens(mode: PaletteMode) {
               main: "#ffffff",
             },
             secondary: {
-              main: "#fa9c86",
+              main: "#ffffff",
             },
             background: {
               default: "#121212",

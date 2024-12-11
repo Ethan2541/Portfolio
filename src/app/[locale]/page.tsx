@@ -8,16 +8,12 @@ import AboutMe from "@/components/AboutMe";
 import PinnedRepositories from "@/components/repositories/PinnedRepositories";
 import DecodeAnimation from "react-decode-animation";
 import user from "@/data/user.json";
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
 import AnimatedSection from "@/components/AnimatedSection";
 
 export default function Home() {
   const t = useTranslations("HomePage");
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
-
   return (
     <>
       <Box
@@ -34,7 +30,7 @@ export default function Home() {
           zIndex: 0,
           objectFit: "cover",
           transform: "rotate(180deg)",
-          opacity: 0.6,
+          opacity: theme.palette.mode === "dark" ? 0.6 : 0.07,
           filter: "blur(3px)",
         }}
       >

@@ -40,6 +40,7 @@ const Experiences: React.FC = () => {
         flexDirection: "column",
         alignItems: "center",
         padding: isMobile ? theme.spacing(3) : theme.spacing(12),
+        paddingBottom: isMobile ? theme.spacing(1.5) : theme.spacing(6),
         margin: "auto",
         minHeight: "50vh",
       }}

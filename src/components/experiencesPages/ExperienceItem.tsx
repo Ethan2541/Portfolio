@@ -23,8 +23,8 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({ experience }) => {
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 50 }}
+      initial={{ opacity: 0, x: -50 }}
+      animate={{ opacity: inView ? 1 : 0, x: inView ? 0 : -50 }}
       transition={{ duration: 0.6 }}
     >
       <Box
