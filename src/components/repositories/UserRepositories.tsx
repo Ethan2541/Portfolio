@@ -12,8 +12,10 @@ import {
   ListItemButton,
   Avatar,
   useMediaQuery,
+  Grid,
 } from '@mui/material';
 import { Star as StarIcon, ForkRight as ForkRightIcon } from '@mui/icons-material';
+import ProfileCard from './ProfileCard';
 
 interface Repo {
   id: number;
@@ -108,6 +110,7 @@ const UserRepositories: React.FC<{ username: string }> = ({ username }) => {
   const [repos, setRepos] = useState<Repo[]>([]);
   const [loading, setLoading] = useState(true);
   const theme = useTheme();
+  
 
   useEffect(() => {
     fetch(`https://api.github.com/users/${username}/repos?per_page=100`)
@@ -128,13 +131,30 @@ const UserRepositories: React.FC<{ username: string }> = ({ username }) => {
     return <Typography>Loading...</Typography>;
   }
 
+  const totalStars = repos.reduce((acc, repo) => acc + repo.stargazers_count, 0);
+  const totalForks = repos.reduce((acc, repo) => acc + repo.forks_count, 0);
+
   return (
-    <Box sx={{ p: isMobile ? 4 : 8, maxWidth: isMobile ? '100%' : '1250px', margin: 'auto' }}>
-      <List>
-        {repos.map((repo) => (
-          <RepositoryItem key={repo.id} repo={repo} isMobile={isMobile} />
-        ))}
-      </List>
+    <Box sx={{ p: isMobile ? 4 : 8, maxWidth: isMobile ? '100%' : '1250px'}}>
+      <Grid container spacing={2}>
+        <Grid item xs={4}>
+          <Box sx={{ position: 'sticky', top: isMobile ? 56 : 64 }}>
+            <ProfileCard
+              username= {username}
+              profilePicture={`https://avatars.githubusercontent.com/${username}`}
+              forks={totalForks}
+              favorites={totalStars}
+            />
+          </Box>
+        </Grid>
+        <Grid item xs={8}>
+          <List>
+            {repos.map((repo) => (
+              <RepositoryItem key={repo.id} repo={repo} isMobile={isMobile} />
+            ))}
+          </List>
+        </Grid>
+      </Grid>
     </Box>
   );
 };
