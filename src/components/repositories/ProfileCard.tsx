@@ -25,7 +25,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ username, profilePicture, for
         transition: "transform 0.3s ease, box-shadow 0.3s ease",
         "&:hover": {
           transform: "scale(1.01)",
-          boxShadow: "0px 12px 30px rgba(255, 255, 255, 0.3)",
+          boxShadow: theme.palette.mode === "dark" ? "0px 12px 30px rgba(255, 255, 255, 0.3)" : "0px 12px 30px rgba(0, 0, 0, 0.3)",
         },
       }}
     >

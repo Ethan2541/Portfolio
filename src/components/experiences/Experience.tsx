@@ -33,12 +33,12 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
         color: theme.palette.primary.main,
         borderRadius: 2,
         transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-        backgroundColor: theme.palette.background.default,
+        backgroundColor: theme.palette.background.paper,
         boxShadow: `1px 1px 1px rgba(0, 0, 0, 0.2)`,
         '&:hover': {
             transform: 'scale(1.01)',
         },
-        opacity: 0.99
+        opacity: 0.99,
       }}
     >
       <CardActionArea>

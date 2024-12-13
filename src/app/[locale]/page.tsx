@@ -123,7 +123,7 @@ export default function Home() {
         </Box>
       </Box>
       <Box sx={{ backgroundColor: theme.palette.background.default }}>
-        <Box sx={{ backgroundColor: theme.palette.background.paper}}>
+        <Box sx={{ backgroundColor: theme.palette.background.alternative }}>
           <AnimatedSection>
             <AboutMe description={t("description")} />
           </AnimatedSection>

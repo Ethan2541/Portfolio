@@ -3,6 +3,12 @@
 
 import { PaletteMode, createTheme } from '@mui/material';
 
+declare module '@mui/material/styles' {
+  interface TypeBackground {
+    alternative: string;
+  }
+}
+
 function getDesignTokens(mode: PaletteMode) {
   return createTheme({
     palette: {
@@ -17,7 +23,8 @@ function getDesignTokens(mode: PaletteMode) {
             },
             background: {
               default: "#ffffff",
-              paper: "#cbd4d5",
+              paper: "#ededed",
+              alternative: "#cbd4d5",
             },
           }
         : {
@@ -29,7 +36,8 @@ function getDesignTokens(mode: PaletteMode) {
             },
             background: {
               default: "#121212",
-              paper: "#2b373d",
+              paper: "#2b2b2b",
+              alternative: "#2b373d",
             },
           }),
     },

@@ -22,7 +22,7 @@ export default function ProjectCard({ user, name, description, stargazerCount, f
             sx={{
                 borderRadius: 2,
                 transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                backgroundColor: theme.palette.background.default,
+                backgroundColor: theme.palette.background.paper,
                 boxShadow: `1px 1px 1px rgba(0, 0, 0, 0.2)`,
                 '&:hover': {
                     transform: 'scale(1.03)',
