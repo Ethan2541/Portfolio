@@ -48,7 +48,7 @@ export default function SideNavBar({
         }}
       >
         <Box component="li" sx={{ margin: '10px 0' }}>
-          <Button variant="text" component="a" href="#project">
+          <Button variant="text" component="a" href="#projects">
             {t("projects")}
           </Button>
         </Box>
