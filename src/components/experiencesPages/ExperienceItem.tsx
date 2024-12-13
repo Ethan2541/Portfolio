@@ -4,8 +4,10 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 interface ExperienceType {
+  id: number;
   title: string;
   company: string;
+  logo?: string;
   description: string;
   date: string;
   tags: string[];
@@ -52,6 +54,21 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({ experience }) => {
           <Typography color="text.secondary" sx={{ fontStyle: "italic" }}>
             {experience.date}
           </Typography>
+          {
+            experience.logo && (
+              <Box mt={1} display="flex" justifyContent={isMobile ? 'center' : 'left'}>
+                <img
+                  src={experience.logo}
+                  style={{
+                    maxWidth: "124px",
+                    height: 'auto',
+                    borderRadius: '8px',
+                    color: theme.palette.primary.main,
+                  }}
+                />
+              </Box>
+            )
+          }
         </Box>
 
         {/* Colonne droite pour le contenu de l'expérience */}

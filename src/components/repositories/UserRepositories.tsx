@@ -14,7 +14,7 @@ import {
   useMediaQuery,
   Grid,
 } from '@mui/material';
-import { Star as StarIcon, ForkRight as ForkRightIcon } from '@mui/icons-material';
+import { Star as StarIcon, ForkRight as ForkRightIcon, MaximizeTwoTone } from '@mui/icons-material';
 import ProfileCard from './ProfileCard';
 
 interface Repo {
@@ -135,10 +135,10 @@ const UserRepositories: React.FC<{ username: string }> = ({ username }) => {
   const totalForks = repos.reduce((acc, repo) => acc + repo.forks_count, 0);
 
   return (
-    <Box sx={{ p: isMobile ? 4 : 8, maxWidth: isMobile ? '100%' : '1250px'}}>
+    <Box sx={{ p: isMobile ? 4 : 8, maxWidth: "1900px", margin: 'auto' }}>
       <Grid container spacing={2}>
         <Grid item xs={4}>
-          <Box sx={{ position: 'sticky', top: isMobile ? 56 : 64 }}>
+          <Box sx={{ position: 'sticky', top: isMobile ? 56 : 80, maxWidth: "600px" }}>
             <ProfileCard
               username= {username}
               profilePicture={`https://avatars.githubusercontent.com/${username}`}
@@ -148,7 +148,7 @@ const UserRepositories: React.FC<{ username: string }> = ({ username }) => {
           </Box>
         </Grid>
         <Grid item xs={8}>
-          <List>
+          <List sx={{ maxWidth: "1250px" }}>
             {repos.map((repo) => (
               <RepositoryItem key={repo.id} repo={repo} isMobile={isMobile} />
             ))}

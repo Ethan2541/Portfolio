@@ -3,7 +3,7 @@
     "title": "MALEK BOUZARKOUNA",
     "subtitle": "Web and Mobile Developer",
     "projects": "My Projects",
-    "experience": "My Experiences",
+    "experiences": "My Experiences",
     "about": "About Me",
     "seemore": "See More",
     "description": "I am a computer science student passionate about web and mobile development. I have completed several projects using modern technologies like React, Angular, Node.js, Express.js, MongoDB, MySQL, Ionic, Flutter, etc. I am currently looking for a 6-month internship starting from February 2022."
@@ -21,7 +21,7 @@
 
   "Navbar": {
     "projects": "Projects",
-    "experience": "Experience",
+    "experiences": "Experiences",
     "resume": "Resume",
     "about": "About"
   },
@@ -29,13 +29,16 @@
   "Experiences": {
     "experiencesData": [
       {
+        "id": 1,
         "title": "Software Engineer",
         "company": "Tech Corp",
+        "logo": "https://www.excalibra.com/wp-content/uploads/2019/05/logo_EX_CALIBRA_544_180.png",
         "description": "Developed a full-stack application using React and Node.js.",
         "date": "Jan 2020 - Present",
         "tags": ["JavaScript", "TypeScript", "React", "Storybook"]
       },
       {
+        "id": 2,
         "title": "Frontend Developer",
         "company": "Web Solutions",
         "description": "Worked on enhancing UI/UX of the main product using Material-UI and React.",

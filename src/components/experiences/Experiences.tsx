@@ -6,11 +6,13 @@ import SeeMoreButton from "../SeeMoreButton";
 import zIndex from "@mui/material/styles/zIndex";
 
 interface ExperienceType {
+  id: number;
   title: string;
   company: string;
   description: string;
   date: string;
   tags: string[];
+  logo?: string;
 }
 
 const Experiences: React.FC = () => {
@@ -39,7 +41,7 @@ const Experiences: React.FC = () => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        padding: isMobile ? theme.spacing(3) : theme.spacing(12),
+        padding: isMobile ? theme.spacing(6) : theme.spacing(12),
         paddingBottom: isMobile ? theme.spacing(1.5) : theme.spacing(6),
         margin: "auto",
         minHeight: "50vh",
@@ -60,7 +62,7 @@ const Experiences: React.FC = () => {
           zIndex: 1,
         }}
       >
-        {t("experience")}
+        {t("experiences")}
       </Typography>
 
       {/* Experiences list */}
@@ -69,11 +71,13 @@ const Experiences: React.FC = () => {
           {experiences.map((experience, index) => (
             <Grid item xs={12} key={experience.title + experience.company + experience.date}>
               <Experience
+                id={experience.id}
                 title={experience.title}
                 company={experience.company}
                 description={experience.description}
                 date={experience.date}
                 tags={experience.tags}
+                logo={experience.logo}
               />
             </Grid>
           ))}

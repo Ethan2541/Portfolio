@@ -3,7 +3,7 @@
     "title": "MALEK BOUZARKOUNA",
     "subtitle": "Développeur Web et Mobile",
     "projects": "Mes Projets",
-    "experience": "Mes Expériences",
+    "experiences": "Mes Expériences",
     "about": "A propos",
     "seemore": "Voir plus",
     "description": "Je suis un étudiant en informatique passionné par le développement web et mobile. J'ai réalisé plusieurs projets en utilisant des technologies modernes comme React, Angular, Node.js, Express.js, MongoDB, MySQL, Ionic, Flutter, etc. Je suis actuellement à la recherche d'un stage de fin d'études pour une durée de 6 mois à partir de février 2022."
@@ -25,7 +25,7 @@
 
   "Navbar": {
     "projects": "Projets",
-    "experience": "Expérience",
+    "experiences": "Expériences",
     "resume": "CV",
     "about": "À propos"
   },
@@ -33,13 +33,16 @@
   "Experiences": {
     "experiencesData": [
       {
+        "id": 1,
         "title": "sdfjlsd",
         "company": "Tech Corp",
+        "logo": "https://www.excalibra.com/wp-content/uploads/2019/05/logo_EX_CALIBRA_544_180.png",
         "description": "Developed a full-stack application using React and Node.js.",
         "date": "Jan 2020 - Present",
         "tags": ["JavaScript", "TypeScript", "React", "Storybook"]
       },
       {
+        "id": 2,
         "title": "Frontend Developer",
         "company": "Web Solutions",
         "description": "Worked on enhancing UI/UX of the main product using Material-UI and React.",
@@ -47,6 +50,7 @@
         "tags": ["JavaScript", "TypeScript", "React", "Storybook"]
       },
       {
+        "id": 3,
         "title": "Frontend Developer",
         "company": "Web Solutions",
         "description": "Worked on enhancing UI/UX of the main product using Material-UI and React.",
@@ -54,6 +58,7 @@
         "tags": ["JavaScript", "TypeScript", "React", "Storybook"]
       },
       {
+        "id": 4,
         "title": "Frontend Developer",
         "company": "Web Solutions",
         "description": "Worked on enhancing UI/UX of the main product using Material-UI and React.",
@@ -61,6 +66,7 @@
         "tags": ["JavaScript", "TypeScript", "React", "Storybook"]
       },
       {
+        "id": 5,
         "title": "Frontend Developer",
         "company": "Web Solutions",
         "description": "Worked on enhancing UI/UX of the main product using Material-UI and React.",

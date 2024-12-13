@@ -45,18 +45,18 @@ const MenuDrawer = ({ open, onClose, githubusername, linkedinusername }: Readonl
         }}
       >
         {/* Main Navigation Section */}
-        <Stack direction="column" spacing={2} component="ul" sx={{ listStyle: "none", margin: 0, padding: 0 }}>
+        <Stack direction="column" spacing={2} component="ul" sx={{ listStyle: "none", margin: 0, padding: 0, alignItems: "center" }}>
           <Link href="/" passHref legacyBehavior>
             <IconButton aria-label="Home" component="a" onClick={onClose}>
-              <HomeIcon sx={{ color: "white" }} />
+              <HomeIcon sx={{ color: theme.palette.primary.main }} />
             </IconButton>
           </Link>
-          <Link href="/#project" passHref legacyBehavior>
+          <Link href="/#projects" passHref legacyBehavior>
             <Button
               variant="text"
               startIcon={<WorkIcon />}
               component="a"
-              sx={{ color: "white", textTransform: "none" }}
+              sx={{ color: theme.palette.primary.main, textTransform: "none" }}
               onClick={onClose}
             >
               {t("projects")}
@@ -67,10 +67,10 @@ const MenuDrawer = ({ open, onClose, githubusername, linkedinusername }: Readonl
               variant="text"
               startIcon={<DescriptionIcon />}
               component="a"
-              sx={{ color: "white", textTransform: "none" }}
+              sx={{ color: theme.palette.primary.main, textTransform: "none" }}
               onClick={onClose}
             >
-              {t("experience")}
+              {t("experiences")}
             </Button>
           </Link>
           <Link href="/assets/resume.pdf" passHref legacyBehavior>
@@ -79,42 +79,49 @@ const MenuDrawer = ({ open, onClose, githubusername, linkedinusername }: Readonl
               startIcon={<DescriptionIcon />}
               component="a"
               target="_blank"
-              sx={{ color: "white", textTransform: "none" }}
+              sx={{ color: theme.palette.primary.main, textTransform: "none" }}
               onClick={onClose}
             >
               {t("resume")}
             </Button>
           </Link>
-          <Link href="/blog" passHref legacyBehavior>
+          {/* <Link href="/blog" passHref legacyBehavior>
             <IconButton aria-label="Blog" component="a" onClick={onClose}>
-              <BookIcon sx={{ color: "white" }} />
+              <BookIcon sx={{ color: theme.palette.primary.main }} />
             </IconButton>
-          </Link>
+          </Link> */}
         </Stack>
 
         {/* Social Media Section */}
         <Stack
           direction="column"
+          alignItems="center"
           spacing={2}
           component="ul"
           sx={{ listStyle: "none", margin: 0, padding: 0, marginTop: "auto" }}
         >
           <Link href={`https://github.com/${githubusername}`} passHref>
             <IconButton aria-label="GitHub" component="a" target="_blank" onClick={onClose}>
-              <GitHubIcon sx={{ color: "white" }} />
+              <GitHubIcon sx={{ color: theme.palette.primary.main }} />
             </IconButton>
           </Link>
           <Link href={`https://linkedin.com/in/${linkedinusername}`} passHref>
             <IconButton aria-label="LinkedIn" component="a" target="_blank" onClick={onClose}>
-              <LinkedInIcon sx={{ color: "white" }} />
+              <LinkedInIcon sx={{ color: theme.palette.primary.main }} />
             </IconButton>
           </Link>
         </Stack>
 
         {/* Settings Section */}
-        <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ marginTop: theme.spacing(2) }}>
+        <Stack
+          direction="column"
+          alignItems="center"
+          spacing={2}
+          component="ul"
+          sx={{ listStyle: "none", margin: 0, padding: 0, marginTop: "auto" }}
+        >
           <IconButton aria-label="Toggle Mode" onClick={() => { toggleMode(mode); onClose(); }}>
-            <LightModeIcon sx={{ color: "white" }} />
+            <LightModeIcon sx={{ color: theme.palette.primary.main }} />
           </IconButton>
           <LanguageSelector />
         </Stack>

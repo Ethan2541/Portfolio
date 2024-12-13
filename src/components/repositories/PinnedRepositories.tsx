@@ -75,16 +75,16 @@ const PinnedRepositories: React.FC<{ username: string }> = ({ username }) => {
   return (
     <Box
       sx={{
-        padding: isMobile ? theme.spacing(3) : theme.spacing(12),
-        paddingTop: isMobile ? theme.spacing(1.5) : theme.spacing(6),
-        paddingBottom: isMobile ? theme.spacing(1.5) : theme.spacing(6),
+        padding: isMobile ? theme.spacing(6) : theme.spacing(12),
+        paddingTop: isMobile ? theme.spacing(3) : theme.spacing(6),
+        paddingBottom: isMobile ? theme.spacing(3) : theme.spacing(6),
         margin: "auto",
         minHeight: "50vh",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
       }}
-      id="project"
+      id="projects"
     >
       <Typography
         variant="h2"

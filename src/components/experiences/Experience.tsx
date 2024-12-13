@@ -1,22 +1,26 @@
 import React from 'react';
 import { Card, CardContent, Typography, Box, Chip, useTheme, useMediaQuery, CardActionArea } from '@mui/material';
+import { mx_bilerp_0 } from 'three/src/nodes/materialx/lib/mx_noise.js';
+import exp from 'constants';
 
 interface ExperienceCardProps {
+  id: number;
   date: string;
   title: string;
   company: string;
   description: string;
   tags: string[];
-  imageUrl?: string; // Ajout d'une prop optionnelle pour l'image
+  logo?: string; // Ajout d'une prop optionnelle pour l'image
 }
 
 const ExperienceCard: React.FC<ExperienceCardProps> = ({
+  id,
   date,
   title,
   company,
   description,
   tags,
-  imageUrl = "https://www.excalibra.com/wp-content/uploads/2019/05/logo_EX_CALIBRA_544_180.png"
+  logo
 }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // Vérification si l'écran est mobile
@@ -44,26 +48,30 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
             flexDirection={isMobile ? 'column' : 'row'} // Sur mobile, on empile les éléments verticalement
             justifyContent="space-between"
             alignItems={isMobile ? 'center' : 'flex-start'} // Alignement centré sur mobile
-            sx={{ padding: isMobile ? 1 : 2}}
+            p={isMobile ? 1 : 2}
           >
-            <Box sx={{ minWidth: isMobile ? '100%' : '150px', textAlign: 'left' }}>
+            <Box sx={{ minWidth: isMobile ? '100%' : '150px', textAlign: 'left', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <Typography variant="body2" color="textSecondary">
                 {date}
               </Typography>
-              <Box mt={1} display="flex" justifyContent={isMobile ? 'center' : 'left'}>
-                <img
-                  src={imageUrl}
-                  alt="Company Logo"
-                  style={{
-                    maxWidth: isMobile ? "100px" : "124px", // Réduction de la taille de l'image sur mobile
-                    height: 'auto',
-                    borderRadius: '8px',
-                  }}
-                />
-              </Box>
+              {
+                logo && (
+                  <Box mt={1} display="flex" justifyContent={isMobile ? 'center' : 'left'}>
+                    <img
+                      src={logo}
+                      alt="Company Logo"
+                      style={{
+                        maxWidth: "124px",
+                        height: 'auto',
+                        borderRadius: '8px',
+                      }}
+                    />
+                  </Box>
+                )
+              }
             </Box>
 
-            <Box sx={{ flexGrow: 1, ml: isMobile ? 0 : 3, mt: isMobile ? 2 : 0 }}>
+            <Box sx={{ flexGrow: 1, ml: isMobile ? 0 : 3, mt: isMobile ? 2 : 0, borderTop: isMobile ? 1 : 0, borderLeft: isMobile ? 0 : 1, borderColor: 'primary.main', pl: isMobile ? 0 : 3, pt: isMobile ? 2 : 0 }}>
               <Typography variant={isMobile ? "h6" : "h5"} color="primary" textAlign={isMobile ? 'center' : 'left'}>
                 {title}
               </Typography>

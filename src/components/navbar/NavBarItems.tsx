@@ -14,14 +14,14 @@ const NavBarItems = () => {
           <HomeIcon sx={{ color: "white" }} />
         </IconButton>
       </Link>
-      <Link href="/#project" passHref legacyBehavior>
-        <Button variant="text" component="a" sx={{ color: "white", textTransform: "none" }}>
-          {t("projects")}
-        </Button>
-      </Link>
       <Link href="/#experiences" passHref legacyBehavior>
         <Button variant="text" component="a" sx={{ color: "white", textTransform: "none" }}>
-          {t("experience")}
+          {t("experiences")}
+        </Button>
+      </Link>
+      <Link href="/#projects" passHref legacyBehavior>
+        <Button variant="text" component="a" sx={{ color: "white", textTransform: "none" }}>
+          {t("projects")}
         </Button>
       </Link>
       <Link href="/assets/resume.pdf" passHref legacyBehavior>
@@ -29,11 +29,11 @@ const NavBarItems = () => {
           {t("resume")}
         </Button>
       </Link>
-      <Link href="/blog" passHref legacyBehavior>
+      {/* <Link href="/blog" passHref legacyBehavior>
         <IconButton aria-label="Blog" component="a">
           <BookIcon sx={{ color: "white" }} />
         </IconButton>
-      </Link>
+      </Link> */}
     </Stack>
   );
 };

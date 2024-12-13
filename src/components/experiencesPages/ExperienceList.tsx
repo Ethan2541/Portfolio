@@ -3,11 +3,13 @@ import { Divider, Grid, useMediaQuery, useTheme } from "@mui/material";
 import ExperienceItem from "./ExperienceItem";
 
 interface ExperienceType {
+  id: number;
   title: string;
   company: string;
   description: string;
   date: string;
   tags: string[];
+  logo?: string;
 }
 
 interface ExperienceListProps {
