@@ -107,7 +107,7 @@ export default function SideNavBar({
             <LinkedInIcon />
           </IconButton>
         </Box>
-        <Box component="li">
+        {/* <Box component="li">
           <IconButton
             aria-label="Blog"
             component="a"
@@ -116,7 +116,7 @@ export default function SideNavBar({
           >
             <BookIcon />
           </IconButton>
-        </Box>
+        </Box> */}
       </Box>
 
       {/* Theme Toggle and Language Selector */}

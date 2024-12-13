@@ -8,11 +8,13 @@ import NavBar from "@/components/navbar/NavBar";
 import ExperienceList from "../../../components/experiencesPages/ExperienceList";
 
 interface ExperienceType {
+  id: number;
   title: string;
   company: string;
   description: string;
   date: string;
   tags: string[];
+  logo?: string;
 }
 
 

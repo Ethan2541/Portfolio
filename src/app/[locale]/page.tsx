@@ -34,7 +34,7 @@ export default function Home() {
           filter: "blur(3px)",
         }}
       >
-        <source src="assets/blackhole.webm" type="video/webm" />
+        <source src="/assets/blackhole.webm" type="video/webm" />
       </Box>
       <NavBar />
 
