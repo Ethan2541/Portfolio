@@ -6,6 +6,7 @@ import user from "@/data/user.json";
 import { useTranslations } from "next-intl";
 import { useEffect } from "react";
 import { Box, useTheme } from "@mui/material";
+import Head from "next/head";
 
 const posts = [
   {
@@ -29,22 +30,32 @@ export default function Blog() {
   }, []);
   const theme = useTheme();
   return (
-        <>
-        <NavBar alwaysShowTopNav={true} />
-        <Box
-          sx={{
-            backgroundColor: theme.palette.background.default,
-            minHeight: "100vh",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            paddingTop: theme.spacing(8),
-            position: "relative",
-          }}
-        >
-          <BlogPosts posts={posts} />
-        </Box>
-      </>
+    <>
+      <Head>
+        <title>Malek Bouzarkouna | Blog</title>
+        <meta name="description" content="Blog posts by Malek Bouzarkouna." />
+        <meta name="keywords" content="Malek Bouzarkouna, blog, posts" />
+        <meta property="og:title" content="Malek Bouzarkouna | Blog" />
+        <meta property="og:description" content="Blog posts by Malek Bouzarkouna." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://your-portfolio-url.com/blog" />
+        <meta property="og:image" content="https://your-portfolio-url.com/og-image.jpg" />
+      </Head>
+      <NavBar alwaysShowTopNav={true} />
+      <Box
+        sx={{
+          backgroundColor: theme.palette.background.default,
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          paddingTop: theme.spacing(8),
+          position: "relative",
+        }}
+      >
+        <BlogPosts posts={posts} />
+      </Box>
+    </>
   );
 
 }

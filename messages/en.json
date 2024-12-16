@@ -1,12 +1,12 @@
 {
   "HomePage": {
     "title": "MALEK BOUZARKOUNA",
-    "subtitle": "Web and Mobile Developer",
+    "subtitle": "Software Engineer",
     "projects": "My Projects",
     "experiences": "My Experiences",
-    "about": "About Me",
-    "seemore": "See More",
-    "description": "I am a computer science student passionate about web and mobile development. I have completed several projects using modern technologies like React, Angular, Node.js, Express.js, MongoDB, MySQL, Ionic, Flutter, etc. I am currently looking for a 6-month internship starting from February 2022."
+    "about": "About",
+    "seemore": "See more",
+    "description": "A software engineer passionate about adventure and discovering new technologies."
   },
 
   "ProjectsPage": {
@@ -29,21 +29,22 @@
   "Experiences": {
     "experiencesData": [
       {
-        "id": 1,
-        "title": "Software Engineer",
-        "company": "Tech Corp",
-        "logo": "https://www.excalibra.com/wp-content/uploads/2019/05/logo_EX_CALIBRA_544_180.png",
-        "description": "Developed a full-stack application using React and Node.js.",
-        "date": "Jan 2020 - Present",
-        "tags": ["JavaScript", "TypeScript", "React", "Storybook"]
+      "id": 1,
+      "title": "TMA Engineer",
+      "company": "CGI",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/3/32/CGI_logo.svg",
+      "description": "Application maintenance and evolution using SQL, C, and SVN.",
+      "date": "Oct 2024 - Present",
+      "tags": ["SQL", "C", "SVN"]
       },
       {
-        "id": 2,
-        "title": "Frontend Developer",
-        "company": "Web Solutions",
-        "description": "Worked on enhancing UI/UX of the main product using Material-UI and React.",
-        "date": "Jun 2018 - Dec 2019",
-        "tags": ["JavaScript", "TypeScript", "React", "Storybook"]
+      "id": 2,
+      "title": "Full-Stack Developer",
+      "company": "Excalibra",
+      "logo": "https://www.excalibra.com/wp-content/uploads/2019/05/logo_EX_CALIBRA_544_180.png",
+      "description": "Development of a full-stack application using React and Node.js.",
+      "date": "June 2024 - July 2024",
+      "tags": ["JavaScript", "TypeScript", "React", "Storybook"]
       }
     ]
   }

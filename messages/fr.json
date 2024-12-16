@@ -1,12 +1,12 @@
 {
   "HomePage": {
     "title": "MALEK BOUZARKOUNA",
-    "subtitle": "Développeur Web et Mobile",
+    "subtitle": "Ingénieur Logiciel",
     "projects": "Mes Projets",
     "experiences": "Mes Expériences",
     "about": "A propos",
     "seemore": "Voir plus",
-    "description": "Je suis un étudiant en informatique passionné par le développement web et mobile. J'ai réalisé plusieurs projets en utilisant des technologies modernes comme React, Angular, Node.js, Express.js, MongoDB, MySQL, Ionic, Flutter, etc. Je suis actuellement à la recherche d'un stage de fin d'études pour une durée de 6 mois à partir de février 2022."
+    "description": "Un ingénieur logiciel passionné par l'aventure et la découverte de nouvelles technologies."
   },
 
   "ProjectsPage": {
@@ -34,43 +34,20 @@
     "experiencesData": [
       {
         "id": 1,
-        "title": "sdfjlsd",
-        "company": "Tech Corp",
-        "logo": "https://www.excalibra.com/wp-content/uploads/2019/05/logo_EX_CALIBRA_544_180.png",
-        "description": "Developed a full-stack application using React and Node.js.",
-        "date": "Jan 2020 - Present",
-        "tags": ["JavaScript", "TypeScript", "React", "Storybook"]
+        "title": "TMA Engineer",
+        "company": "CGI",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/3/32/CGI_logo.svg",
+        "description": "Maintenance applicative et évolutive en utilisant SQL, C, et SVN.",
+        "date": "Oct 2024 - Present",
+        "tags": ["SQL", "C", "SVN"]
       },
       {
         "id": 2,
-        "title": "Frontend Developer",
-        "company": "Web Solutions",
-        "description": "Worked on enhancing UI/UX of the main product using Material-UI and React.",
-        "date": "Jun 2018 - Dec 2019",
-        "tags": ["JavaScript", "TypeScript", "React", "Storybook"]
-      },
-      {
-        "id": 3,
-        "title": "Frontend Developer",
-        "company": "Web Solutions",
-        "description": "Worked on enhancing UI/UX of the main product using Material-UI and React.",
-        "date": "Jun 2018 - Dec 2019",
-        "tags": ["JavaScript", "TypeScript", "React", "Storybook"]
-      },
-      {
-        "id": 4,
-        "title": "Frontend Developer",
-        "company": "Web Solutions",
-        "description": "Worked on enhancing UI/UX of the main product using Material-UI and React.",
-        "date": "Jun 2018 - Dec 2019",
-        "tags": ["JavaScript", "TypeScript", "React", "Storybook"]
-      },
-      {
-        "id": 5,
-        "title": "Frontend Developer",
-        "company": "Web Solutions",
-        "description": "Worked on enhancing UI/UX of the main product using Material-UI and React.",
-        "date": "Jun 2018 - Dec 2019",
+        "title": "Développeur Full-Stack",
+        "company": "Excalibra",
+        "logo": "https://www.excalibra.com/wp-content/uploads/2019/05/logo_EX_CALIBRA_544_180.png",
+        "description": "Développement d'une application full-stack en utilisant React et Node.js.",
+        "date": "Juin 2024 - Juillet 2024",
         "tags": ["JavaScript", "TypeScript", "React", "Storybook"]
       }
     ]

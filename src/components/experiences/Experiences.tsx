@@ -3,7 +3,6 @@ import Experience from "./Experience";
 import { Box, Typography, useTheme, Grid, useMediaQuery } from "@mui/material";
 import { useTranslations } from "next-intl";
 import SeeMoreButton from "../SeeMoreButton";
-import zIndex from "@mui/material/styles/zIndex";
 
 interface ExperienceType {
   id: number;

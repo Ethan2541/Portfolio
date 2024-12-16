@@ -101,7 +101,7 @@ const PinnedRepositories: React.FC<{ username: string }> = ({ username }) => {
       >
         {t("projects")}
       </Typography>
-      {loading ? (
+      {loading && (
         <Box
           sx={{
             display: "flex",
@@ -112,11 +112,13 @@ const PinnedRepositories: React.FC<{ username: string }> = ({ username }) => {
         >
           <CircularProgress />
         </Box>
-      ) : error ? (
+      )}
+      {!loading && error && (
         <Alert severity="error" sx={{ marginTop: 5, marginLeft: "auto", marginRight: "auto", maxWidth: isMobile ? "100%" : "1250px" }}>
           {error}
         </Alert>
-      ) : (
+      )}
+      {!loading && !error && (
         <Box sx={{ maxWidth: isMobile ? "100%" : "1250px", margin: "auto", marginTop: isMobile ? 1 : 2 }}>
           <Grid container spacing={isMobile ? 2 : 4} >
             {pinnedRepos.slice(0, maxProjects).map((repo) => (

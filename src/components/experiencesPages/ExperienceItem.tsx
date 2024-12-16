@@ -59,6 +59,7 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({ experience }) => {
               <Box mt={1} display="flex" justifyContent={isMobile ? 'center' : 'left'}>
                 <img
                   src={experience.logo}
+                  alt={`${experience.company} logo`}
                   style={{
                     maxWidth: "124px",
                     height: 'auto',

@@ -9,6 +9,7 @@ import PinnedRepositories from "@/components/repositories/PinnedRepositories";
 import DecodeAnimation from "react-decode-animation";
 import user from "@/data/user.json";
 import AnimatedSection from "@/components/AnimatedSection";
+import Head from "next/head";
 
 export default function Home() {
   const t = useTranslations("HomePage");
@@ -16,6 +17,16 @@ export default function Home() {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <>
+      <Head>
+        <title>Malek Bouzarkouna | Portfolio</title>
+        <meta name="description" content="Portfolio of Malek Bouzarkouna, showcasing projects and experiences." />
+        <meta name="keywords" content="Malek Bouzarkouna, portfolio, projects, experiences" />
+        <meta property="og:title" content="Malek Bouzarkouna | Portfolio" />
+        <meta property="og:description" content="Portfolio of Malek Bouzarkouna, showcasing projects and experiences." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://your-portfolio-url.com" />
+        <meta property="og:image" content="https://your-portfolio-url.com/og-image.jpg" />
+      </Head>
       <Box
         component="video"
         autoPlay

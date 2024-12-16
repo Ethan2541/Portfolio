@@ -1,7 +1,5 @@
 import React from 'react';
 import { Card, CardContent, Typography, Box, Chip, useTheme, useMediaQuery, CardActionArea } from '@mui/material';
-import { mx_bilerp_0 } from 'three/src/nodes/materialx/lib/mx_noise.js';
-import exp from 'constants';
 
 interface ExperienceCardProps {
   id: number;
@@ -10,7 +8,7 @@ interface ExperienceCardProps {
   company: string;
   description: string;
   tags: string[];
-  logo?: string; // Ajout d'une prop optionnelle pour l'image
+  logo?: string; 
 }
 
 const ExperienceCard: React.FC<ExperienceCardProps> = ({
@@ -23,7 +21,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
   logo
 }) => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // Vérification si l'écran est mobile
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm')); 
 
   return (
     <Card
@@ -43,66 +41,99 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
     >
       <CardActionArea>
         <CardContent>
-          <Box
-            display="flex"
-            flexDirection={isMobile ? 'column' : 'row'} // Sur mobile, on empile les éléments verticalement
-            justifyContent="space-between"
-            alignItems={isMobile ? 'center' : 'flex-start'} // Alignement centré sur mobile
-            p={isMobile ? 1 : 2}
-          >
-            <Box sx={{ minWidth: isMobile ? '100%' : '150px', textAlign: 'left', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-              <Typography variant="body2" color="textSecondary">
-                {date}
-              </Typography>
-              {
-                logo && (
-                  <Box mt={1} display="flex" justifyContent={isMobile ? 'center' : 'left'}>
-                    <img
-                      src={logo}
-                      alt="Company Logo"
-                      style={{
-                        maxWidth: "124px",
-                        height: 'auto',
-                        borderRadius: '8px',
-                      }}
-                    />
-                  </Box>
-                )
-              }
-            </Box>
-
-            <Box sx={{ flexGrow: 1, ml: isMobile ? 0 : 3, mt: isMobile ? 2 : 0, borderTop: isMobile ? 1 : 0, borderLeft: isMobile ? 0 : 1, borderColor: 'primary.main', pl: isMobile ? 0 : 3, pt: isMobile ? 2 : 0 }}>
-              <Typography variant={isMobile ? "h6" : "h5"} color="primary" textAlign={isMobile ? 'center' : 'left'}>
-                {title}
-              </Typography>
-              <Typography variant="subtitle1" color="textSecondary" textAlign={isMobile ? 'center' : 'left'}>
-                {company}
-              </Typography>
-              <Typography variant="body2" mt={1} textAlign={isMobile ? 'center' : 'left'}>
-                {description}
-              </Typography>
-
-              {/* Tags */}
-              <Box mt={2} display="flex" justifyContent={isMobile ? 'center' : 'left'} flexWrap="wrap" gap={1}>
-                {tags.map((tag, index) => (
-                  <Chip
-                    key={index}
-                    label={tag}
-                    variant="outlined"
-                    sx={{
-                      color: theme.palette.primary.main,
-                      borderColor: theme.palette.primary.main,
-                      fontSize: isMobile ? '0.8rem' : '1rem', // Taille de la police réduite sur mobile
-                    }}
-                  />
-                ))}
-              </Box>
-            </Box>
-          </Box>
+          <ExperienceCardContent
+            date={date}
+            title={title}
+            company={company}
+            description={description}
+            tags={tags}
+            logo={logo}
+            isMobile={isMobile}
+            theme={theme}
+          />
         </CardContent>
       </CardActionArea>
     </Card>
   );
 };
+
+interface ExperienceCardContentProps {
+  date: string;
+  title: string;
+  company: string;
+  description: string;
+  tags: string[];
+  logo?: string;
+  isMobile: boolean;
+  theme: any;
+}
+
+const ExperienceCardContent: React.FC<ExperienceCardContentProps> = ({
+  date,
+  title,
+  company,
+  description,
+  tags,
+  logo,
+  isMobile,
+  theme
+}) => (
+  <Box
+    display="flex"
+    flexDirection={isMobile ? 'column' : 'row'} // Sur mobile, on empile les éléments verticalement
+    justifyContent="space-between"
+    alignItems={isMobile ? 'center' : 'flex-start'} // Alignement centré sur mobile
+    p={isMobile ? 1 : 2}
+  >
+    <Box sx={{ minWidth: isMobile ? '100%' : '150px', textAlign: 'left', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+      <Typography variant="body2" color="textSecondary">
+        {date}
+      </Typography>
+      {
+        logo && (
+          <Box mt={1} display="flex" justifyContent={isMobile ? 'center' : 'left'}>
+            <img
+              src={logo}
+              alt="Company Logo"
+              style={{
+                maxWidth: "124px",
+                height: 'auto',
+                borderRadius: '8px',
+              }}
+            />
+          </Box>
+        )
+      }
+    </Box>
+
+    <Box sx={{ flexGrow: 1, ml: isMobile ? 0 : 3, mt: isMobile ? 2 : 0, borderTop: isMobile ? 1 : 0, borderLeft: isMobile ? 0 : 1, borderColor: 'primary.main', pl: isMobile ? 0 : 3, pt: isMobile ? 2 : 0 }}>
+      <Typography variant={isMobile ? "h6" : "h5"} color="primary" textAlign={isMobile ? 'center' : 'left'}>
+        {title}
+      </Typography>
+      <Typography variant="subtitle1" color="textSecondary" textAlign={isMobile ? 'center' : 'left'}>
+        {company}
+      </Typography>
+      <Typography variant="body2" mt={1} textAlign={isMobile ? 'center' : 'left'}>
+        {description}
+      </Typography>
+
+      {/* Tags */}
+      <Box mt={2} display="flex" justifyContent={isMobile ? 'center' : 'left'} flexWrap="wrap" gap={1}>
+        {tags.map((tag, index) => (
+          <Chip
+            key={index}
+            label={tag}
+            variant="outlined"
+            sx={{
+              color: theme.palette.primary.main,
+              borderColor: theme.palette.primary.main,
+              fontSize: isMobile ? '0.8rem' : '1rem', // Taille de la police réduite sur mobile
+            }}
+          />
+        ))}
+      </Box>
+    </Box>
+  </Box>
+);
 
 export default ExperienceCard;
