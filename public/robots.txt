@@ -4,6 +4,3 @@ Allow: /
 
 # Host
 Host: https://www.malekbouzarkouna.com
-
-# Sitemaps
-Sitemap: https://www.malekbouzarkouna.com/sitemap.xml
