@@ -6,6 +6,7 @@ import user from "@/data/user.json";
 import { useTranslations } from "next-intl";
 import NavBar from "@/components/navbar/NavBar";
 import ExperienceList from "../../../components/experiencesPages/ExperienceList";
+import Head from "next/head";
 
 interface ExperienceType {
   id: number;
@@ -16,7 +17,6 @@ interface ExperienceType {
   tags: string[];
   logo?: string;
 }
-
 
 const Experience: React.FC = () => {
   const theme = useTheme();
@@ -41,6 +41,16 @@ const Experience: React.FC = () => {
 
   return (
     <>
+      <Head>
+        <title>Malek Bouzarkouna | Experiences</title>
+        <meta name="description" content="Experiences of Malek Bouzarkouna." />
+        <meta name="keywords" content="Malek Bouzarkouna, experiences, portfolio" />
+        <meta property="og:title" content="Malek Bouzarkouna | Experiences" />
+        <meta property="og:description" content="Experiences of Malek Bouzarkouna." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://your-portfolio-url.com/experiences" />
+        <meta property="og:image" content="https://your-portfolio-url.com/og-image.jpg" />
+      </Head>
       <NavBar alwaysShowTopNav={true} />
       <Box
         sx={{
