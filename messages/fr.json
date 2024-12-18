@@ -24,6 +24,7 @@
   },
 
   "Navbar": {
+    "home": "Accueil",
     "projects": "Projets",
     "experiences": "Expériences",
     "resume": "CV",

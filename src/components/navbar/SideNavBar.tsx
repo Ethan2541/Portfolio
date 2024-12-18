@@ -145,7 +145,7 @@ export default function SideNavBar({
           </IconButton>
         </Box>
         <Box component="li">
-          <LanguageSelector />
+          <LanguageSelector isArrow={true} />
         </Box>
       </Box>
     </Box>

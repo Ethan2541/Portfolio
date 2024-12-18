@@ -8,7 +8,11 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { useRouter, usePathname } from "@/navigation";
 import { useLocale } from "next-intl";
 
-export default function LanguageSelector() {
+interface LanguageSelectorProps {
+  isArrow?: boolean;
+}
+
+export default function LanguageSelector({ isArrow = false }: LanguageSelectorProps) {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const locale = useLocale();
   const [selectedLanguage, setSelectedLanguage] = useState<string>(locale);
@@ -63,9 +67,9 @@ export default function LanguageSelector() {
       >
         <FlagIcon
           code={getFlagCode(selectedLanguage)}
-          style={{ width: "24px", height: "16px", marginRight: "8px" }}
+          style={{ width: "24px", height: "16px" }}
         />
-        <ArrowDropDownIcon />
+        {isArrow && <ArrowDropDownIcon style={{ marginLeft: "8px" }} />}
       </IconButton>
       <Menu
         anchorEl={anchorEl}

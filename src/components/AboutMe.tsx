@@ -84,6 +84,7 @@ const AboutMe: React.FC<AboutMeProps> = ({ description }) => {
             fontSize: isMobile ? "1rem" : "1.2rem",
             lineHeight: "1.6",
             padding: theme.spacing(2),
+            textAlign: "justify",
           }}
         >
           {description}
