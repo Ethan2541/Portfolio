@@ -1,8 +1,4 @@
-import { Drawer, IconButton, Box, Stack, Button, useTheme, ListItem } from "@mui/material";
-import HomeIcon from "@mui/icons-material/Home";
-import BookIcon from "@mui/icons-material/Book";
-import WorkIcon from "@mui/icons-material/Work";
-import DescriptionIcon from "@mui/icons-material/Description";
+import { Drawer, IconButton, Box, Stack, Button, useTheme } from "@mui/material";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import CloseIcon from "@mui/icons-material/Close";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -11,8 +7,6 @@ import Link from "next/link";
 import { useMode } from "@/contexts/ModeProvider";
 import { useTranslations } from "next-intl";
 import LanguageSelector from "../LanguageSelector";
-import { backIn } from "framer-motion";
-import Background from "three/src/renderers/common/Background.js";
 
 interface MenuDrawerProps {
   open: boolean;
@@ -64,7 +58,12 @@ const MenuDrawer = ({ open, onClose, githubusername, linkedinusername }: Readonl
               <Button
                 variant="text"
                 component="a"
-                sx={{ color: theme.palette.primary.main, textTransform: "none", fontSize: "1.2rem", textAlign: "left" }}
+                sx={{
+                  color: theme.palette.primary.main,
+                  textTransform: "none",
+                  fontSize: "1.2rem",
+                  textAlign: "left",
+                }}
                 onClick={onClose}
               >
                 {t("home")}
@@ -74,7 +73,11 @@ const MenuDrawer = ({ open, onClose, githubusername, linkedinusername }: Readonl
               <Button
                 variant="text"
                 component="a"
-                sx={{ color: theme.palette.primary.main, textTransform: "none", fontSize: "1.2rem" }}
+                sx={{
+                  color: theme.palette.primary.main,
+                  textTransform: "none",
+                  fontSize: "1.2rem",
+                }}
                 onClick={onClose}
               >
                 {t("projects")}
@@ -84,7 +87,11 @@ const MenuDrawer = ({ open, onClose, githubusername, linkedinusername }: Readonl
               <Button
                 variant="text"
                 component="a"
-                sx={{ color: theme.palette.primary.main, textTransform: "none", fontSize: "1.2rem" }}
+                sx={{
+                  color: theme.palette.primary.main,
+                  textTransform: "none",
+                  fontSize: "1.2rem",
+                }}
                 onClick={onClose}
               >
                 {t("experiences")}
@@ -95,17 +102,16 @@ const MenuDrawer = ({ open, onClose, githubusername, linkedinusername }: Readonl
                 variant="text"
                 component="a"
                 target="_blank"
-                sx={{ color: theme.palette.primary.main, textTransform: "none", fontSize: "1.2rem" }}
+                sx={{
+                  color: theme.palette.primary.main,
+                  textTransform: "none",
+                  fontSize: "1.2rem",
+                }}
                 onClick={onClose}
               >
                 {t("resume")}
               </Button>
             </Link>
-            {/* <Link href="/blog" passHref legacyBehavior>
-              <IconButton aria-label="Blog" component="a" onClick={onClose}>
-                <BookIcon sx={{ color: theme.palette.primary.main }} />
-              </IconButton>
-            </Link> */}
           </Stack>
 
           {/* Social Media Section */}
@@ -128,8 +134,6 @@ const MenuDrawer = ({ open, onClose, githubusername, linkedinusername }: Readonl
             </Link>
           </Stack>
         </Box>
-
-        
 
         {/* Settings Section */}
         <Stack
