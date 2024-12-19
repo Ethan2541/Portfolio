@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://www.malekbouzarkouna.com
+Host: https://www.ethanluong.com

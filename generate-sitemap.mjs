@@ -16,7 +16,7 @@ ${routes
   .map(
     (route) => `
   <url>
-    <loc>https://www.malekbouzarkouna.com${route}</loc>
+    <loc>https://www.ethanluong.com${route}</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>`
