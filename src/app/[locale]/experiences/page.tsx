@@ -42,11 +42,11 @@ const Experience: React.FC = () => {
   return (
     <>
       <Head>
-        <title>Malek Bouzarkouna | Experiences</title>
-        <meta name="description" content="Experiences of Malek Bouzarkouna." />
-        <meta name="keywords" content="Malek Bouzarkouna, experiences, portfolio" />
-        <meta property="og:title" content="Malek Bouzarkouna | Experiences" />
-        <meta property="og:description" content="Experiences of Malek Bouzarkouna." />
+        <title>Ethan Luong | Experiences</title>
+        <meta name="description" content="Experiences of Ethan Luong." />
+        <meta name="keywords" content="Ethan Luong, experiences, portfolio" />
+        <meta property="og:title" content="Ethan Luong | Experiences" />
+        <meta property="og:description" content="Experiences of Ethan Luong." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://your-portfolio-url.com/experiences" />
         <meta property="og:image" content="https://your-portfolio-url.com/og-image.jpg" />

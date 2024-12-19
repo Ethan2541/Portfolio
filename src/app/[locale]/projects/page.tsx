@@ -18,11 +18,11 @@ export default function Projects() {
   return (
     <>
       <Head>
-        <title>Malek Bouzarkouna | Projects</title>
-        <meta name="description" content="Projects by Malek Bouzarkouna." />
-        <meta name="keywords" content="Malek Bouzarkouna, projects, portfolio" />
-        <meta property="og:title" content="Malek Bouzarkouna | Projects" />
-        <meta property="og:description" content="Projects by Malek Bouzarkouna." />
+        <title>Ethan Luong | Projects</title>
+        <meta name="description" content="Projects by Ethan Luong." />
+        <meta name="keywords" content="Ethan Luong, projects, portfolio" />
+        <meta property="og:title" content="Ethan Luong | Projects" />
+        <meta property="og:description" content="Projects by Ethan Luong." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://your-portfolio-url.com/projects" />
         <meta property="og:image" content="https://your-portfolio-url.com/og-image.jpg" />

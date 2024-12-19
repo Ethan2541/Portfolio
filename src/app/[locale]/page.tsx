@@ -18,11 +18,11 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Malek Bouzarkouna | Portfolio</title>
-        <meta name="description" content="Portfolio of Malek Bouzarkouna, showcasing projects and experiences." />
-        <meta name="keywords" content="Malek Bouzarkouna, portfolio, projects, experiences" />
-        <meta property="og:title" content="Malek Bouzarkouna | Portfolio" />
-        <meta property="og:description" content="Portfolio of Malek Bouzarkouna, showcasing projects and experiences." />
+        <title>Ethan Luong | Portfolio</title>
+        <meta name="description" content="Portfolio of Ethan Luong, showcasing projects and experiences." />
+        <meta name="keywords" content="Ethan Luong, portfolio, projects, experiences" />
+        <meta property="og:title" content="Ethan Luong | Portfolio" />
+        <meta property="og:description" content="Portfolio of Ethan Luong, showcasing projects and experiences." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://your-portfolio-url.com" />
         <meta property="og:image" content="https://your-portfolio-url.com/og-image.jpg" />

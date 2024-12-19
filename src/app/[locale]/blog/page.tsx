@@ -32,11 +32,11 @@ export default function Blog() {
   return (
     <>
       <Head>
-        <title>Malek Bouzarkouna | Blog</title>
-        <meta name="description" content="Blog posts by Malek Bouzarkouna." />
-        <meta name="keywords" content="Malek Bouzarkouna, blog, posts" />
-        <meta property="og:title" content="Malek Bouzarkouna | Blog" />
-        <meta property="og:description" content="Blog posts by Malek Bouzarkouna." />
+        <title>Ethan Luong | Blog</title>
+        <meta name="description" content="Blog posts by Ethan Luong." />
+        <meta name="keywords" content="Ethan Luong, blog, posts" />
+        <meta property="og:title" content="Ethan Luong | Blog" />
+        <meta property="og:description" content="Blog posts by Ethan Luong." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://your-portfolio-url.com/blog" />
         <meta property="og:image" content="https://your-portfolio-url.com/og-image.jpg" />
