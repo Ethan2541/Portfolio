@@ -1,6 +1,6 @@
 import { Drawer, IconButton, Box, Stack, Button, useTheme } from "@mui/material";
 import LightModeIcon from "@mui/icons-material/LightMode";
-import CloseIcon from "@mui/icons-material/Close";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import Link from "next/link";
@@ -29,7 +29,7 @@ const MenuDrawer = ({ open, onClose, githubusername, linkedinusername }: Readonl
         sx: {
           backgroundColor: theme.palette.background.default,
           width: "80%",
-          maxwidth: 300,
+          maxWidth: 300,
         },
       }}
     >
@@ -46,9 +46,9 @@ const MenuDrawer = ({ open, onClose, githubusername, linkedinusername }: Readonl
         <IconButton
           aria-label="Close Drawer"
           onClick={onClose}
-          sx={{ alignSelf: "flex-end", position: "absolute", left: theme.spacing(2) }}
+          sx={{ alignSelf: "flex-end", position: "absolute", right: theme.spacing(2) }}
         >
-          <CloseIcon sx={{ color: theme.palette.primary.main }} />
+          <ArrowBackIcon sx={{ color: theme.palette.primary.main }} />
         </IconButton>
 
         {/* Main Navigation Section */}
