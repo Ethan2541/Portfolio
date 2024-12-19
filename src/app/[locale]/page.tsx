@@ -32,6 +32,7 @@ export default function Home() {
         autoPlay
         muted
         loop
+        controlsList="nodownload"
         sx={{
           position: "fixed", // Change to fixed to keep it in place during scroll
           top: 0,

@@ -97,7 +97,7 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({ experience }) => {
             color="text.secondary"
             sx={{
               fontSize: isMobile ? "0.75rem" : "0.875rem",
-              mb: isMobile ? 0 : theme.spacing(3),
+              mb: isMobile ? theme.spacing(1) : theme.spacing(3),
             }}
           >
             {experience.company}
@@ -113,7 +113,7 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({ experience }) => {
             {experience.description}
           </Typography>
           <Box
-            mt={isMobile ? 0 : theme.spacing(4)}
+            mt={isMobile ? theme.spacing(2) : theme.spacing(4)}
             display="flex"
             justifyContent={isMobile ? "center" : "left"}
             flexWrap="wrap"
