@@ -32,6 +32,8 @@ export default function Home() {
         autoPlay
         muted
         loop
+        preload="auto"
+        playsInline
         controlsList="nodownload"
         sx={{
           position: "fixed", // Change to fixed to keep it in place during scroll
