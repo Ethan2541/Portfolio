@@ -56,15 +56,14 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({ experience }) => {
           </Typography>
           {
             experience.logo && (
-              <Box mt={1} display="flex" justifyContent={isMobile ? 'center' : 'left'}>
+              <Box mt={1} display="flex" justifyContent={isMobile ? 'center' : 'left'} alignSelf="center">
                 <img
                   src={experience.logo}
                   alt={`${experience.company} logo`}
                   style={{
-                    maxWidth: "124px",
-                    height: 'auto',
+                    maxWidth: "160px",
+                    maxHeight: "124px",
                     borderRadius: '8px',
-                    color: theme.palette.primary.main,
                   }}
                 />
               </Box>

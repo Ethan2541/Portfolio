@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: 'https://www.malekbouzarkouna.com', // Ton URL principale
+  siteUrl: 'https://www.ethanluong.com', // Ton URL principale
   generateRobotsTxt: true, // Générer robots.txt
   exclude: ['/api/*'], // Exclut les API ou autres routes inutiles
   generateIndexSitemap: false, // Empêche la génération de `sitemap-index`

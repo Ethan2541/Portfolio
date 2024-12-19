@@ -1,12 +1,12 @@
 {
   "HomePage": {
-    "title": "MALEK BOUZARKOUNA",
-    "subtitle": "Software Engineer",
+    "title": "Ethan Luong",
+    "subtitle": "Affective Computing Intern",
     "projects": "My Projects",
     "experiences": "My Experiences",
     "about": "About",
     "seemore": "See more",
-    "description": "A software engineer passionate about adventure and discovering new technologies."
+    "description": "Ethan is an AI engineer who is deeply engrossed in science and new technologies. He may be passionate about data science and AI-related fields (machine learning, natural language processing, computer vision), but he also genuinely enjoys astronomy, psychology and music."
   },
 
   "ProjectsPage": {
@@ -30,22 +30,31 @@
   "Experiences": {
     "experiencesData": [
       {
-      "id": 1,
-      "title": "TMA Engineer",
-      "company": "CGI",
-      "logo": "https://upload.wikimedia.org/wikipedia/commons/3/32/CGI_logo.svg",
-      "description": "Application maintenance and evolution using SQL, C, and SVN.",
-      "date": "Oct 2024 - Present",
-      "tags": ["SQL", "C", "SVN"]
+        "id": 1,
+        "title": "Research Intern",
+        "company": "ISIR",
+        "logo": "https://www.isir.upmc.fr/wp-content/themes/isir/dist/images/logo-color.png",
+        "description": "Harnessing Subspaces of Policies in Reinforcement Learning.",
+        "date": "June 2024 - August 2024",
+        "tags": ["Reinforcement Learning", "LaTeX", "Python", "PyTorch"]
       },
       {
-      "id": 2,
-      "title": "Full-Stack Developer",
-      "company": "Excalibra",
-      "logo": "https://www.excalibra.com/wp-content/uploads/2019/05/logo_EX_CALIBRA_544_180.png",
-      "description": "Development of a full-stack application using React and Node.js.",
-      "date": "June 2024 - July 2024",
-      "tags": ["JavaScript", "TypeScript", "React", "Storybook"]
+        "id": 2,
+        "title": "Research & Development Intern",
+        "company": "Hexagon Manufacturing Intelligence",
+        "logo": "http://www.salons-solutions.com/logo/3448029a1eecf6bhexagon_standard_rgb_logo.png",
+        "description": "Metrology Team. ISO10360-12: Data Exploration. Calibration models comparisons for Coordinate Measuring Machines (CMMs). Calibration and neural networks. Study on the ISO10360-8 standard, adapted to articulated CMMs.",
+        "date": "Jul. 2023 - Aug. 2023",
+        "tags": ["Data Science", "Deep Learning", "Python"]
+      },
+      {
+        "id": 3,
+        "title": "College Tutor",
+        "company": "Sorbonne University",
+        "logo": "//upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Logo_of_Sorbonne_University.svg/512px-Logo_of_Sorbonne_University.svg.png",
+        "description": "LU1IN001: Programming Elements (Python). LU1IN002: Programming Elements 2 (C).",
+        "date": "Sep. 2022 - Jun. 2023",
+        "tags": ["C", "Python"]
       }
     ]
   }

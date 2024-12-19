@@ -1,12 +1,12 @@
 {
   "HomePage": {
-    "title": "MALEK BOUZARKOUNA",
-    "subtitle": "Ingénieur Logiciel",
+    "title": "ETHAN LUONG",
+    "subtitle": "Stagiaire en Informatique Affective",
     "projects": "Mes Projets",
     "experiences": "Mes Expériences",
     "about": "A propos",
     "seemore": "Voir plus",
-    "description": "Un ingénieur logiciel passionné par l'aventure et la découverte de nouvelles technologies."
+    "description": "Ethan est un ingénieur en intelligence artificielle et sciences des données féru de sciences et de nouvelles technologies. Passionné par la science des données et les branches de l'intelligence artificielle (apprentissage automatique, traitement du langage, vision), il apprécie également l'astronomie, la psychologie et la musique."
   },
 
   "ProjectsPage": {
@@ -35,21 +35,30 @@
     "experiencesData": [
       {
         "id": 1,
-        "title": "TMA Engineer",
-        "company": "CGI",
-        "logo": "https://upload.wikimedia.org/wikipedia/commons/3/32/CGI_logo.svg",
-        "description": "Maintenance applicative et évolutive en utilisant SQL, C, et SVN.",
-        "date": "Oct 2024 - Present",
-        "tags": ["SQL", "C", "SVN"]
+        "title": "Stagiaire en Recherche",
+        "company": "ISIR",
+        "logo": "https://www.isir.upmc.fr/wp-content/themes/isir/dist/images/logo-color.png",
+        "description": "Exploitation de Sous-Espaces de Politiques en Apprentissage par Renforcement.",
+        "date": "Juin 2024 - Août 2024",
+        "tags": ["Apprentissage par Renforcement", "LaTeX", "Python", "PyTorch"]
       },
       {
         "id": 2,
-        "title": "Développeur Full-Stack",
-        "company": "Excalibra",
-        "logo": "https://www.excalibra.com/wp-content/uploads/2019/05/logo_EX_CALIBRA_544_180.png",
-        "description": "Développement d'une application full-stack en utilisant React et Node.js.",
-        "date": "Juin 2024 - Juillet 2024",
-        "tags": ["JavaScript", "TypeScript", "React", "Storybook"]
+        "title": "Stagiaire en Recherche et Développement",
+        "company": "Hexagon Manufacturing Intelligence",
+        "logo": "http://www.salons-solutions.com/logo/3448029a1eecf6bhexagon_standard_rgb_logo.png",
+        "description": "Équipe Métrologie. ISO10360-12 : Exploration de données. Comparaison de modèles de calibration de bras de mesure. Calibration et réseaux de neurones. Étude de la norme ISO10360-8 adaptée aux scanners sur CMM articulée.",
+        "date": "Juil. 2023 - Août 2023",
+        "tags": ["Apprentissage Profond", "Python", "Science des Données"]
+      },
+      {
+        "id": 3,
+        "title": "Tuteur Étudiant",
+        "company": "Sorbonne Université",
+        "logo": "//upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Logo_of_Sorbonne_University.svg/512px-Logo_of_Sorbonne_University.svg.png",
+        "description": "LU1IN001 : Éléments de Programmation 1 (Python). LU1IN002 : Éléments de Programmation 2 (C).",
+        "date": "Sept. 2022 - Juin 2023",
+        "tags": ["C", "Python"]
       }
     ]
   }

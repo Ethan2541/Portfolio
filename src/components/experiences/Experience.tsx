@@ -91,13 +91,13 @@ const ExperienceCardContent: React.FC<ExperienceCardContentProps> = ({
       </Typography>
       {
         logo && (
-          <Box mt={1} display="flex" justifyContent={isMobile ? 'center' : 'left'}>
+          <Box mt={1} display="flex" justifyContent={isMobile ? 'center' : 'left'} alignSelf="center">
             <img
               src={logo}
               alt="Company Logo"
               style={{
-                maxWidth: "124px",
-                height: 'auto',
+                maxWidth: "160px",
+                maxHeight: "124px",
                 borderRadius: '8px',
               }}
             />
