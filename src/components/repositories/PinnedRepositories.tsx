@@ -63,8 +63,17 @@ const PinnedRepositories: React.FC<{ username: string }> = ({ username }) => {
         }));
         setPinnedRepos(repos);
       } catch (error) {
-        console.error("Error fetching pinned repositories:", error);
-        setError("Failed to load repositories. Please try again later.");
+
+        fetch(`https://api.github.com/users/${username}/repos?per_page=100`)
+          .then((response) => response.json())
+          .then((data) => {
+            setPinnedRepos(data);
+          })
+          .catch((error) => {
+            console.error("Error fetching repositories:", error);
+            setError("Failed to load repositories. Please try again later.");
+          });
+
       } finally {
         setLoading(false);
       }
@@ -114,9 +123,15 @@ const PinnedRepositories: React.FC<{ username: string }> = ({ username }) => {
         </Box>
       )}
       {!loading && error && (
-        <Alert severity="error" sx={{ marginTop: 5, marginLeft: "auto", marginRight: "auto", maxWidth: isMobile ? "100%" : "1250px" }}>
-          {error}
-        </Alert>
+        <>
+          <Alert severity="error" sx={{ marginTop: 5, marginLeft: "auto", marginRight: "auto", maxWidth: isMobile ? "100%" : "1250px" }}>
+            {error}
+          </Alert>
+          <Box sx={{ marginTop: theme.spacing(3), width: "100%", display: "flex", flexDirection: "row-reverse", marginRight: isMobile ? 1 : 2.5, maxWidth: isMobile ? "100%" : "1250px" }}>
+            <SeeMoreButton hrefstring="/projects" />
+          </Box>
+        </>
+        
       )}
       {!loading && !error && (
         <Box sx={{ maxWidth: isMobile ? "100%" : "1250px", margin: "auto", marginTop: isMobile ? 1 : 2 }}>

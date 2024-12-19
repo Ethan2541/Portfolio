@@ -6,10 +6,10 @@ import { useTranslations } from "next-intl";
 import Experiences from "@/components/experiences/Experiences";
 import AboutMe from "@/components/AboutMe";
 import PinnedRepositories from "@/components/repositories/PinnedRepositories";
-import DecodeAnimation from "react-decode-animation";
 import user from "@/data/user.json";
 import AnimatedSection from "@/components/AnimatedSection";
 import Head from "next/head";
+import { TextDecrypt } from "@/components/TextDecrypt";
 
 export default function Home() {
   const t = useTranslations("HomePage");
@@ -92,43 +92,25 @@ export default function Home() {
               sx={{
                 fontWeight: "bold",
                 textAlign: "center",
-                marginBottom: theme.spacing(4),
+                marginBottom: theme.spacing(2),
                 textTransform: "uppercase",
                 letterSpacing: "0.15rem",
                 fontSize: isMobile ? "1.5rem" : "2.5rem", // Adjust font size for mobile
               }}
             >
-              <DecodeAnimation
-                autoplay
-                text={t("title")}
-                customCharacters="
-                ابتثجحخدذرزسشصضطظعغفقكلمنهوي
-                あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん
-                가나다라마바사아자차카타파하
-                一二三四五六七八九十百千万"
-                interval={150}
-              />
+              <TextDecrypt text={t("title")} />
             </Typography>
             <Typography
-              variant="h1"
+              variant="h2"
               color={theme.palette.primary.main}
               sx={{
                 textAlign: "center",
-                marginBottom: theme.spacing(4),
+                marginBottom: theme.spacing(10),
                 letterSpacing: "0.15rem",
                 fontSize: isMobile ? "1rem" : "2rem", // Adjust font size for mobile
               }}
             >
-              <DecodeAnimation
-                autoplay
-                text={t("subtitle")}
-                customCharacters="
-                ابتثجحخدذرزسشصضطظعغفقكلمنهوي
-                あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん
-                가나다라마바사아자차카타파하
-                一二三四五六七八九十百千万"
-                interval={150}
-              />
+              <TextDecrypt text={t("subtitle")} />
             </Typography>
           </Box>
         </Box>

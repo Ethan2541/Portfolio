@@ -46,11 +46,11 @@ export default function ProjectCard({ user, name, description, stargazerCount, f
                     }}
                 />
                 <CardContent>
-                    <Typography gutterBottom variant="h5" textAlign="center">
+                    <Typography gutterBottom variant="h5" textAlign="center" height={40} sx={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                         {name}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary" textAlign="center" overflow={"hidden"} height={80}>
-                        {description || "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, eleifend nunc. Sed in risus."}
+                    <Typography variant="body2" color="text.secondary" textAlign="justify" overflow={"hidden"} height={80}>
+                        {description || "No description provided."}
                     </Typography>
                     <Divider sx={{ my: 2 }} />
                     <Box sx={{ display: "flex", justifyContent: "space-around", alignItems: "center" }}>

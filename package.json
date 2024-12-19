@@ -23,11 +23,11 @@
     "next-intl": "^3.17.3",
     "next-sitemap": "^4.2.3",
     "react": "^18",
-    "react-decode-animation": "^1.0.7",
     "react-dom": "^18",
     "react-flag-kit": "^1.1.1",
     "react-intersection-observer": "^9.13.1",
-    "three": "^0.167.1"
+    "three": "^0.167.1",
+    "use-dencrypt-effect": "^2.0.0"
   },
   "devDependencies": {
     "@types/node": "^20",

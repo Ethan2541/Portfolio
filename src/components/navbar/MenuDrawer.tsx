@@ -69,20 +69,6 @@ const MenuDrawer = ({ open, onClose, githubusername, linkedinusername }: Readonl
                 {t("home")}
               </Button>
             </Link>
-            <Link href="/#projects" passHref legacyBehavior>
-              <Button
-                variant="text"
-                component="a"
-                sx={{
-                  color: theme.palette.primary.main,
-                  textTransform: "none",
-                  fontSize: "1.2rem",
-                }}
-                onClick={onClose}
-              >
-                {t("projects")}
-              </Button>
-            </Link>
             <Link href="/#experiences" passHref legacyBehavior>
               <Button
                 variant="text"
@@ -95,6 +81,20 @@ const MenuDrawer = ({ open, onClose, githubusername, linkedinusername }: Readonl
                 onClick={onClose}
               >
                 {t("experiences")}
+              </Button>
+            </Link>
+            <Link href="/#projects" passHref legacyBehavior>
+              <Button
+                variant="text"
+                component="a"
+                sx={{
+                  color: theme.palette.primary.main,
+                  textTransform: "none",
+                  fontSize: "1.2rem",
+                }}
+                onClick={onClose}
+              >
+                {t("projects")}
               </Button>
             </Link>
             <Link href="/assets/resume.pdf" passHref legacyBehavior>
